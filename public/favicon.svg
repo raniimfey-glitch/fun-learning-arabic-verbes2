@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#F8FAFC" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="115" fill="url(#bgGrad)" />
+  <circle cx="256" cy="240" r="150" fill="#FEF08A" opacity="0.25" />
+  <!-- Book -->
+  <g transform="translate(256, 330)">
+    <path d="M-170,40 Q-80,65 0,45 Q80,65 170,40 L160,-70 Q80,-45 0,-65 Q-80,-45 -160,-70 Z" fill="#0C4A6E" />
+    <path d="M-160,-70 Q-80,-45 0,-65 L0,45 Q-80,65 -160,40 Z" fill="url(#pageGrad)" stroke="#E2E8F0" stroke-width="2"/>
+    <path d="M0,-65 Q80,-45 160,-70 L160,40 Q80,65 0,45 Z" fill="url(#pageGrad)" stroke="#E2E8F0" stroke-width="2"/>
+  </g>
+  <!-- Text Badge -->
+  <rect x="116" y="165" width="280" height="90" rx="45" fill="#FFFFFF" stroke="#FEF08A" stroke-width="4" />
+  <text x="256" y="230" text-anchor="middle" font-family="'Baloo Bhaijaan 2', 'Tajawal', sans-serif" font-size="62" font-weight="900" fill="#7C2D12">
+    فِعْلٌ
+  </text>
+  <!-- Sparkles -->
+  <polygon points="256,60 264,80 284,88 264,96 256,116 248,96 228,88 248,80" fill="#FEF08A"/>
+</svg>

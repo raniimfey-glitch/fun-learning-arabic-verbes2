@@ -1,0 +1,32 @@
+{
+  "name": "عَالَمُ الأَفْعَالِ - لِلسَّنَةِ الثَّانِيَةِ ابْتِدَائِي",
+  "short_name": "عَالَمُ الأَفْعَالِ",
+  "description": "تطبيق تعليمي تفاعلي مشكول ومنطوق لتعليم أقسام الفعل (الماضي، المضارع، والأمر) لتلاميذ السنة الثانية ابتدائي مع ألعاب تفاعلية وبدون إنترنت.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fffbeb",
+  "theme_color": "#f59e0b",
+  "dir": "rtl",
+  "lang": "ar",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
