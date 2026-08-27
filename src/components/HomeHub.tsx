@@ -36,74 +36,6 @@ export const HomeHub: React.FC<HomeHubProps> = ({
   onUpdateProgress,
   onOpenActivity
 }) => {
-  const gamesList: {
-    id: ActivityId;
-    title: string;
-    description: string;
-    icon: string;
-    color: string;
-    bgGradient: string;
-    borderCol: string;
-    badge: string;
-    scoreKey: keyof UserProgress['gameScores'];
-  }[] = [
-    {
-      id: 'game-hunter',
-      title: 'صَائِدُ الْأَفْعَالِ',
-      description: 'اصْطَدِ الْكَلِمَاتِ الَّتِي تُمَثِّلُ فِعْلًا وَتَجَنَّبِ الْأَسْمَاءَ وَالْحُرُوفَ',
-      icon: '🎯',
-      color: 'text-amber-700',
-      bgGradient: 'from-amber-500 to-orange-500',
-      borderCol: 'border-amber-300 hover:border-amber-500',
-      badge: 'تَمْيِيزُ الْفِعْلِ',
-      scoreKey: 'hunter'
-    },
-    {
-      id: 'game-sorter',
-      title: 'صُنْدُوقُ الْأَزْمِنَةِ',
-      description: 'صَنِّفِ الْأَفْعَالَ فِي صَنَادِيقِ: الْمَاضِي ⏳، الْمُضَارِعِ ⏰، وَالْأَمْرِ 📢',
-      icon: '⏳',
-      color: 'text-teal-700',
-      bgGradient: 'from-teal-500 to-emerald-600',
-      borderCol: 'border-teal-300 hover:border-teal-500',
-      badge: 'تَصْنِيفُ الْأَزْمِنَةِ',
-      scoreKey: 'sorter'
-    },
-    {
-      id: 'game-completer',
-      title: 'أَكْمِلِ الْجُمْلَةَ بِالْفِعْلِ',
-      description: 'اخْتَرِ الْفِعْلَ الْمُنَاسِبَ لِسِيَاقِ الْجُمْلَةِ وَالصُّورَةِ التَّعْبِيرِيَّةِ',
-      icon: '🧩',
-      color: 'text-indigo-700',
-      bgGradient: 'from-indigo-500 to-blue-600',
-      borderCol: 'border-indigo-300 hover:border-indigo-500',
-      badge: 'سِيَاقُ الْجُمَلِ',
-      scoreKey: 'completer'
-    },
-    {
-      id: 'game-transformer',
-      title: 'عَصَا التَّحْوِيلِ السِّحْرِيَّةِ',
-      description: 'حَوِّلِ الْفِعْلَ بَيْنَ الْمَاضِي وَالْمُضَارِعِ وَالْأَمْرِ مَعَ السَّاحِرِ',
-      icon: '🪄',
-      color: 'text-pink-700',
-      bgGradient: 'from-pink-500 to-rose-600',
-      borderCol: 'border-pink-300 hover:border-pink-500',
-      badge: 'تَحْوِيلُ الْأَفْعَالِ',
-      scoreKey: 'transformer'
-    },
-    {
-      id: 'game-quiz',
-      title: 'تَحَدِّي الْأَبْطَالِ الْكَبِيرِ',
-      description: 'اخْتِبَارٌ شَامِلٌ لِكُلِّ مَفَاهِيمِ الْفِعْلِ لِرِبْحِ شَهَادَةِ التَّفَوُّقِ',
-      icon: '🏆',
-      color: 'text-amber-800',
-      bgGradient: 'from-amber-600 to-yellow-600',
-      borderCol: 'border-yellow-400 hover:border-yellow-600',
-      badge: 'تَحَدِّي التَّفَوُّقِ',
-      scoreKey: 'quiz'
-    }
-  ];
-
   const handleLaunchActivity = (actId: ActivityId, title: string) => {
     soundEffects.playClick();
     ArabicSpeechEngine.speak(title, progress.speechRate);
@@ -418,81 +350,57 @@ export const HomeHub: React.FC<HomeHubProps> = ({
         </div>
       </div>
 
-      {/* 🎮 SECTION 2: ألعاب الأفعال التفاعلية الخمسة (The 5 Interactive Games) */}
+      {/* 🎮 SECTION 2: بطاقة ألعاب الأفعال التفاعلية الموحدة (Single Games Card) */}
       <div className="space-y-4 pt-2">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <span className="text-3xl">🎮</span>
-            <div>
-              <h2 className="text-2xl sm:text-3xl font-black font-baloo text-amber-950">
-                أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ (5 أَلْعَابٍ)
-              </h2>
-              <p className="text-xs sm:text-sm font-bold font-tajawal text-slate-600">
-                الْعَبْ وَتَحَدَّ نَفْسَكَ لِتَجْمَعَ النُّجُومَ وَتَفْتَحَ الْمُلْصَقَاتِ وَتَرْبَحَ الشَّهَادَةَ:
-              </p>
+        <motion.div
+          id="hub-single-games-card"
+          whileHover={{ scale: 1.01, y: -2 }}
+          whileTap={{ scale: 0.99 }}
+          className="bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-6 sm:p-8 shadow-xl text-white relative overflow-hidden border-3 border-amber-300"
+        >
+          {/* Decorative Sparkles in Background */}
+          <div className="absolute top-3 left-8 text-3xl opacity-30">🎮</div>
+          <div className="absolute bottom-4 right-8 text-4xl opacity-25">🌟</div>
+          <div className="absolute top-1/2 left-1/4 text-2xl opacity-20">✨</div>
+
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+            {/* Card Info */}
+            <div className="flex items-center gap-4 sm:gap-5 text-center md:text-right w-full md:w-auto justify-center md:justify-start">
+              <div className="w-18 h-18 sm:w-22 sm:h-22 rounded-3xl bg-white/20 backdrop-blur-sm border-2 border-white/40 flex items-center justify-center text-4xl sm:text-5xl shadow-md flex-shrink-0">
+                🎮
+              </div>
+              <div>
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo leading-tight text-white">
+                  أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ
+                </h2>
+                <p className="text-xs sm:text-sm font-bold font-tajawal text-amber-100 mt-1 leading-relaxed max-w-xl">
+                  تَحَدَّ نَفْسَكَ وَارْبَحِ النُّجُومَ وَالْأَوْسِمَةَ الشَّرَفِيَّةَ فِي عَالَمِ الْأَلْعَابِ التَّعْلِيمِيَّةِ الْمُمْتِعَةِ!
+                </p>
+              </div>
+            </div>
+
+            {/* Actions: Sound & Single Enter Button */}
+            <div className="flex items-center gap-3 w-full md:w-auto justify-center md:justify-end flex-shrink-0">
+              <SoundButton
+                textToSpeak="أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ. اضْغَطْ عَلَى الزِّرِّ لِلدُّخُولِ إِلَى قَائِمَةِ الْأَلْعَابِ!"
+                size="md"
+                variant="white"
+                label="اِسْتَمِعْ"
+                rate={progress.speechRate}
+              />
+
+              <button
+                id="btn-go-to-games-catalog"
+                onClick={() => handleLaunchActivity('games-menu', 'أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ')}
+                type="button"
+                className="bg-white hover:bg-amber-50 text-amber-900 font-tajawal font-black text-base sm:text-lg px-7 sm:px-9 py-3.5 sm:py-4 rounded-2xl shadow-lg hover:shadow-2xl flex items-center justify-center gap-3 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
+              >
+                <span>اِلْعَبِ الْآنَ</span>
+                <Play size={22} className="fill-amber-900 text-amber-900" />
+              </button>
             </div>
           </div>
-
-          <SoundButton
-            textToSpeak="أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ. صَائِدُ الْأَفْعَالِ، صُنْدُوقُ الْأَزْمِنَةِ، إِكْمَالُ الْجُمَلِ، عَصَا التَّحْوِيلِ، وَتَحَدِّي الْأَبْطَالِ."
-            size="md"
-            variant="emerald"
-            label="اِسْتَمِعْ"
-            rate={progress.speechRate}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {gamesList.map((game, idx) => {
-            const userScore = progress.gameScores[game.scoreKey] || 0;
-
-            return (
-              <motion.div
-                key={game.id}
-                id={`hub-game-card-${game.id}`}
-                whileHover={{ scale: 1.02, y: -4 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => handleLaunchActivity(game.id, game.title)}
-                className={`bg-white rounded-3xl border-3 ${game.borderCol} p-5 sm:p-6 shadow-md hover:shadow-xl transition-all cursor-pointer flex flex-col justify-between relative group`}
-              >
-                <div>
-                  {/* Top Bar of Game Card */}
-                  <div className="flex items-start justify-between gap-2 mb-3">
-                    <span className="text-4xl sm:text-5xl group-hover:scale-110 transition-transform">
-                      {game.icon}
-                    </span>
-                    <span className="bg-slate-100 text-slate-800 text-xs font-black px-2.5 py-1 rounded-full font-tajawal">
-                      {game.badge}
-                    </span>
-                  </div>
-
-                  <h3 className={`text-xl sm:text-2xl font-black font-baloo ${game.color} mb-1.5 leading-tight`}>
-                    {game.title}
-                  </h3>
-                  <p className="text-xs font-bold font-tajawal text-slate-600 leading-relaxed mb-4">
-                    {game.description}
-                  </p>
-                </div>
-
-                {/* Score & Play Action */}
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <div className="flex items-center gap-1.5 text-xs font-bold font-tajawal text-slate-500">
-                    <Trophy size={14} className="text-amber-500" />
-                    <span>الْمُسْتَوَى: {userScore > 0 ? `${userScore} مُكْتَمَلٌ` : 'جَدِيدٌ'}</span>
-                  </div>
-
-                  <button
-                    type="button"
-                    className="bg-amber-500 group-hover:bg-amber-600 text-white font-tajawal font-bold text-xs px-4 py-2 rounded-xl shadow-xs flex items-center gap-1 transition-all"
-                  >
-                    <span>اِلْعَبِ الْآنَ</span>
-                    <Play size={12} className="fill-white" />
-                  </button>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+        </motion.div>
       </div>
 
       {/* 🏆 SECTION 3: المكافآت، الأوسمة، الشهادة، ودليل المعلم والولي */}

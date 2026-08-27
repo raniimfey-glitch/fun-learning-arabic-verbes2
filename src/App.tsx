@@ -130,17 +130,10 @@ export default function App() {
         )}
       </main>
 
-      {/* Kid-Friendly Footer */}
-      <footer className="bg-white/90 border-t-2 border-amber-200 py-4 px-4 text-center select-none">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs sm:text-sm font-bold font-tajawal text-amber-900">
-          <div className="flex items-center gap-1.5">
-            <Sparkles size={16} className="text-amber-500" />
-            <span>تَطْبِيقُ «عَالَمُ الأَفْعَالِ» • مُخَصَّصٌ لِتَلَامِيذِ السَّنَةِ الثَّانِيَةِ ابْتِدَائِي</span>
-          </div>
-
-          <div className="flex items-center gap-1 text-slate-500">
-            <span>تَعَلَّمْ بِمَرَحٍ وَنَشَاطٍ • يَعْمَلُ بِدُونِ إِنْتَرْنِت 100% 🚀</span>
-          </div>
+      {/* Footer */}
+      <footer id="app-footer" className="bg-white/90 border-t-2 border-amber-200 py-4 px-4 text-center select-none">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 text-sm sm:text-base font-bold font-tajawal text-amber-950">
+          <span>التّعلّم الممتِع - عالم الأفعال - سميرة عبد الصدوق</span>
         </div>
       </footer>
     </div>

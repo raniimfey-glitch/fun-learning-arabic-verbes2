@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import { LESSONS_DATA } from '../data/lessonsData';
 import { LessonSection, UserProgress, VerbItem } from '../types';
 import { SoundButton } from './SoundButton';
-import { Mascot } from './Mascot';
 import { Sparkles, CheckCircle2, Star, ArrowRight, ArrowLeft, BookOpen, Play, HelpCircle, Check, X } from 'lucide-react';
 import { soundEffects, ArabicSpeechEngine } from '../utils/audio';
 import confetti from 'canvas-confetti';
@@ -82,12 +81,6 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Friendly Mascot Banner */}
-      <Mascot
-        message={`تَعَلَّمْ مَعِي كُلَّ شَيْءٍ عَنْ: ${activeLesson.title}! اِسْتَمِعْ لِلْأَمْثِلَةِ الْمَشْكُولَةِ وَاطَّلِعْ عَلَى الْقَاعِدَةِ الذَّهَبِيَّةِ.`}
-        mood="teaching"
-      />
-
       {/* Main Active Lesson Content - Directly displayed without tabs */}
       <motion.div
         key={activeLesson.id}
@@ -98,30 +91,27 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         {/* Header of Active Lesson */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b-2 border-amber-100">
           <div>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="bg-amber-500 text-white text-xs font-black px-3 py-1 rounded-full font-tajawal shadow-xs">
-                {activeLesson.title}
-              </span>
-              <span className="text-slate-400 text-xs">•</span>
-              <span className="text-amber-700 text-xs font-bold font-tajawal">السَّنَةُ الثَّانِيَةُ ابْتِدَائِي</span>
-              {isLessonCompleted && (
+            {isLessonCompleted && (
+              <div className="flex items-center gap-2 mb-1">
                 <span className="bg-emerald-100 text-emerald-800 text-xs font-black px-2.5 py-0.5 rounded-full flex items-center gap-1">
                   <CheckCircle2 size={14} />
                   <span>دَرْسٌ مُكْتَمَلٌ ✨</span>
                 </span>
-              )}
-            </div>
+              </div>
+            )}
             <h2 className="text-2xl sm:text-3xl font-extrabold text-amber-950 font-baloo leading-tight tashkeel-text">
               {activeLesson.title}
             </h2>
-            <p className="text-slate-600 font-tajawal font-medium text-sm sm:text-base mt-1">
-              {activeLesson.subtitle}
-            </p>
+            {activeLesson.subtitle ? (
+              <p className="text-slate-600 font-tajawal font-medium text-sm sm:text-base mt-1">
+                {activeLesson.subtitle}
+              </p>
+            ) : null}
           </div>
 
           <div className="flex items-center gap-2">
             <SoundButton
-              textToSpeak={`${activeLesson.title}. ${activeLesson.subtitle}. ${activeLesson.conceptSummary}`}
+              textToSpeak={`${activeLesson.title}. ${activeLesson.subtitle ? activeLesson.subtitle + '. ' : ''}${activeLesson.conceptSummary}`}
               size="lg"
               variant="primary"
               label="اِسْتَمِعْ لِلشَّرْحِ"

@@ -4,7 +4,7 @@ export const LESSONS_DATA: LessonSection[] = [
   {
     id: 'lesson-1',
     title: 'مَا هُوَ الْفِعْلُ؟',
-    subtitle: 'كُلُّ كَلِمَةٍ تَدُلُّ عَلَى حَرَكَةٍ أَوْ عَمَلٍ فِي زَمَنٍ مُعَيَّنٍ',
+    subtitle: '',
     badge: 'تَمْهِيدُ الْفِعْلِ',
     color: 'from-amber-400 to-orange-500',
     iconName: 'Sparkles',
