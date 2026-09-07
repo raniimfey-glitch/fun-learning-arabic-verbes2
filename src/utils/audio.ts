@@ -228,27 +228,23 @@ export const soundEffects = new SoundEffectsEngine();
 export function cleanTextForSpeech(text: string): string {
   if (!text) return '';
   return text
-    // Replace arrows with proper Arabic words if present
+    // Replace arrows or symbol marks if present with natural spoken words
     .replace(/⬅️|←/g, ' ثُمَّ ')
     .replace(/➡️|→/g, ' ثُمَّ ')
     .replace(/❌/g, ' خَطَأ ')
     .replace(/✅/g, ' صَحِيح ')
-    // Remove all Unicode emoji ranges, pictographs, transport symbols, dingbats, and special icons
-    .replace(/[\u{1F600}-\u{1F64F}]/gu, '') // Emoticons
-    .replace(/[\u{1F300}-\u{1F5FF}]/gu, '') // Misc Symbols and Pictographs
-    .replace(/[\u{1F680}-\u{1F6FF}]/gu, '') // Transport and Map
-    .replace(/[\u{1F700}-\u{1F77F}]/gu, '') // Alchemical Symbols
-    .replace(/[\u{1F780}-\u{1F7FF}]/gu, '') // Geometric Shapes Extended
-    .replace(/[\u{1F800}-\u{1F8FF}]/gu, '') // Supplemental Arrows-C
-    .replace(/[\u{1F900}-\u{1F9FF}]/gu, '') // Supplemental Symbols and Pictographs
-    .replace(/[\u{1FA00}-\u{1FA6F}]/gu, '') // Chess Symbols
-    .replace(/[\u{1FA70}-\u{1FAFF}]/gu, '') // Symbols and Pictographs Extended-A
-    .replace(/[\u{2600}-\u{26FF}]/gu, '')   // Misc symbols (stars, weather, etc.)
-    .replace(/[\u{2700}-\u{27BF}]/gu, '')   // Dingbats (sparkles, checks, pencils)
-    .replace(/[\u{FE00}-\u{FE0F}]/gu, '')   // Variation selectors
-    .replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '') // Flags
-    .replace(/[•★☆✦✧✓✗]/g, '')             // Common symbol characters
-    .replace(/\s{2,}/g, ' ')               // Collapse multiple spaces
+    // Strip all Unicode emojis and pictographs (modern Unicode property escapes)
+    .replace(/\p{Extended_Pictographic}/gu, '')
+    .replace(/\p{Emoji_Presentation}/gu, '')
+    .replace(/\p{Emoji}\uFE0F?/gu, '')
+    // Dingbats, shapes, and miscellaneous symbol blocks
+    .replace(/[\u{2600}-\u{26FF}]/gu, '')
+    .replace(/[\u{2700}-\u{27BF}]/gu, '')
+    .replace(/[\u{FE00}-\u{FE0F}]/gu, '')
+    .replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '')
+    .replace(/[•★☆✦✧✓✗💡⏳⏰📢🎯🧩🪄🏆🎨📖✍️⚽🍎📝🏃‍♂️🏃‍♀️🛌👂🐦🏠🔗📏📍🧠🏫🦅🦁🐕☀️🐟🌸🥣🥪🍽️💧🧃🥛🤹🌙😴🪥🧹🏊‍♂️🚫🌱🎭👑]/gu, '')
+    .replace(/[•*#~_]/g, '')
+    .replace(/\s{2,}/g, ' ')
     .trim();
 }
 

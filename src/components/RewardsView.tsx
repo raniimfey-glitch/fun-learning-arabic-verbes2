@@ -112,7 +112,7 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
           }`}
         >
           <Award size={18} />
-          <span>أَوْسِمَةُ الشَّرَفِ 🏅</span>
+          <span>أَوْسِمَةُ الشَّرَفِ</span>
         </button>
 
         <button
@@ -128,7 +128,7 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
           }`}
         >
           <Sparkles size={18} />
-          <span>أَلْبُومُ الْمُلْصَقَاتِ 🎨</span>
+          <span>أَلْبُومُ الْمُلْصَقَاتِ</span>
         </button>
 
         <button
@@ -144,7 +144,7 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
           }`}
         >
           <Trophy size={18} />
-          <span>شَهَادَةُ التَّفَوُّقِ 📜</span>
+          <span>شَهَادَةُ التَّفَوُّقِ</span>
         </button>
       </div>
 
@@ -206,7 +206,7 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
 
                   <div className="pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs font-bold font-tajawal">
                     <span className={isUnlocked ? 'text-emerald-700' : 'text-slate-500'}>
-                      {isUnlocked ? 'مَفْتُوحٌ لَدَيْكَ ✨' : `يَحْتَاجُ ${badge.requiredStars} نَجْمَةً`}
+                      {isUnlocked ? 'مَفْتُوحٌ لَدَيْكَ' : `يَحْتَاجُ ${badge.requiredStars} نَجْمَةً`}
                     </span>
                     <SoundButton textToSpeak={`${badge.title}. ${badge.description}`} size="sm" variant="ghost" rate={progress.speechRate} />
                   </div>
@@ -225,7 +225,7 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div>
                 <h3 className="text-xl font-black font-baloo text-emerald-950">
-                  🌳 حَدِيقَةُ الْأَفْعَالِ التَّفَاعُلِيَّةِ
+                  حَدِيقَةُ الْأَفْعَالِ التَّفَاعُلِيَّةِ
                 </h3>
                 <p className="text-xs sm:text-sm font-bold font-tajawal text-slate-600">
                   اِضْغَطْ عَلَى مُلْصَقَاتِكَ الْمَفْتُوحَةِ لِتَضَعَهَا فِي الْحَدِيقَةِ، وَانْقُرْ عَلَيْهَا لِتَنْطِقَ حَرَكَتَهَا!
@@ -244,14 +244,10 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
 
             {/* Park Scene Background */}
             <div className="relative h-64 sm:h-80 w-full rounded-3xl overflow-hidden border-3 border-emerald-400 bg-gradient-to-b from-sky-200 via-sky-100 to-emerald-200 shadow-inner select-none">
-              {/* Scenery details */}
-              <div className="absolute top-4 left-6 text-3xl animate-float">☁️</div>
-              <div className="absolute top-8 right-12 text-4xl">☀️</div>
-              <div className="absolute top-12 left-1/3 text-2xl animate-float">☁️</div>
-              <div className="absolute bottom-2 left-6 text-4xl">🌳</div>
-              <div className="absolute bottom-2 right-8 text-4xl">🏡</div>
-              <div className="absolute bottom-4 left-1/2 text-2xl">🌸</div>
-              <div className="absolute bottom-3 left-1/4 text-2xl">🍄</div>
+              {/* Sun and clouds stylized */}
+              <div className="absolute top-6 right-10 w-12 h-12 rounded-full bg-amber-300/80 border-2 border-amber-400/60 shadow-md"></div>
+              <div className="absolute top-8 left-8 w-20 h-6 bg-white/70 rounded-full shadow-xs"></div>
+              <div className="absolute top-14 left-1/3 w-16 h-5 bg-white/60 rounded-full shadow-xs"></div>
 
               {/* Placed Stickers */}
               {placedStickers.map(placed => {
@@ -280,7 +276,7 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
 
               {placedStickers.length === 0 && (
                 <div className="absolute inset-0 flex items-center justify-center text-slate-600 font-tajawal font-bold text-sm bg-black/5">
-                  اِخْتَرْ مُلْصَقًا مِنْ أَسْفَلُ لِتَضَعَهُ هُنَا! 🌟
+                  اِخْتَرْ مُلْصَقًا مِنْ أَسْفَلُ لِتَضَعَهُ هُنَا!
                 </div>
               )}
             </div>
@@ -352,22 +348,22 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
               className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-base px-6 py-3 rounded-2xl shadow-lg flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky"
             >
               <Printer size={20} />
-              <span>طِبَاعَةُ أَو حِفْظُ الشَّهَادَةِ 🖨️</span>
+              <span>طِبَاعَةُ أَو حِفْظُ الشَّهَادَةِ</span>
             </button>
           </div>
 
           {/* Certificate Board */}
           <div className="bg-gradient-to-br from-amber-100 via-amber-50 to-yellow-100 p-4 sm:p-8 rounded-3xl border-8 border-amber-400 shadow-2xl relative overflow-hidden text-center max-w-3xl mx-auto">
             {/* Ornate corner stamps */}
-            <div className="absolute top-3 left-4 text-3xl">⚜️</div>
-            <div className="absolute top-3 right-4 text-3xl">⚜️</div>
-            <div className="absolute bottom-3 left-4 text-3xl">⚜️</div>
-            <div className="absolute bottom-3 right-4 text-3xl">⚜️</div>
+            <div className="absolute top-3 left-4 text-amber-500 font-black text-xl">✦</div>
+            <div className="absolute top-3 right-4 text-amber-500 font-black text-xl">✦</div>
+            <div className="absolute bottom-3 left-4 text-amber-500 font-black text-xl">✦</div>
+            <div className="absolute bottom-3 right-4 text-amber-500 font-black text-xl">✦</div>
 
             <div className="border-4 border-dashed border-amber-300 p-6 sm:p-10 rounded-2xl bg-white/90 backdrop-blur-xs space-y-6">
               {/* Header */}
               <div>
-                <span className="text-5xl block mb-2">👑</span>
+                <Trophy size={48} className="text-amber-500 mx-auto mb-2" />
                 <span className="text-xs sm:text-sm font-bold font-tajawal text-amber-800 bg-amber-200/80 px-4 py-1 rounded-full uppercase tracking-widest">
                   الْمَمْلَكَةُ التَّعْلِيمِيَّةُ لِلُّغَةِ الْعَرَبِيَّةِ
                 </span>
@@ -385,14 +381,14 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
                   تُهْدَى هَذِهِ الشَّهَادَةُ التَّقْدِيرِيَّةُ بِفَخْرٍ إِلَى الْبَطَلِ الرَّائِعِ:
                 </p>
                 <div className="inline-block bg-gradient-to-r from-amber-400 to-yellow-400 text-amber-950 px-8 py-3 rounded-2xl font-black font-baloo text-3xl sm:text-4xl shadow-md border-2 border-white">
-                  {progress.avatar} {progress.childName}
+                  {progress.childName}
                 </div>
                 <p className="text-slate-700 font-tajawal font-bold text-base sm:text-lg max-w-xl mx-auto leading-relaxed tashkeel-text">
                   تَقْدِيرًا لِتَمَيُّزِهِ الْبَاهِرِ فِي إِتْقَانِ «الْفِعْلِ» وَالتَّمْيِيزِ بَيْنَ أَقْسَامِهِ الثَّلَاثَةِ:
                   <br />
-                  <span className="text-teal-700 font-extrabold">(الْمَاضِي ⏳)</span> -{' '}
-                  <span className="text-sky-700 font-extrabold">(الْمُضَارِعِ ⏰)</span> -{' '}
-                  <span className="text-purple-700 font-extrabold">(الْأَمْرِ 📢)</span>
+                  <span className="text-teal-700 font-extrabold">(الْمَاضِي)</span> -{' '}
+                  <span className="text-sky-700 font-extrabold">(الْمُضَارِعِ)</span> -{' '}
+                  <span className="text-purple-700 font-extrabold">(الْأَمْرِ)</span>
                 </p>
               </div>
 
@@ -400,18 +396,18 @@ export const RewardsView: React.FC<RewardsViewProps> = ({
               <div className="flex items-center justify-between pt-6 border-t-2 border-amber-200">
                 <div className="text-right font-tajawal text-xs sm:text-sm text-slate-600">
                   <p className="font-bold">التَّارِيخُ: {new Date().toLocaleDateString('ar-EG')}</p>
-                  <p className="font-bold text-amber-900 mt-0.5">رَصِيدُ النُّجُومِ: {progress.stars} ⭐</p>
+                  <p className="font-bold text-amber-900 mt-0.5">رَصِيدُ النُّجُومِ: {progress.stars}</p>
                 </div>
 
                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-amber-500 to-yellow-300 p-1 border-4 border-amber-300 shadow-lg flex flex-col items-center justify-center text-white">
                   <span className="text-xs font-black font-tajawal">خَتْمُ التَّفَوُّقِ</span>
-                  <span className="text-2xl sm:text-3xl">🌟</span>
+                  <Star size={24} className="fill-white text-white my-0.5" />
                   <span className="text-[10px] font-bold">100%</span>
                 </div>
 
                 <div className="text-left font-tajawal text-xs sm:text-sm text-slate-600">
                   <p className="font-bold">الْمُرْشِدُ التَّعْلِيمِي:</p>
-                  <p className="font-black font-baloo text-amber-900 text-base">فَلْفُول الْبَطَل 🦊</p>
+                  <p className="font-black font-baloo text-amber-900 text-base">فَلْفُول الْبَطَل</p>
                 </div>
               </div>
             </div>

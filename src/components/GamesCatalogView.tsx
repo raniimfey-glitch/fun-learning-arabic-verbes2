@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { ActivityId, UserProgress } from '../types';
 import { SoundButton } from './SoundButton';
 import { Mascot } from './Mascot';
-import { Home, Play, Star, Trophy, Sparkles, ArrowLeft, Award } from 'lucide-react';
+import { Home, Play, Star, Trophy, Sparkles, ArrowLeft, Award, Target, History, Puzzle, Wand2 } from 'lucide-react';
 import { soundEffects, ArabicSpeechEngine } from '../utils/audio';
 
 interface GamesCatalogViewProps {
@@ -24,7 +24,7 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
       id: 'game-hunter' as ActivityId,
       title: 'صَيَّادُ الْأَفْعَالِ',
       subtitle: 'اِصْطَدِ الْأَفْعَالَ وَمَيِّزْهَا عَنِ الْأَسْمَاءِ وَالْحُرُوفِ فِي الْغَابَةِ السِّحْرِيَّةِ!',
-      icon: '🎯',
+      iconComponent: Target,
       badge: 'الْمَرْحَلَةُ 1',
       starsReward: 20,
       color: 'text-amber-950',
@@ -32,13 +32,13 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
       borderCol: 'border-amber-300 hover:border-amber-500',
       btnBg: 'bg-amber-500 hover:bg-amber-600',
       scoreKey: 'hunter' as const,
-      btnLabel: 'الْعَبْ صَيَّادَ الْأَفْعَالِ 🎯'
+      btnLabel: 'الْعَبْ صَيَّادَ الْأَفْعَالِ'
     },
     {
       id: 'game-sorter' as ActivityId,
       title: 'صُنْدُوقُ الْأَزْمِنَةِ',
-      subtitle: 'صَنِّفِ الْأَفْعَالَ فِي صَنَادِيقِ الْأَزْمِنَةِ: (مَاضٍ ⏳ | مُضَارِعٌ ⏰ | أَمْرٌ 📢)!',
-      icon: '⏳',
+      subtitle: 'صَنِّفِ الْأَفْعَالَ فِي صَنَادِيقِ الْأَزْمِنَةِ: (مَاضٍ | مُضَارِعٌ | أَمْرٌ)!',
+      iconComponent: History,
       badge: 'الْمَرْحَلَةُ 2',
       starsReward: 25,
       color: 'text-teal-950',
@@ -46,13 +46,13 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
       borderCol: 'border-teal-300 hover:border-teal-500',
       btnBg: 'bg-teal-600 hover:bg-teal-700',
       scoreKey: 'sorter' as const,
-      btnLabel: 'الْعَبْ صُنْدُوقَ الْأَزْمِنَةِ ⏳'
+      btnLabel: 'الْعَبْ صُنْدُوقَ الْأَزْمِنَةِ'
     },
     {
       id: 'game-completer' as ActivityId,
       title: 'أَكْمِلِ الْجُمْلَةَ بِالْفِعْلِ',
       subtitle: 'اِخْتَرِ الْفِعْلَ الصَّحِيحَ لِمَلْءِ فَرَاغِ الْجُمْلَةِ وَإِكْمَالِ مَعْنَاهَا بِدِقَّةٍ!',
-      icon: '🧩',
+      iconComponent: Puzzle,
       badge: 'الْمَرْحَلَةُ 3',
       starsReward: 25,
       color: 'text-indigo-950',
@@ -60,13 +60,13 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
       borderCol: 'border-indigo-300 hover:border-indigo-500',
       btnBg: 'bg-indigo-600 hover:bg-indigo-700',
       scoreKey: 'completer' as const,
-      btnLabel: 'الْعَبْ أَكْمِلِ الْجُمْلَةَ 🧩'
+      btnLabel: 'الْعَبْ أَكْمِلِ الْجُمْلَةَ'
     },
     {
       id: 'game-transformer' as ActivityId,
       title: 'عَصَا التَّحْوِيلِ السِّحْرِيَّةُ',
       subtitle: 'حَوِّلِ الْفِعْلَ بِسِحْرِكَ بَيْنَ الْمَاضِي وَالْمُضَارِعِ وَالْأَمْرِ كَالسَّاحِرِ الذَّكِيِّ!',
-      icon: '🪄',
+      iconComponent: Wand2,
       badge: 'الْمَرْحَلَةُ 4',
       starsReward: 30,
       color: 'text-pink-950',
@@ -74,21 +74,21 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
       borderCol: 'border-pink-300 hover:border-pink-500',
       btnBg: 'bg-pink-600 hover:bg-pink-700',
       scoreKey: 'transformer' as const,
-      btnLabel: 'الْعَبْ عَصَا التَّحْوِيلِ 🪄'
+      btnLabel: 'الْعَبْ عَصَا التَّحْوِيلِ'
     },
     {
       id: 'game-quiz' as ActivityId,
       title: 'تَحَدِّي الْأَبْطَالِ الْكَبِيرُ',
       subtitle: 'اخْتِبَارُ الْعَبَاقِرَةِ الشَّامِلُ فِي جَمِيعِ الْأَفْعَالِ لِرِبْحِ الْكَأْسِ وَالشَّهَادَةِ!',
-      icon: '🏆',
-      badge: 'التَّحَدِّي الْأَكْبَرُ 👑',
+      iconComponent: Trophy,
+      badge: 'التَّحَدِّي الْأَكْبَرُ',
       starsReward: 50,
       color: 'text-amber-950',
       bgGradient: 'bg-gradient-to-r from-amber-100 via-yellow-100 to-amber-100',
       borderCol: 'border-amber-400 hover:border-amber-600',
       btnBg: 'bg-amber-600 hover:bg-amber-700',
       scoreKey: 'quiz' as const,
-      btnLabel: 'اِبْدَأْ تَحَدِّيَ الْأَبْطَالِ 🏆'
+      btnLabel: 'اِبْدَأْ تَحَدِّيَ الْأَبْطَالِ'
     }
   ];
 
@@ -105,60 +105,60 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
   };
 
   return (
-    <div className="space-y-6 pb-10">
+    <div className="space-y-3.5 pb-4 w-full max-w-[900px] mx-auto">
       {/* 🧭 Top Navigation Bar */}
-      <div className="bg-white rounded-3xl border-3 border-amber-300 shadow-md p-3 sm:p-4 flex items-center justify-between gap-3">
+      <div className="bg-white rounded-2xl border-2 border-amber-300 shadow-sm p-2.5 sm:p-3 flex items-center justify-between gap-2">
         {/* Back to Home Hub Button */}
         <button
           id="btn-catalog-back-home"
           onClick={handleReturnHome}
           type="button"
-          className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-xs sm:text-sm px-4 sm:px-5 py-2.5 rounded-2xl shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
+          className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
         >
-          <Home size={18} />
+          <Home size={16} />
           <span>الْوَاجِهَةُ الرَّئِيسِيَّةُ</span>
         </button>
 
         {/* Title */}
         <div className="text-center truncate px-2">
           <div className="flex items-center justify-center gap-1.5">
-            <span className="text-xl sm:text-2xl">🎮</span>
-            <h1 className="text-lg sm:text-2xl font-black font-baloo text-amber-950 truncate">
+            <h1 className="text-base sm:text-xl font-black font-baloo text-amber-950 truncate">
               أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةُ
             </h1>
           </div>
-          <span className="text-[11px] font-bold text-amber-800 bg-amber-100 px-3 py-0.5 rounded-full font-tajawal inline-block">
+          <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full font-tajawal inline-block">
             5 أَلْعَابٍ تَعْلِيمِيَّةٍ مُمْتِعَةٍ
           </span>
         </div>
 
         {/* Stars Counter & Audio */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <SoundButton
             textToSpeak="قَائِمَةُ أَلْعَابِ الْأَفْعَالِ التَّفَاعُلِيَّةِ. اخْتَرِ اللَّعْبَةَ الَّتِي تُرِيدُهَا لِتَبْدَأَ التَّحَدِّيَ وَتَرْبَحَ النُّجُومَ!"
-            size="md"
+            size="sm"
             variant="amber"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
           />
-          <div className="bg-amber-50 border border-amber-300 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 text-amber-900 font-black font-tajawal text-xs sm:text-sm">
-            <Star className="text-amber-500 fill-amber-500" size={16} />
+          <div className="bg-amber-50 border border-amber-300 px-2.5 py-1 rounded-xl flex items-center gap-1 text-amber-900 font-black font-tajawal text-xs sm:text-sm">
+            <Star className="text-amber-500 fill-amber-500" size={15} />
             <span>{progress.stars}</span>
           </div>
         </div>
       </div>
 
-      {/* 🦁 Friendly Mascot Greeting */}
+      {/* Friendly Mascot Greeting */}
       <Mascot
-        message={`هَيَّا يَا بَطَلَنَا ${progress.childName}! اخْتَرْ لُعْبَةً مِنْ بَيْنِ الْأَلْعَابِ الْخَمْسِ لِتَبْدَأَ التَّحَدِّيَ وَتَرْبَحَ النُّجُومَ وَتَفْتَحَ الْمُلْصَقَاتِ السِّحْرِيَّةَ! 🌟`}
+        message={`هَيَّا يَا بَطَلَنَا ${progress.childName}! اخْتَرْ لُعْبَةً مِنْ بَيْنِ الْأَلْعَابِ الْخَمْسِ لِتَبْدَأَ التَّحَدِّيَ وَتَرْبَحَ النُّجُومَ وَتَفْتَحَ الْمُلْصَقَاتِ السِّحْرِيَّةَ!`}
         mood="excited"
       />
 
-      {/* 🎮 The 5 Interactive Game Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-        {gamesList.map((game, idx) => {
+      {/* The 5 Interactive Game Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+        {gamesList.map((game) => {
           const userScore = progress.gameScores[game.scoreKey] || 0;
           const isGrandQuiz = game.id === 'game-quiz';
+          const IconComp = game.iconComponent;
 
           return (
             <motion.div
@@ -185,9 +185,9 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
 
                 {/* Card Icon & Titles */}
                 <div className="flex items-start gap-4 mb-3">
-                  <span className="text-5xl sm:text-6xl p-3 bg-white rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 group-hover:scale-110 transition-transform">
-                    {game.icon}
-                  </span>
+                  <div className="p-3 bg-white rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <IconComp size={36} className="text-amber-700" />
+                  </div>
                   <div>
                     <h2 className={`text-2xl sm:text-3xl font-black font-baloo ${game.color} leading-tight tashkeel-text`}>
                       {game.title}
@@ -204,7 +204,7 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
                 <div className="flex items-center gap-1.5 text-xs font-bold font-tajawal text-slate-600">
                   <Trophy size={16} className="text-amber-500" />
                   <span>
-                    {userScore > 0 ? `أُنْجِزَتْ ${userScore} مَرَّاتٍ بِتَفَوُّقٍ ✨` : 'لَمْ تُجَرَّبْ بَعْدُ'}
+                    {userScore > 0 ? `أُنْجِزَتْ ${userScore} مَرَّاتٍ بِتَفَوُّقٍ` : 'لَمْ تُجَرَّبْ بَعْدُ'}
                   </span>
                 </div>
 
@@ -234,11 +234,11 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
             className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-3xl p-5 sm:p-6 shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-between hover:scale-[1.01]"
           >
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center text-2xl flex-shrink-0">
-                📜
+              <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                <Award size={26} className="text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-black font-baloo">شَاهِدْ شَهَادَةَ التَّفَوُّقِ وَأَلْبُومَ الْمُلْصَقَاتِ 🎨</h3>
+                <h3 className="text-xl font-black font-baloo">شَاهِدْ شَهَادَةَ التَّفَوُّقِ وَأَلْبُومَ الْمُلْصَقَاتِ</h3>
                 <p className="text-xs font-bold font-tajawal text-emerald-100">
                   كُلَّمَا لَعِبْتَ أَلْعَابًا أَكْثَرَ، فَتَحْتَ شَارَاتٍ وَمُلْصَقَاتٍ جَدِيدَةً!
                 </p>

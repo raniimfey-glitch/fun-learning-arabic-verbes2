@@ -75,7 +75,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         gems: prev.gems + 1,
         completedLessons: [...new Set([...prev.completedLessons, activeLesson.id])]
       }));
-      setDemoFeedback('🎉 أَحْسَنْتَ يَا بَطَلُ! لَقَدْ حَصَلْتَ عَلَى 15 نَجْمَةً لِإِتْمَامِ هَذَا التَّطْبِيقِ!');
+      setDemoFeedback('أَحْسَنْتَ يَا بَطَلُ! لَقَدْ حَصَلْتَ عَلَى 15 نَجْمَةً لِإِتْمَامِ هَذَا التَّطْبِيقِ!');
     }
   };
 
@@ -95,7 +95,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
               <div className="flex items-center gap-2 mb-1">
                 <span className="bg-emerald-100 text-emerald-800 text-xs font-black px-2.5 py-0.5 rounded-full flex items-center gap-1">
                   <CheckCircle2 size={14} />
-                  <span>دَرْسٌ مُكْتَمَلٌ ✨</span>
+                  <span>دَرْسٌ مُكْتَمَلٌ</span>
                 </span>
               </div>
             )}
@@ -124,7 +124,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         <div className="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 rounded-3xl p-4 sm:p-6 border-2 border-amber-300 shadow-inner">
           <div className="flex items-center gap-2 text-amber-900 font-bold mb-3">
             <Sparkles size={20} className="text-amber-500" />
-            <span className="font-baloo text-lg sm:text-xl">قَاعِدَةٌ ذَهَبِيَّةٌ لِلْأَبْطَالِ 🌟</span>
+            <span className="font-baloo text-lg sm:text-xl">قَاعِدَةٌ ذَهَبِيَّةٌ لِلْأَبْطَالِ</span>
           </div>
           <p className="text-base sm:text-xl text-slate-800 font-bold font-baloo leading-relaxed tashkeel-text mb-4">
             {activeLesson.conceptSummary}
@@ -150,9 +150,9 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         <div>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <span className="text-2xl">👀</span>
+              <BookOpen size={22} className="text-amber-600" />
               <h3 className="text-xl font-bold font-baloo text-slate-800">
-                أَمْثِلَةٌ تَفَاعُلِيَّةٌ مَعَ الرُّسُومِ الْمُتَحَرِّكَةِ (اِضْغَطْ لِتَسْمَعَ وَتُشَاهِدَ):
+                أَمْثِلَةٌ تَفَاعُلِيَّةٌ مَعَ النُّطْقِ الْوَاضِحِ (اِضْغَطْ لِتَسْتَمِعَ):
               </h3>
             </div>
           </div>
@@ -175,20 +175,12 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
                   }`}
                 >
                   <div>
-                    {/* Animated Emoji Header */}
+                    {/* Header badge */}
                     <div className="flex items-center justify-between mb-2">
-                      <motion.span
-                        animate={
-                          isActive
-                            ? { scale: [1, 1.3, 1], rotate: [0, 10, -10, 0] }
-                            : { scale: 1 }
-                        }
-                        transition={{ duration: 0.5 }}
-                        className="text-4xl sm:text-5xl"
-                      >
-                        {example.emoji}
-                      </motion.span>
-                      <span className="text-xs bg-amber-200 text-amber-900 font-bold px-2 py-0.5 rounded-full font-tajawal">
+                      <div className="w-8 h-8 rounded-full bg-amber-200/80 flex items-center justify-center">
+                        <Sparkles size={16} className="text-amber-800" />
+                      </div>
+                      <span className="text-xs bg-amber-200 text-amber-900 font-bold px-2.5 py-0.5 rounded-full font-tajawal">
                         {example.tenseNameAr}
                       </span>
                     </div>
@@ -226,7 +218,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         <div className="bg-gradient-to-br from-sky-50 to-indigo-50 border-3 border-sky-300 rounded-3xl p-5 sm:p-7 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-2">
-              <span className="text-3xl">🎯</span>
+              <Star size={24} className="text-sky-600 fill-sky-400" />
               <div>
                 <h3 className="text-xl font-bold font-baloo text-sky-950">
                   تَدْرِيبُ الْبَطَلِ الصَّغِيرِ (اِرْبَحْ 15 نَجْمَةً!):
@@ -305,7 +297,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
             type="button"
             className="bg-sky-500 hover:bg-sky-600 text-white font-tajawal font-bold px-6 py-2.5 rounded-2xl shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer mr-auto"
           >
-            <span>🎮 اِنْتَقِلْ إِلَى أَلْعَابِ الْأَفْعَالِ</span>
+            <span>اِنْتَقِلْ إِلَى أَلْعَابِ الْأَفْعَالِ</span>
             <ArrowLeft size={16} />
           </button>
         </div>

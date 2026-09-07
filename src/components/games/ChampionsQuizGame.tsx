@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { QUIZ_QUESTIONS } from '../../data/gamesData';
 import { UserProgress } from '../../types';
 import { SoundButton } from '../SoundButton';
-import { Trophy, Award, ArrowLeft, RotateCcw, Check, X, Sparkles, Volume2 } from 'lucide-react';
+import { Trophy, Award, ArrowLeft, RotateCcw, Check, X, Sparkles, Volume2, Star } from 'lucide-react';
 import { soundEffects, ArabicSpeechEngine } from '../../utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -104,25 +104,25 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl border-3 border-amber-400 shadow-lg p-4 sm:p-7 space-y-6">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-400 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b-2 border-amber-100">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-amber-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-amber-100 text-amber-900 text-xs font-black px-3 py-1 rounded-full font-tajawal">
-              تَحَدِّي أَبْطَالِ الْأَفْعَالِ الْكَبِيرِ 🏆
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <span className="bg-amber-100 text-amber-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              تَحَدِّي أَبْطَالِ الْأَفْعَالِ الْكَبِيرِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-amber-700 text-xs font-bold font-tajawal">
-              السُّؤَالُ {questionIndex + 1} مِنْ {QUIZ_QUESTIONS.length}
+            <span className="text-amber-700 text-[10px] sm:text-xs font-bold font-tajawal">
+              {questionIndex + 1} مِنْ {QUIZ_QUESTIONS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-base sm:text-xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
             اخْتَبِرْ مَعْلُومَاتِكَ وَارْبَحْ شَهَادَةَ التَّفَوُّقِ:
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
             onClick={() => {
               if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -130,42 +130,39 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            <span>الْأَلْعَابُ</span>
+            <ArrowLeft size={14} />
+            <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={currentQ.audioPrompt || currentQ.question}
-            size="md"
+            size="sm"
             variant="primary"
-            label="اِسْتَمِعْ لِلسُّؤَالِ"
+            label="اِسْتَمِعْ"
             rate={progress.speechRate}
           />
         </div>
       </div>
 
       {!isQuizFinished ? (
-        <div className="space-y-6">
+        <div className="flex-1 flex flex-col justify-between min-h-0 py-2">
           {/* Question Card */}
           <motion.div
             key={currentQ.id}
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 border-3 border-amber-300 rounded-3xl p-6 sm:p-8 shadow-inner relative overflow-hidden"
+            className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 border-2 sm:border-3 border-amber-300 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-inner relative overflow-hidden flex-shrink-1 min-h-0 flex items-center fit-screen-card"
           >
-            <div className="flex items-start gap-4">
-              <span className="text-5xl flex-shrink-0">{currentQ.emoji}</span>
-              <div className="flex-1">
-                <h3 className="text-2xl sm:text-3xl font-black font-baloo text-amber-950 leading-relaxed tashkeel-text">
-                  {currentQ.question}
-                </h3>
-              </div>
+            <div className="w-full text-center">
+              <h3 className="text-lg sm:text-2xl font-black font-baloo text-amber-950 leading-relaxed tashkeel-text">
+                {currentQ.question}
+              </h3>
             </div>
           </motion.div>
 
           {/* Answer Options */}
-          <div className="space-y-3">
+          <div className="space-y-2 pt-2 flex-shrink-0">
             {currentQ.options.map((option, idx) => {
               const isSelected = selectedOptionIndex === idx;
               const isCorrect = idx === currentQ.correctIndex;
@@ -252,7 +249,9 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           className="bg-gradient-to-r from-amber-100 via-yellow-100 to-amber-100 border-4 border-amber-400 p-6 sm:p-10 rounded-3xl text-center space-y-6 shadow-2xl"
         >
-          <div className="text-7xl animate-bounce">👑</div>
+          <div className="flex justify-center">
+            <Trophy size={64} className="text-amber-600 animate-bounce" />
+          </div>
           <div>
             <h3 className="text-3xl sm:text-4xl font-black font-baloo text-amber-950 mb-2">
               تَهَانِينَا يَا عَبْقَرِيَّ الْأَفْعَالِ!
@@ -264,15 +263,15 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
 
           <div className="flex flex-wrap items-center justify-center gap-4 py-2">
             <div className="bg-white px-5 py-3 rounded-2xl border-2 border-amber-300 shadow-sm flex items-center gap-2">
-              <span className="text-2xl">⭐</span>
+              <Star size={24} className="text-amber-500 fill-amber-400" />
               <span className="font-tajawal font-bold text-amber-900 text-lg">
                 +{score * 5 + 20} نَجْمَةً جَدِيدَةً!
               </span>
             </div>
             <div className="bg-white px-5 py-3 rounded-2xl border-2 border-sky-300 shadow-sm flex items-center gap-2">
-              <span className="text-2xl">💎</span>
+              <Sparkles size={24} className="text-sky-500" />
               <span className="font-tajawal font-bold text-sky-900 text-lg">
-                +3 جَوَاهِرَ سِحْرِيَّةٍ!
+                +3 جَوَاهِرَ!
               </span>
             </div>
           </div>
@@ -284,7 +283,7 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
               className="bg-emerald-500 hover:bg-emerald-600 text-white font-tajawal font-bold text-lg px-7 py-3.5 rounded-2xl shadow-xl hover:scale-105 transition-all cursor-pointer flex items-center gap-2 btn-chunky"
             >
               <Award size={22} />
-              <span>شَاهِدْ شَهَادَةَ التَّفَوُّقِ 📜</span>
+              <span>شَاهِدْ شَهَادَةَ التَّفَوُّقِ</span>
             </button>
 
             <button

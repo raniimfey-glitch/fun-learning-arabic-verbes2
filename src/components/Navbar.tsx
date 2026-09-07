@@ -63,7 +63,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-2 sm:gap-3 cursor-pointer group select-none"
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-amber-400 to-yellow-300 p-1 shadow-md group-hover:scale-105 transition-transform flex items-center justify-center border-2 border-white">
-              <span className="text-2xl sm:text-3xl">✨</span>
+              <Sparkles className="text-amber-800" size={24} />
             </div>
             <div>
               <div className="flex items-center gap-1.5">
@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="hidden sm:flex items-center gap-1 bg-sky-100 border-2 border-sky-300 text-sky-900 px-2.5 py-1.5 rounded-2xl font-black text-sm shadow-sm"
               title="الْجَوَاهِرُ السِّحْرِيَّةُ"
             >
-              <span className="text-sm">💎</span>
+              <Sparkles className="text-sky-600" size={15} />
               <span className="font-tajawal font-extrabold">{progress.gems}</span>
             </div>
 
@@ -114,7 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="px-2 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal border border-slate-200 transition-all flex items-center gap-1 cursor-pointer"
               title="سُرْعَةُ النُّطْقِ"
             >
-              <span>{progress.speechRate === 0.82 ? '🗣️ نُطْقٌ عَادِي' : '🐢 نُطْقٌ هَادِئ'}</span>
+              <span>{progress.speechRate === 0.82 ? 'نُطْقٌ عَادِي' : 'نُطْقٌ هَادِئ'}</span>
             </button>
 
             {/* Sound Toggle */}
@@ -216,7 +216,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full border-4 border-amber-300 shadow-2xl animate-bounce-gentle">
             <h3 className="text-xl font-bold font-baloo text-amber-900 text-center mb-4">
-              ✨ مَلَفُّ الْبَطَلِ الصَّغِيرِ ✨
+              مَلَفُّ الْبَطَلِ الصَّغِيرِ
             </h3>
 
             {/* Avatar Selector */}

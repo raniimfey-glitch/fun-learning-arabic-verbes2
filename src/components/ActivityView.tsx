@@ -40,33 +40,33 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
   const getActivityHeaderInfo = () => {
     switch (activityId) {
       case 'lesson-1':
-        return { title: 'مَا هُوَ الْفِعْلُ؟', badge: 'دَرْسُ التَّمْهِيدِ', emoji: '🌱' };
+        return { title: 'مَا هُوَ الْفِعْلُ؟', badge: 'دَرْسُ التَّمْهِيدِ' };
       case 'lesson-2':
-        return { title: 'الْفِعْلُ الْمَاضِي', badge: 'دَرْسُ الْأَزْمِنَةِ', emoji: '⏳' };
+        return { title: 'الْفِعْلُ الْمَاضِي', badge: 'دَرْسُ الْأَزْمِنَةِ' };
       case 'lesson-3':
-        return { title: 'الْفِعْلُ الْمُضَارِعُ', badge: 'دَرْسُ الْأَزْمِنَةِ', emoji: '⏰' };
+        return { title: 'الْفِعْلُ الْمُضَارِعُ', badge: 'دَرْسُ الْأَزْمِنَةِ' };
       case 'lesson-4':
-        return { title: 'فِعْلُ الْأَمْرِ', badge: 'دَرْسُ الْأَزْمِنَةِ', emoji: '📢' };
+        return { title: 'فِعْلُ الْأَمْرِ', badge: 'دَرْسُ الْأَزْمِنَةِ' };
       case 'lesson-5':
-        return { title: 'مَسْرَحُ تَحْوِيلِ الْأَفْعَالِ', badge: 'دَرْسُ التَّطْبِيقِ', emoji: '🎭' };
+        return { title: 'مَسْرَحُ تَحْوِيلِ الْأَفْعَالِ', badge: 'دَرْسُ التَّطْبِيقِ' };
       case 'games-menu':
-        return { title: 'أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ', badge: 'قَائِمَةُ الْأَلْعَابِ 🎮', emoji: '🎮' };
+        return { title: 'أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةِ', badge: 'قَائِمَةُ الْأَلْعَابِ' };
       case 'game-hunter':
-        return { title: 'صَيَّادُ الْأَفْعَالِ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ', emoji: '🎯' };
+        return { title: 'صَيَّادُ الْأَفْعَالِ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ' };
       case 'game-sorter':
-        return { title: 'صُنْدُوقُ الْأَزْمِنَةِ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ', emoji: '⏳' };
+        return { title: 'صُنْدُوقُ الْأَزْمِنَةِ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ' };
       case 'game-completer':
-        return { title: 'أَكْمِلِ الْجُمْلَةَ بِالْفِعْلِ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ', emoji: '🧩' };
+        return { title: 'أَكْمِلِ الْجُمْلَةَ بِالْفِعْلِ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ' };
       case 'game-transformer':
-        return { title: 'عَصَا التَّحْوِيلِ السِّحْرِيَّةُ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ', emoji: '🪄' };
+        return { title: 'عَصَا التَّحْوِيلِ السِّحْرِيَّةُ', badge: 'لُعْبَةٌ تَفَاعُلِيَّةٌ' };
       case 'game-quiz':
-        return { title: 'تَحَدِّي الْأَبْطَالِ الْكَبِيرُ', badge: 'اخْتِبَارُ التَّفَوُّقِ', emoji: '🏆' };
+        return { title: 'تَحَدِّي الْأَبْطَالِ الْكَبِيرُ', badge: 'اخْتِبَارُ التَّفَوُّقِ' };
       case 'rewards':
-        return { title: 'سِجِلُّ الْأَوْسِمَةِ وَالْمُكَافَآتِ', badge: 'أَلْبُومُ التَّفَوُّقِ', emoji: '🎨' };
+        return { title: 'سِجِلُّ الْأَوْسِمَةِ وَالْمُكَافَآتِ', badge: 'أَلْبُومُ التَّفَوُّقِ' };
       case 'guide':
-        return { title: 'دَلِيلُ الْمُعَلِّمِ وَالْوَلِيِّ', badge: 'إِرْشَادَاتٌ تَرْبَوِيَّةٌ', emoji: '👨‍🏫' };
+        return { title: 'دَلِيلُ الْمُعَلِّمِ وَالْوَلِيِّ', badge: 'إِرْشَادَاتٌ تَرْبَوِيَّةٌ' };
       default:
-        return { title: 'النَّشَاطُ التَّعْلِيمِيُّ', badge: 'تَعَلَّمْ وَالْعَبْ', emoji: '⭐' };
+        return { title: 'النَّشَاطُ التَّعْلِيمِيُّ', badge: 'تَعَلَّمْ وَالْعَبْ' };
     }
   };
 
@@ -95,20 +95,20 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
   }
 
   return (
-    <div className="space-y-6 pb-12">
-      {/* 🧭 Top Dedicated Navigation Bar with Dual Return Buttons */}
-      <div className="bg-white rounded-3xl border-3 border-amber-300 shadow-md p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3 sticky top-3 z-30">
+    <div className="flex-1 flex flex-col min-h-0 space-y-3 pb-2 w-full">
+      {/* Top Dedicated Navigation Bar with Dual Return Buttons */}
+      <div className="bg-white rounded-2xl border-2 border-amber-300 shadow-sm p-2 sm:p-2.5 flex flex-wrap items-center justify-between gap-2 flex-shrink-0 z-20">
         {/* Navigation Return Buttons */}
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-wrap">
           {/* Main Home Button */}
           <button
             id="btn-back-to-home"
             onClick={handleBackToHomeClick}
             type="button"
-            className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-sm flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
+            className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-xs sm:text-sm px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
             title="الرُّجُوعُ إِلَى الْوَاجِهَةِ الرَّئِيسِيَّةِ"
           >
-            <Home size={17} />
+            <Home size={15} />
             <span>الْوَاجِهَةُ الرَّئِيسِيَّةُ</span>
           </button>
 
@@ -118,10 +118,10 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
               id="btn-back-to-games-list"
               onClick={handleBackToGamesMenu}
               type="button"
-              className="bg-slate-100 hover:bg-slate-200 text-slate-800 border-2 border-slate-300 font-tajawal font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer flex-shrink-0"
+              className="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-tajawal font-bold text-xs sm:text-sm px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer flex-shrink-0"
               title="الرُّجُوعُ إِلَى قَائِمَةِ الْأَلْعَابِ"
             >
-              <Gamepad2 size={17} className="text-amber-600" />
+              <Gamepad2 size={15} className="text-amber-600" />
               <span>قَائِمَةُ الْأَلْعَابِ</span>
             </button>
           )}
@@ -130,25 +130,24 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
         {/* Activity Name & Badge in Middle */}
         <div className="text-center truncate px-2 mx-auto">
           <div className="flex items-center justify-center gap-1.5">
-            <span className="text-lg sm:text-xl">{headerInfo.emoji}</span>
-            <h2 className="text-base sm:text-xl font-black font-baloo text-amber-950 truncate">
+            <h2 className="text-sm sm:text-base font-black font-baloo text-amber-950 truncate">
               {headerInfo.title}
             </h2>
           </div>
-          <span className="text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full font-tajawal inline-block">
+          <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full font-tajawal inline-block">
             {headerInfo.badge}
           </span>
         </div>
 
         {/* Live Kid Stars */}
-        <div className="bg-amber-50 border border-amber-300 px-3 py-1.5 rounded-2xl flex items-center gap-1.5 text-amber-900 font-black font-tajawal text-xs sm:text-sm flex-shrink-0">
-          <Star className="text-amber-500 fill-amber-500" size={16} />
+        <div className="bg-amber-50 border border-amber-300 px-2.5 py-1 rounded-xl flex items-center gap-1 text-amber-900 font-black font-tajawal text-xs sm:text-sm flex-shrink-0">
+          <Star className="text-amber-500 fill-amber-500" size={15} />
           <span>{progress.stars}</span>
         </div>
       </div>
 
       {/* 🎯 Isolated Activity Content */}
-      <div className="transition-all duration-300">
+      <div className="flex-1 flex flex-col min-h-0 transition-all duration-300">
         {/* Lessons: Display only the selected tense / lesson */}
         {activityId.startsWith('lesson-') && (
           <LessonsView

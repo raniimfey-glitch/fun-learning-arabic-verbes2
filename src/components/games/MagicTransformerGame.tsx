@@ -121,25 +121,25 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl border-3 border-pink-300 shadow-lg p-4 sm:p-7 space-y-6">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b-2 border-pink-100">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-pink-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-pink-100 text-pink-900 text-xs font-black px-3 py-1 rounded-full font-tajawal">
-              عَصَا التَّحْوِيلِ السِّحْرِيَّةِ 🪄
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <span className="bg-pink-100 text-pink-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              عَصَا التَّحْوِيلِ السِّحْرِيَّةِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-pink-700 text-xs font-bold font-tajawal">
-              التَّحَدِّي {questionIndex + 1} مِنْ {MAGIC_TRANSFORM_QUESTIONS.length}
+            <span className="text-pink-700 text-[10px] sm:text-xs font-bold font-tajawal">
+              {questionIndex + 1} مِنْ {MAGIC_TRANSFORM_QUESTIONS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-pink-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-base sm:text-xl font-black text-pink-950 font-baloo leading-tight tashkeel-text">
             حَوِّلِ الْفِعْلَ بِعَصَاكَ السِّحْرِيَّةِ:
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
             onClick={() => {
               if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -147,37 +147,33 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            <span>الْأَلْعَابُ</span>
+            <ArrowLeft size={14} />
+            <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={getPromptSpeech(currentQ)}
-            size="md"
+            size="sm"
             variant="amber"
-            label="اِسْتَمِعْ لِلطَّلَبِ"
+            label="اِسْتَمِعْ"
             rate={progress.speechRate}
           />
         </div>
       </div>
 
       {!isGameOver ? (
-        <div className="space-y-6">
+        <div className="flex-1 flex flex-col justify-between min-h-0 py-2">
           {/* Magic Cauldron / Stage */}
           <motion.div
             key={currentQ.id}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-gradient-to-tr from-purple-100 via-pink-50 to-rose-100 border-4 border-pink-300 rounded-3xl p-6 sm:p-8 text-center relative overflow-hidden shadow-inner"
+            className="bg-gradient-to-tr from-purple-100 via-pink-50 to-rose-100 border-2 sm:border-3 border-pink-300 rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center relative overflow-hidden shadow-inner flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
           >
-            {/* Sparkles */}
-            <div className="absolute top-3 left-4 text-2xl animate-twinkle">✨</div>
-            <div className="absolute bottom-3 right-4 text-2xl animate-twinkle">🪄</div>
-
-            <div className="flex items-center justify-center gap-4 sm:gap-8 mb-4">
+            <div className="flex items-center justify-center gap-2 sm:gap-6 mb-2">
               {/* Base Word */}
-              <div className="bg-white/90 border-2 border-purple-300 px-5 py-3 rounded-2xl shadow-sm">
+              <div className="bg-white/90 border border-purple-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl shadow-xs">
                 <span className="text-xs font-bold font-tajawal text-purple-700 block mb-1">
                   {currentQ.fromTense}
                 </span>
@@ -194,9 +190,9 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
                     : { rotate: [0, -10, 10, 0] }
                 }
                 transition={{ repeat: isWandWaving ? 0 : Infinity, duration: isWandWaving ? 0.6 : 3 }}
-                className="text-4xl sm:text-5xl"
+                className="p-3 bg-white/80 rounded-2xl shadow-xs"
               >
-                🪄
+                <Wand2 size={36} className="text-pink-600" />
               </motion.div>
 
               {/* Target Transformation Goal */}
@@ -211,7 +207,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
             </div>
 
             <p className="text-base font-bold font-tajawal text-purple-900">
-              اِضْغَطْ عَلَى الْفِعْلِ الصَّحِيحِ لِتُطْلِقَ السِّحْرَ! ✨
+              اِضْغَطْ عَلَى الْفِعْلِ الصَّحِيحِ لِتُطْلِقَ التَّحْوِيلَ!
             </p>
           </motion.div>
 
@@ -291,12 +287,14 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           className="bg-gradient-to-r from-pink-100 via-rose-100 to-purple-100 border-3 border-pink-400 p-6 sm:p-8 rounded-3xl text-center space-y-4 shadow-xl"
         >
-          <div className="text-6xl animate-bounce">🪄✨</div>
+          <div className="flex justify-center">
+            <Wand2 size={48} className="text-pink-600 animate-bounce" />
+          </div>
           <h3 className="text-2xl sm:text-3xl font-black font-baloo text-pink-950">
-            أَنْتَ سَاحِرُ الْأَفْعَالِ الْعَبْقَرِيُّ!
+            أَنْتَ بَطَلُ تَحْوِيلِ الْأَفْعَالِ الْعَبْقَرِيُّ!
           </h3>
           <p className="text-lg font-bold font-tajawal text-pink-900">
-            حَوَّلْتَ {score} مِنْ {MAGIC_TRANSFORM_QUESTIONS.length} أَفْعَالٍ بِإِتْقَانٍ وَرَبِحْتَ 30 نَجْمَةً وَجَوْهَرَتَيْنِ! 💎
+            حَوَّلْتَ {score} مِنْ {MAGIC_TRANSFORM_QUESTIONS.length} أَفْعَالٍ بِإِتْقَانٍ وَرَبِحْتَ 30 نَجْمَةً وَجَوْهَرَتَيْنِ!
           </p>
 
           <div className="flex items-center justify-center gap-3 pt-2">
@@ -309,7 +307,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
               type="button"
               className="bg-pink-600 hover:bg-pink-700 text-white font-tajawal font-bold text-lg px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transition-all cursor-pointer btn-chunky"
             >
-              الْعَوْدَةُ لِقَائِمَةِ الْأَلْعَابِ 🎮
+              الْعَوْدَةُ لِقَائِمَةِ الْأَلْعَابِ
             </button>
             <button
               onClick={handleRestart}

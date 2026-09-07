@@ -104,25 +104,25 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl border-3 border-indigo-300 shadow-lg p-4 sm:p-7 space-y-6">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-indigo-300 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b-2 border-indigo-100">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-indigo-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-indigo-100 text-indigo-900 text-xs font-black px-3 py-1 rounded-full font-tajawal">
-              لُعْبَةُ إِكْمَالِ الْجُمَلِ 🧩
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <span className="bg-indigo-100 text-indigo-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              لُعْبَةُ إِكْمَالِ الْجُمَلِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-indigo-700 text-xs font-bold font-tajawal">
-              الْجُمْلَةُ {questionIndex + 1} مِنْ {SENTENCE_COMPLETION_QUESTIONS.length}
+            <span className="text-indigo-700 text-[10px] sm:text-xs font-bold font-tajawal">
+              {questionIndex + 1} مِنْ {SENTENCE_COMPLETION_QUESTIONS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-indigo-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-base sm:text-xl font-black text-indigo-950 font-baloo leading-tight tashkeel-text">
             اِخْتَرِ الْفِعْلَ الْمُنَاسِبَ لِمَلْءِ الْفَرَاغِ:
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
             onClick={() => {
               if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -130,35 +130,33 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            <span>الْأَلْعَابُ</span>
+            <ArrowLeft size={14} />
+            <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={`${currentQ.sentenceBefore} فَرَاغٌ ${currentQ.sentenceAfter}`}
-            size="md"
+            size="sm"
             variant="secondary"
-            label="اِسْتَمِعْ لِلْجُمْلَةِ"
+            label="اِسْتَمِعْ"
             rate={progress.speechRate}
           />
         </div>
       </div>
 
       {!isGameOver ? (
-        <div className="space-y-6">
+        <div className="flex-1 flex flex-col justify-between min-h-0 py-2">
           {/* Illustrated Sentence Card */}
           <motion.div
             key={currentQ.id}
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-br from-indigo-50 via-sky-50 to-indigo-50 border-3 border-indigo-200 rounded-3xl p-6 sm:p-8 text-center shadow-inner space-y-4"
+            className="bg-gradient-to-br from-indigo-50 via-sky-50 to-indigo-50 border-2 sm:border-3 border-indigo-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center shadow-inner flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
           >
-            <span className="text-6xl block">{currentQ.imageEmoji}</span>
-
-            <div className="text-2xl sm:text-3xl font-black font-baloo text-slate-900 leading-relaxed tashkeel-text flex flex-wrap items-center justify-center gap-2">
+            <div className="text-lg sm:text-2xl font-black font-baloo text-slate-900 leading-relaxed tashkeel-text flex flex-wrap items-center justify-center gap-1.5">
               <span>{currentQ.sentenceBefore}</span>
-              <span className="inline-block min-w-[120px] px-4 py-1.5 rounded-2xl border-2 border-dashed border-indigo-400 bg-white text-indigo-700 font-extrabold shadow-sm">
+              <span className="inline-block min-w-[90px] sm:min-w-[120px] px-3 py-1 rounded-xl border-2 border-dashed border-indigo-400 bg-white text-indigo-700 font-extrabold shadow-2xs">
                 {selectedOption || '......'}
               </span>
               <span>{currentQ.sentenceAfter}</span>
@@ -166,7 +164,7 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
           </motion.div>
 
           {/* Options Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 pt-2 flex-shrink-0">
             {currentQ.options.map(opt => {
               const isSelected = selectedOption === opt;
               const isCorrect = opt === currentQ.correctVerb;

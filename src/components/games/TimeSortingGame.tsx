@@ -74,7 +74,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
       soundEffects.playCorrect();
       setScore(prev => prev + 1);
       msg = `صَحِيحٌ يَا بَطَلُ! (${currentItem.word}) هُوَ فِعْلٌ ${
-        tense === 'past' ? 'مَاضٍ ⏳' : tense === 'present' ? 'مُضَارِعٌ ⏰' : 'أَمْرٌ 📢'
+        tense === 'past' ? 'مَاضٍ' : tense === 'present' ? 'مُضَارِعٌ' : 'أَمْرٌ'
       }. ${currentItem.hint}`;
       setFeedback({ text: msg, isCorrect: true });
     } else {
@@ -104,25 +104,25 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl border-3 border-teal-300 shadow-lg p-4 sm:p-7 space-y-6">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-teal-300 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b-2 border-teal-100">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-teal-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-teal-100 text-teal-900 text-xs font-black px-3 py-1 rounded-full font-tajawal">
-              لُعْبَةُ صُنْدُوقِ الْأَزْمِنَةِ ⏳
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <span className="bg-teal-100 text-teal-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              لُعْبَةُ صُنْدُوقِ الْأَزْمِنَةِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-teal-700 text-xs font-bold font-tajawal">
-              الْكَلِمَةُ {currentIndex + 1} مِنْ {TIME_SORTING_ITEMS.length}
+            <span className="text-teal-700 text-[10px] sm:text-xs font-bold font-tajawal">
+              {currentIndex + 1} مِنْ {TIME_SORTING_ITEMS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-teal-950 font-baloo leading-tight tashkeel-text">
-            ضَعِ الْفِعْلَ فِي صُنْدُوقِ الزَّمَنِ الْمُنَاسِبِ لَهُ:
+          <h2 className="text-base sm:text-xl font-black text-teal-950 font-baloo leading-tight tashkeel-text">
+            ضَعِ الْفِعْلَ فِي صُنْدُوقِ الزَّمَنِ الْمُنَاسِبِ:
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
             onClick={() => {
               if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -130,14 +130,14 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            <span>الْأَلْعَابُ</span>
+            <ArrowLeft size={14} />
+            <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={`ضَعِ الْفِعْلَ: ${currentItem?.word || ''} فِي صُنْدُوقِهِ الصَّحِيحِ.`}
-            size="md"
+            size="sm"
             variant="emerald"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
@@ -146,100 +146,99 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
       </div>
 
       {!isGameOver ? (
-        <div className="space-y-6">
+        <div className="flex-1 flex flex-col justify-between min-h-0 py-2">
           {/* Active Verb Presentation Card */}
           <motion.div
             key={currentItem.id}
-            initial={{ scale: 0.8, opacity: 0, y: -20 }}
+            initial={{ scale: 0.8, opacity: 0, y: -10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="bg-gradient-to-tr from-amber-100 via-orange-50 to-yellow-100 border-4 border-amber-400 rounded-3xl p-6 sm:p-8 text-center shadow-md max-w-md mx-auto relative overflow-hidden"
+            className="bg-gradient-to-tr from-amber-100 via-orange-50 to-yellow-100 border-3 border-amber-400 rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center shadow-xs max-w-md mx-auto w-full relative overflow-hidden flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
           >
-            <span className="text-5xl sm:text-6xl mb-2 block">{currentItem.emoji}</span>
-            <h3 className="text-3xl sm:text-4xl font-black font-baloo text-amber-950 tashkeel-text mb-2">
+            <h3 className="text-3xl sm:text-4xl font-black font-baloo text-amber-950 tashkeel-text mb-1">
               {currentItem.word}
             </h3>
-            <p className="text-sm font-bold font-tajawal text-slate-600">
-              💡 تَلْمِيحٌ: {currentItem.hint}
+            <p className="text-xs sm:text-sm font-bold font-tajawal text-slate-600">
+              تَلْمِيحٌ: {currentItem.hint}
             </p>
-            <div className="mt-3 flex justify-center">
+            <div className="mt-2 flex justify-center">
               <SoundButton textToSpeak={currentItem.word} size="sm" variant="amber" rate={progress.speechRate} />
             </div>
           </motion.div>
 
           {/* 3 Sorting Boxes (Buttons) */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 pt-2">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2 flex-shrink-0">
             {/* Past Box */}
             <motion.button
               id="sort-box-past"
-              whileHover={{ scale: selectedTense ? 1 : 1.03 }}
+              whileHover={{ scale: selectedTense ? 1 : 1.02 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => handleChooseTense('past')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
+              className={`p-2.5 sm:p-4 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
                 selectedTense === 'past'
                   ? currentItem.tense === 'past'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
                     : 'bg-rose-100 border-rose-400'
-                  : 'bg-gradient-to-b from-teal-50 to-teal-100/70 border-teal-300 hover:border-teal-500 shadow-md'
+                  : 'bg-gradient-to-b from-teal-50 to-teal-100/70 border-teal-300 hover:border-teal-500 shadow-sm'
               }`}
             >
-              <History size={36} className="text-teal-600" />
-              <h4 className="text-xl font-black font-baloo text-teal-950">
+              <History size={26} className="text-teal-600" />
+              <h4 className="text-sm sm:text-base font-black font-baloo text-teal-950">
                 الْفِعْلُ الْمَاضِي
               </h4>
-              <span className="text-xs font-bold font-tajawal text-teal-800 bg-teal-200/80 px-2.5 py-0.5 rounded-full">
-                ⏳ حَدَثَ وَانْتَهَى
+              <span className="text-[10px] font-bold font-tajawal text-teal-800 bg-teal-200/80 px-2 py-0.5 rounded-full">
+                حَدَثَ وَانْتَهَى
               </span>
             </motion.button>
 
             {/* Present Box */}
             <motion.button
               id="sort-box-present"
-              whileHover={{ scale: selectedTense ? 1 : 1.03 }}
+              whileHover={{ scale: selectedTense ? 1 : 1.02 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => handleChooseTense('present')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
+              className={`p-2.5 sm:p-4 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
                 selectedTense === 'present'
                   ? currentItem.tense === 'present'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
                     : 'bg-rose-100 border-rose-400'
-                  : 'bg-gradient-to-b from-sky-50 to-sky-100/70 border-sky-300 hover:border-sky-500 shadow-md'
+                  : 'bg-gradient-to-b from-sky-50 to-sky-100/70 border-sky-300 hover:border-sky-500 shadow-sm'
               }`}
             >
-              <Clock size={36} className="text-sky-600" />
-              <h4 className="text-xl font-black font-baloo text-sky-950">
+              <Clock size={26} className="text-sky-600" />
+              <h4 className="text-sm sm:text-base font-black font-baloo text-sky-950">
                 الْفِعْلُ الْمُضَارِعُ
               </h4>
-              <span className="text-xs font-bold font-tajawal text-sky-800 bg-sky-200/80 px-2.5 py-0.5 rounded-full">
-                ⏰ يَحْدُثُ الْآنَ
+              <span className="text-[10px] font-bold font-tajawal text-sky-800 bg-sky-200/80 px-2 py-0.5 rounded-full">
+                يَحْدُثُ الْآنَ
               </span>
             </motion.button>
 
             {/* Imperative Box */}
             <motion.button
               id="sort-box-imperative"
-              whileHover={{ scale: selectedTense ? 1 : 1.03 }}
+              whileHover={{ scale: selectedTense ? 1 : 1.02 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => handleChooseTense('imperative')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
+              className={`p-2.5 sm:p-4 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
                 selectedTense === 'imperative'
                   ? currentItem.tense === 'imperative'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
                     : 'bg-rose-100 border-rose-400'
-                  : 'bg-gradient-to-b from-purple-50 to-purple-100/70 border-purple-300 hover:border-purple-500 shadow-md'
+                  : 'bg-gradient-to-b from-purple-50 to-purple-100/70 border-purple-300 hover:border-purple-500 shadow-sm'
               }`}
             >
-              <Megaphone size={36} className="text-purple-600" />
-              <h4 className="text-xl font-black font-baloo text-purple-950">
+              <Megaphone size={26} className="text-purple-600" />
+              <h4 className="text-sm sm:text-base font-black font-baloo text-purple-950">
                 فِعْلُ الْأَمْرِ
               </h4>
-              <span className="text-xs font-bold font-tajawal text-purple-800 bg-purple-200/80 px-2.5 py-0.5 rounded-full">
-                📢 طَلَبُ الْعَمَلِ
+              <span className="text-[10px] font-bold font-tajawal text-purple-800 bg-purple-200/80 px-2 py-0.5 rounded-full">
+                طَلَبُ الْعَمَلِ
               </span>
             </motion.button>
           </div>
@@ -288,12 +287,12 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           className="bg-gradient-to-r from-teal-100 via-emerald-100 to-teal-100 border-3 border-teal-400 p-6 sm:p-8 rounded-3xl text-center space-y-4 shadow-xl"
         >
-          <div className="text-6xl animate-bounce">🎉</div>
+          <Sparkles size={56} className="text-teal-600 mx-auto animate-bounce" />
           <h3 className="text-2xl sm:text-3xl font-black font-baloo text-teal-950">
             مَبْرُوكٌ يَا خَبِيرَ الْأَزْمِنَةِ!
           </h3>
           <p className="text-lg font-bold font-tajawal text-teal-900">
-            لَقَدْ صَنَّفْتَ {score} مِنْ {TIME_SORTING_ITEMS.length} أَفْعَالٍ صَحِيحَةً وَرَبِحْتَ 25 نَجْمَةً! ⭐
+            لَقَدْ صَنَّفْتَ {score} مِنْ {TIME_SORTING_ITEMS.length} أَفْعَالٍ صَحِيحَةً وَرَبِحْتَ 25 نَجْمَةً!
           </p>
 
           <div className="flex items-center justify-center gap-3 pt-2">
@@ -306,7 +305,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               type="button"
               className="bg-teal-600 hover:bg-teal-700 text-white font-tajawal font-bold text-lg px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transition-all cursor-pointer btn-chunky"
             >
-              الْعَوْدَةُ لِقَائِمَةِ الْأَلْعَابِ 🎮
+              الْعَوْدَةُ لِقَائِمَةِ الْأَلْعَابِ
             </button>
             <button
               onClick={handleRestart}

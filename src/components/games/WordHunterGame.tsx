@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { WORD_HUNTER_LEVELS } from '../../data/gamesData';
 import { UserProgress } from '../../types';
 import { SoundButton } from '../SoundButton';
-import { Sparkles, Trophy, RotateCcw, Check, X, ArrowLeft } from 'lucide-react';
+import { Sparkles, Trophy, RotateCcw, Check, X, ArrowLeft, Star } from 'lucide-react';
 import { soundEffects, ArabicSpeechEngine } from '../../utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -88,36 +88,36 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl border-3 border-amber-300 shadow-lg p-4 sm:p-7 space-y-6">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-300 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
       {/* Game Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-4 border-b-2 border-amber-100">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-amber-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-amber-100 text-amber-900 text-xs font-black px-3 py-1 rounded-full font-tajawal">
-              لُعْبَةُ صَائِدِ الْأَفْعَالِ 🎯
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <span className="bg-amber-100 text-amber-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              لُعْبَةُ صَائِدِ الْأَفْعَالِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-amber-700 text-xs font-bold font-tajawal">
+            <span className="text-amber-700 text-[10px] sm:text-xs font-bold font-tajawal">
               الْمَرْحَلَةُ {levelIndex + 1} مِنْ {WORD_HUNTER_LEVELS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-base sm:text-xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
             {currentLevel.questionText}
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 flex-shrink-0">
           <button
             onClick={onBackToMenu}
             type="button"
-            className="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-2xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
           >
-            <ArrowLeft size={16} />
-            <span>الْأَلْعَابُ</span>
+            <ArrowLeft size={14} />
+            <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={currentLevel.questionText}
-            size="md"
+            size="sm"
             variant="amber"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
@@ -126,31 +126,30 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
       </div>
 
       {/* Progress Bar for Current Level Verbs */}
-      <div className="bg-amber-50 rounded-2xl p-3 border border-amber-200 flex items-center justify-between">
-        <div className="flex items-center gap-2 font-bold font-tajawal text-amber-900 text-sm">
-          <span>🎯 الْأَفْعَالُ الَّتِي صِدْتَهَا:</span>
-          <span className="text-base font-black text-amber-700 bg-white px-2 py-0.5 rounded-lg border border-amber-300">
+      <div className="bg-amber-50 rounded-xl p-2 border border-amber-200 flex items-center justify-between flex-shrink-0">
+        <div className="flex items-center gap-1.5 font-bold font-tajawal text-amber-900 text-xs sm:text-sm">
+          <span>الْأَفْعَالُ الَّتِي صِدْتَهَا:</span>
+          <span className="text-sm sm:text-base font-black text-amber-700 bg-white px-2 py-0.5 rounded-lg border border-amber-300">
             {caughtVerbsCount} / {targetVerbs.length}
           </span>
         </div>
 
         <div className="flex items-center gap-1">
           {targetVerbs.map((_, i) => (
-            <span
+            <Star
               key={i}
-              className={`text-xl transition-transform ${
-                i < caughtVerbsCount ? 'scale-125 animate-twinkle' : 'opacity-30'
+              size={18}
+              className={`transition-transform ${
+                i < caughtVerbsCount ? 'text-amber-500 fill-amber-400 scale-110' : 'text-slate-300 fill-slate-100'
               }`}
-            >
-              ⭐
-            </span>
+            />
           ))}
         </div>
       </div>
 
       {/* Floating Word Bubbles / Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 py-2">
-        {currentLevel.words.map((word, idx) => {
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 py-1 flex-1 min-h-0">
+        {currentLevel.words.map((word) => {
           const isSelected = selectedWordIds.includes(word.id);
 
           return (
@@ -158,36 +157,34 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
               key={word.id}
               id={`hunt-word-${word.id}`}
               onClick={() => handleWordClick(word)}
-              whileHover={{ scale: isSelected ? 1 : 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: isSelected ? 1 : 1.03 }}
+              whileTap={{ scale: 0.96 }}
               type="button"
-              className={`relative p-4 sm:p-6 rounded-3xl border-3 transition-all flex flex-col items-center justify-center gap-2 cursor-pointer select-none min-h-[130px] sm:min-h-[150px] ${
+              className={`relative p-2.5 sm:p-4 rounded-2xl border-2 transition-all flex flex-col items-center justify-center gap-1.5 cursor-pointer select-none min-h-0 flex-shrink-1 fit-screen-card ${
                 isSelected
                   ? word.isVerb
-                    ? 'bg-emerald-100 border-emerald-500 shadow-md ring-4 ring-emerald-200'
+                    ? 'bg-emerald-100 border-emerald-500 shadow-sm ring-3 ring-emerald-200'
                     : 'bg-rose-100 border-rose-400 opacity-70 ring-2 ring-rose-200'
-                  : 'bg-gradient-to-b from-white to-amber-50/50 hover:to-amber-100/60 border-amber-200 hover:border-amber-400 shadow-md'
+                  : 'bg-gradient-to-b from-white to-amber-50/50 hover:to-amber-100/60 border-amber-200 hover:border-amber-400 shadow-xs'
               }`}
             >
               {/* Status Badge */}
               {isSelected && (
                 <span
-                  className={`absolute top-2 right-2 rounded-full p-1 text-white text-xs ${
+                  className={`absolute top-1.5 right-1.5 rounded-full p-0.5 text-white text-xs ${
                     word.isVerb ? 'bg-emerald-500' : 'bg-rose-500'
                   }`}
                 >
-                  {word.isVerb ? <Check size={14} /> : <X size={14} />}
+                  {word.isVerb ? <Check size={12} /> : <X size={12} />}
                 </span>
               )}
-
-              <span className="text-3xl sm:text-4xl">{word.emoji}</span>
               
-              <span className="text-xl sm:text-2xl font-black font-baloo text-slate-800 tashkeel-text">
+              <span className="text-2xl sm:text-3xl font-black font-baloo text-slate-800 tashkeel-text">
                 {word.text}
               </span>
 
               {isSelected && (
-                <span className={`text-xs font-bold font-tajawal px-2 py-0.5 rounded-full ${
+                <span className={`text-xs font-bold font-tajawal px-2.5 py-0.5 rounded-full ${
                   word.isVerb ? 'bg-emerald-200 text-emerald-900' : 'bg-rose-200 text-rose-900'
                 }`}>
                   {word.typeLabel}
@@ -221,12 +218,12 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
           animate={{ scale: 1, opacity: 1 }}
           className="bg-gradient-to-r from-amber-100 via-yellow-100 to-amber-100 border-3 border-amber-400 p-6 rounded-3xl text-center space-y-4 shadow-xl"
         >
-          <div className="text-5xl animate-bounce">🏆</div>
+          <Trophy size={48} className="text-amber-500 mx-auto animate-bounce" />
           <h3 className="text-2xl font-black font-baloo text-amber-950">
             أَحْسَنْتَ يَا صَائِدَ الْأَفْعَالِ الْبَطَلَ!
           </h3>
           <p className="text-base font-bold font-tajawal text-amber-900">
-            لَقَدْ صِدْتَ جَمِيعَ الْأَفْعَالِ بِنَجَاحٍ وَرَبِحْتَ 20 نَجْمَةً وَجَوْهَرَةً سِحْرِيَّةً! ✨
+            لَقَدْ صِدْتَ جَمِيعَ الْأَفْعَالِ بِنَجَاحٍ وَرَبِحْتَ 20 نَجْمَةً وَجَوْهَرَةً سِحْرِيَّةً!
           </p>
 
           <div className="flex items-center justify-center gap-3 pt-2">
@@ -236,7 +233,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
                 type="button"
                 className="bg-emerald-500 hover:bg-emerald-600 text-white font-tajawal font-bold text-lg px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transition-all cursor-pointer btn-chunky"
               >
-                الْمَرْحَلَةُ التَّالِيَةُ 🚀
+                الْمَرْحَلَةُ التَّالِيَةُ
               </button>
             ) : (
               <button
@@ -244,7 +241,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
                 type="button"
                 className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-lg px-6 py-3 rounded-2xl shadow-lg hover:scale-105 transition-all cursor-pointer btn-chunky"
               >
-                الْعَوْدَةُ لِقَائِمَةِ الْأَلْعَابِ 🎮
+                الْعَوْدَةُ لِقَائِمَةِ الْأَلْعَابِ
               </button>
             )}
 
