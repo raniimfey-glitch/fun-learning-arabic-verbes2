@@ -160,159 +160,165 @@ export const HomeHub: React.FC<HomeHubProps> = ({
         </div>
 
         {/* The 3 Core Tense Highlight Cards (Past, Present, Imperative) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {/* 1. الماضي */}
           <motion.div
-            whileHover={{ scale: 1.02, y: -2 }}
+            whileHover={{ scale: 1.025, y: -3 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-b from-teal-50 to-emerald-50 rounded-2xl border-2 border-teal-400 p-4 shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden fit-screen-card"
+            className="bg-gradient-to-b from-teal-50 via-emerald-50 to-teal-100/60 rounded-3xl border-3 border-teal-400 p-5 sm:p-6 shadow-md hover:shadow-xl transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden min-h-[300px]"
             onClick={() => handleLaunchActivity('lesson-2', 'الْفِعْلُ الْمَاضِي')}
           >
             {progress.completedLessons.includes('lesson-2') && (
-              <div className="absolute top-2.5 left-2.5 bg-emerald-500 text-white rounded-full p-1 shadow-sm">
-                <CheckCircle2 size={14} />
+              <div className="absolute top-3 left-3 bg-emerald-500 text-white rounded-full p-1.5 shadow-sm">
+                <CheckCircle2 size={16} />
               </div>
             )}
 
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <History size={26} className="text-teal-600" />
-                <span className="bg-teal-200 text-teal-950 text-[11px] font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-teal-100 border border-teal-200 flex items-center justify-center text-teal-700 shadow-xs">
+                  <History size={28} />
+                </div>
+                <span className="bg-teal-200 text-teal-950 text-xs sm:text-sm font-black px-3.5 py-1 rounded-full font-tajawal shadow-xs">
                   حَدَثَ وَانْتَهَى
                 </span>
               </div>
 
-              <h3 className="text-xl font-black font-baloo text-teal-950 mb-0.5 tashkeel-text">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-teal-950 mb-2 tashkeel-text leading-tight">
                 الْفِعْلُ الْمَاضِي
               </h3>
-              <p className="text-[11px] font-bold font-tajawal text-slate-600 mb-3 leading-relaxed">
+              <p className="text-sm sm:text-base font-bold font-tajawal text-slate-700 mb-4 leading-relaxed tashkeel-text">
                 عَمَلٌ وَقَعَ وَانْتَهَى فِي الزَّمَنِ الْمَاضِي قَبْلَ وَقْتِ الْكَلَامِ.
               </p>
 
               {/* Quick Examples Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                <span className="bg-white text-teal-900 border border-teal-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-white text-teal-950 border-2 border-teal-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   كَتَبَ
                 </span>
-                <span className="bg-white text-teal-900 border border-teal-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+                <span className="bg-white text-teal-950 border-2 border-teal-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   لَعِبَ
                 </span>
-                <span className="bg-white text-teal-900 border border-teal-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+                <span className="bg-white text-teal-950 border-2 border-teal-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   أَكَلَ
                 </span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-teal-200/80 flex items-center justify-between">
-              <span className="text-xs font-black font-tajawal text-teal-800">
+            <div className="pt-3.5 border-t-2 border-teal-200/90 flex items-center justify-between">
+              <span className="text-sm sm:text-base font-black font-tajawal text-teal-900">
                 {progress.completedLessons.includes('lesson-2') ? 'مُكْتَمَلٌ' : 'اِبْدَأِ الدَّرْسَ'}
               </span>
-              <div className="w-7 h-7 rounded-full bg-teal-600 text-white flex items-center justify-center shadow-sm">
-                <ArrowLeft size={14} />
+              <div className="w-9 h-9 rounded-full bg-teal-600 hover:bg-teal-700 text-white flex items-center justify-center shadow-md">
+                <ArrowLeft size={18} />
               </div>
             </div>
           </motion.div>
 
           {/* 2. المضارع */}
           <motion.div
-            whileHover={{ scale: 1.02, y: -2 }}
+            whileHover={{ scale: 1.025, y: -3 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-b from-sky-50 to-blue-50 rounded-2xl border-2 border-sky-400 p-4 shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden fit-screen-card"
+            className="bg-gradient-to-b from-sky-50 via-blue-50 to-sky-100/60 rounded-3xl border-3 border-sky-400 p-5 sm:p-6 shadow-md hover:shadow-xl transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden min-h-[300px]"
             onClick={() => handleLaunchActivity('lesson-3', 'الْفِعْلُ الْمُضَارِعُ')}
           >
             {progress.completedLessons.includes('lesson-3') && (
-              <div className="absolute top-2.5 left-2.5 bg-emerald-500 text-white rounded-full p-1 shadow-sm">
-                <CheckCircle2 size={14} />
+              <div className="absolute top-3 left-3 bg-emerald-500 text-white rounded-full p-1.5 shadow-sm">
+                <CheckCircle2 size={16} />
               </div>
             )}
 
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <Clock size={26} className="text-sky-600" />
-                <span className="bg-sky-200 text-sky-950 text-[11px] font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-sky-100 border border-sky-200 flex items-center justify-center text-sky-700 shadow-xs">
+                  <Clock size={28} />
+                </div>
+                <span className="bg-sky-200 text-sky-950 text-xs sm:text-sm font-black px-3.5 py-1 rounded-full font-tajawal shadow-xs">
                   يَحْدُثُ الْآنَ
                 </span>
               </div>
 
-              <h3 className="text-xl font-black font-baloo text-sky-950 mb-0.5 tashkeel-text">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-sky-950 mb-2 tashkeel-text leading-tight">
                 الْفِعْلُ الْمُضَارِعُ
               </h3>
-              <p className="text-[11px] font-bold font-tajawal text-slate-600 mb-3 leading-relaxed">
+              <p className="text-sm sm:text-base font-bold font-tajawal text-slate-700 mb-4 leading-relaxed tashkeel-text">
                 عَمَلٌ يَحْدُثُ الْآنَ فِي الْحَاضِرِ، وَيَبْدَأُ بِـ: (نَـ، أَ، تَـ، يَـ).
               </p>
 
               {/* Quick Examples Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                <span className="bg-white text-sky-900 border border-sky-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-white text-sky-950 border-2 border-sky-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   يَكْتُبُ
                 </span>
-                <span className="bg-white text-sky-900 border border-sky-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+                <span className="bg-white text-sky-950 border-2 border-sky-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   تَلْعَبُ
                 </span>
-                <span className="bg-white text-sky-900 border border-sky-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+                <span className="bg-white text-sky-950 border-2 border-sky-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   نَقْرَأُ
                 </span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-sky-200/80 flex items-center justify-between">
-              <span className="text-xs font-black font-tajawal text-sky-800">
+            <div className="pt-3.5 border-t-2 border-sky-200/90 flex items-center justify-between">
+              <span className="text-sm sm:text-base font-black font-tajawal text-sky-900">
                 {progress.completedLessons.includes('lesson-3') ? 'مُكْتَمَلٌ' : 'اِبْدَأِ الدَّرْسَ'}
               </span>
-              <div className="w-7 h-7 rounded-full bg-sky-600 text-white flex items-center justify-center shadow-sm">
-                <ArrowLeft size={14} />
+              <div className="w-9 h-9 rounded-full bg-sky-600 hover:bg-sky-700 text-white flex items-center justify-center shadow-md">
+                <ArrowLeft size={18} />
               </div>
             </div>
           </motion.div>
 
           {/* 3. الأمر */}
           <motion.div
-            whileHover={{ scale: 1.02, y: -2 }}
+            whileHover={{ scale: 1.025, y: -3 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-gradient-to-b from-purple-50 to-violet-50 rounded-2xl border-2 border-purple-400 p-4 shadow-sm hover:shadow-md transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden fit-screen-card"
+            className="bg-gradient-to-b from-purple-50 via-violet-50 to-purple-100/60 rounded-3xl border-3 border-purple-400 p-5 sm:p-6 shadow-md hover:shadow-xl transition-all cursor-pointer flex flex-col justify-between relative overflow-hidden min-h-[300px]"
             onClick={() => handleLaunchActivity('lesson-4', 'فِعْلُ الْأَمْرِ')}
           >
             {progress.completedLessons.includes('lesson-4') && (
-              <div className="absolute top-2.5 left-2.5 bg-emerald-500 text-white rounded-full p-1 shadow-sm">
-                <CheckCircle2 size={14} />
+              <div className="absolute top-3 left-3 bg-emerald-500 text-white rounded-full p-1.5 shadow-sm">
+                <CheckCircle2 size={16} />
               </div>
             )}
 
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <Megaphone size={26} className="text-purple-600" />
-                <span className="bg-purple-200 text-purple-950 text-[11px] font-black px-2.5 py-0.5 rounded-full font-tajawal">
+              <div className="flex items-center justify-between mb-3">
+                <div className="w-12 h-12 rounded-2xl bg-purple-100 border border-purple-200 flex items-center justify-center text-purple-700 shadow-xs">
+                  <Megaphone size={28} />
+                </div>
+                <span className="bg-purple-200 text-purple-950 text-xs sm:text-sm font-black px-3.5 py-1 rounded-full font-tajawal shadow-xs">
                   طَلَبُ عَمَلٍ
                 </span>
               </div>
 
-              <h3 className="text-xl font-black font-baloo text-purple-950 mb-0.5 tashkeel-text">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-purple-950 mb-2 tashkeel-text leading-tight">
                 فِعْلُ الْأَمْرِ
               </h3>
-              <p className="text-[11px] font-bold font-tajawal text-slate-600 mb-3 leading-relaxed">
+              <p className="text-sm sm:text-base font-bold font-tajawal text-slate-700 mb-4 leading-relaxed tashkeel-text">
                 طَلَبُ الْقِيَامِ بِعَمَلٍ فِي الْمُسْتَقْبَلِ بِصِيغَةِ الطَّلَبِ الْمُؤَدَّبِ.
               </p>
 
               {/* Quick Examples Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                <span className="bg-white text-purple-900 border border-purple-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+              <div className="flex flex-wrap gap-2 mb-4">
+                <span className="bg-white text-purple-950 border-2 border-purple-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   اُكْتُبْ
                 </span>
-                <span className="bg-white text-purple-900 border border-purple-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+                <span className="bg-white text-purple-950 border-2 border-purple-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   اِلْعَبْ
                 </span>
-                <span className="bg-white text-purple-900 border border-purple-300 px-2 py-0.5 rounded-lg text-sm font-black font-baloo tashkeel-text shadow-xs">
+                <span className="bg-white text-purple-950 border-2 border-purple-300 px-3.5 py-1.5 rounded-xl text-base sm:text-lg font-black font-baloo tashkeel-text shadow-sm hover:scale-105 transition-transform">
                   نَمْ بَاكِرًا
                 </span>
               </div>
             </div>
 
-            <div className="pt-2 border-t border-purple-200/80 flex items-center justify-between">
-              <span className="text-xs font-black font-tajawal text-purple-800">
+            <div className="pt-3.5 border-t-2 border-purple-200/90 flex items-center justify-between">
+              <span className="text-sm sm:text-base font-black font-tajawal text-purple-900">
                 {progress.completedLessons.includes('lesson-4') ? 'مُكْتَمَلٌ' : 'اِبْدَأِ الدَّرْسَ'}
               </span>
-              <div className="w-7 h-7 rounded-full bg-purple-600 text-white flex items-center justify-center shadow-sm">
-                <ArrowLeft size={14} />
+              <div className="w-9 h-9 rounded-full bg-purple-600 hover:bg-purple-700 text-white flex items-center justify-center shadow-md">
+                <ArrowLeft size={18} />
               </div>
             </div>
           </motion.div>

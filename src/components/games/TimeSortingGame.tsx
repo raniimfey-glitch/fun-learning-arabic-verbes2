@@ -166,28 +166,30 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
           </motion.div>
 
           {/* 3 Sorting Boxes (Buttons) */}
-          <div className="grid grid-cols-3 gap-2 sm:gap-3 pt-2 flex-shrink-0">
+          <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-2 flex-shrink-0">
             {/* Past Box */}
             <motion.button
               id="sort-box-past"
-              whileHover={{ scale: selectedTense ? 1 : 1.02 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: selectedTense ? 1 : 1.03 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => handleChooseTense('past')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-2.5 sm:p-4 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
+              className={`p-3.5 sm:p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 selectedTense === 'past'
                   ? currentItem.tense === 'past'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
                     : 'bg-rose-100 border-rose-400'
-                  : 'bg-gradient-to-b from-teal-50 to-teal-100/70 border-teal-300 hover:border-teal-500 shadow-sm'
+                  : 'bg-gradient-to-b from-teal-50 to-teal-100/80 border-teal-400 hover:border-teal-600 shadow-sm hover:shadow-md'
               }`}
             >
-              <History size={26} className="text-teal-600" />
-              <h4 className="text-sm sm:text-base font-black font-baloo text-teal-950">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-teal-200/80 flex items-center justify-center text-teal-800">
+                <History size={28} />
+              </div>
+              <h4 className="text-base sm:text-xl font-black font-baloo text-teal-950 leading-tight">
                 الْفِعْلُ الْمَاضِي
               </h4>
-              <span className="text-[10px] font-bold font-tajawal text-teal-800 bg-teal-200/80 px-2 py-0.5 rounded-full">
+              <span className="text-xs sm:text-sm font-bold font-tajawal text-teal-900 bg-teal-200 px-3 py-0.5 rounded-full shadow-xs">
                 حَدَثَ وَانْتَهَى
               </span>
             </motion.button>
@@ -195,24 +197,26 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
             {/* Present Box */}
             <motion.button
               id="sort-box-present"
-              whileHover={{ scale: selectedTense ? 1 : 1.02 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: selectedTense ? 1 : 1.03 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => handleChooseTense('present')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-2.5 sm:p-4 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
+              className={`p-3.5 sm:p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 selectedTense === 'present'
                   ? currentItem.tense === 'present'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
                     : 'bg-rose-100 border-rose-400'
-                  : 'bg-gradient-to-b from-sky-50 to-sky-100/70 border-sky-300 hover:border-sky-500 shadow-sm'
+                  : 'bg-gradient-to-b from-sky-50 to-sky-100/80 border-sky-400 hover:border-sky-600 shadow-sm hover:shadow-md'
               }`}
             >
-              <Clock size={26} className="text-sky-600" />
-              <h4 className="text-sm sm:text-base font-black font-baloo text-sky-950">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sky-200/80 flex items-center justify-center text-sky-800">
+                <Clock size={28} />
+              </div>
+              <h4 className="text-base sm:text-xl font-black font-baloo text-sky-950 leading-tight">
                 الْفِعْلُ الْمُضَارِعُ
               </h4>
-              <span className="text-[10px] font-bold font-tajawal text-sky-800 bg-sky-200/80 px-2 py-0.5 rounded-full">
+              <span className="text-xs sm:text-sm font-bold font-tajawal text-sky-900 bg-sky-200 px-3 py-0.5 rounded-full shadow-xs">
                 يَحْدُثُ الْآنَ
               </span>
             </motion.button>
@@ -220,24 +224,26 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
             {/* Imperative Box */}
             <motion.button
               id="sort-box-imperative"
-              whileHover={{ scale: selectedTense ? 1 : 1.02 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: selectedTense ? 1 : 1.03 }}
+              whileTap={{ scale: 0.96 }}
               onClick={() => handleChooseTense('imperative')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-2.5 sm:p-4 rounded-2xl border-2 flex flex-col items-center justify-center gap-1 cursor-pointer transition-all ${
+              className={`p-3.5 sm:p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${
                 selectedTense === 'imperative'
                   ? currentItem.tense === 'imperative'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
                     : 'bg-rose-100 border-rose-400'
-                  : 'bg-gradient-to-b from-purple-50 to-purple-100/70 border-purple-300 hover:border-purple-500 shadow-sm'
+                  : 'bg-gradient-to-b from-purple-50 to-purple-100/80 border-purple-400 hover:border-purple-600 shadow-sm hover:shadow-md'
               }`}
             >
-              <Megaphone size={26} className="text-purple-600" />
-              <h4 className="text-sm sm:text-base font-black font-baloo text-purple-950">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-purple-200/80 flex items-center justify-center text-purple-800">
+                <Megaphone size={28} />
+              </div>
+              <h4 className="text-base sm:text-xl font-black font-baloo text-purple-950 leading-tight">
                 فِعْلُ الْأَمْرِ
               </h4>
-              <span className="text-[10px] font-bold font-tajawal text-purple-800 bg-purple-200/80 px-2 py-0.5 rounded-full">
+              <span className="text-xs sm:text-sm font-bold font-tajawal text-purple-900 bg-purple-200 px-3 py-0.5 rounded-full shadow-xs">
                 طَلَبُ الْعَمَلِ
               </span>
             </motion.button>
