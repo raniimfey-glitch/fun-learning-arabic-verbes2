@@ -108,21 +108,21 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
       {/* Header */}
       <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-indigo-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-1.5 mb-0.5">
-            <span className="bg-indigo-100 text-indigo-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="bg-indigo-100 text-indigo-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-indigo-300 shadow-xs">
               لُعْبَةُ إِكْمَالِ الْجُمَلِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-indigo-700 text-[10px] sm:text-xs font-bold font-tajawal">
-              {questionIndex + 1} مِنْ {SENTENCE_COMPLETION_QUESTIONS.length}
+            <span className="text-indigo-800 text-xs sm:text-sm font-extrabold font-tajawal">
+              السُّؤَالُ {questionIndex + 1} مِنْ {SENTENCE_COMPLETION_QUESTIONS.length}
             </span>
           </div>
-          <h2 className="text-base sm:text-xl font-black text-indigo-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-indigo-950 font-baloo leading-tight tashkeel-text">
             اِخْتَرِ الْفِعْلَ الْمُنَاسِبَ لِمَلْءِ الْفَرَاغِ:
           </h2>
         </div>
 
-        <div className="flex items-center gap-1.5 flex-shrink-0">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={() => {
               if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -130,14 +130,14 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={16} />
             <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={`${currentQ.sentenceBefore} فَرَاغٌ ${currentQ.sentenceAfter}`}
-            size="sm"
+            size="md"
             variant="secondary"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
@@ -152,11 +152,11 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
             key={currentQ.id}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-br from-indigo-50 via-sky-50 to-indigo-50 border-2 sm:border-3 border-indigo-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center shadow-inner flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
+            className="bg-gradient-to-br from-indigo-50 via-sky-50 to-indigo-50 border-3 border-indigo-200 rounded-3xl p-6 sm:p-8 text-center shadow-inner flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
           >
-            <div className="text-lg sm:text-2xl font-black font-baloo text-slate-900 leading-relaxed tashkeel-text flex flex-wrap items-center justify-center gap-1.5">
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-slate-950 leading-loose tashkeel-text flex flex-wrap items-center justify-center gap-2.5 sm:gap-4">
               <span>{currentQ.sentenceBefore}</span>
-              <span className="inline-block min-w-[90px] sm:min-w-[120px] px-3 py-1 rounded-xl border-2 border-dashed border-indigo-400 bg-white text-indigo-700 font-extrabold shadow-2xs">
+              <span className="inline-block min-w-[120px] sm:min-w-[170px] px-4 sm:px-6 py-1.5 sm:py-2 rounded-2xl border-3 border-dashed border-indigo-500 bg-white text-indigo-800 font-black shadow-sm text-2xl sm:text-4xl">
                 {selectedOption || '......'}
               </span>
               <span>{currentQ.sentenceAfter}</span>
@@ -164,7 +164,7 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
           </motion.div>
 
           {/* Options Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 pt-2 flex-shrink-0">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-3 flex-shrink-0">
             {currentQ.options.map(opt => {
               const isSelected = selectedOption === opt;
               const isCorrect = opt === currentQ.correctVerb;
@@ -178,17 +178,17 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
                   onClick={() => handleSelectOption(opt)}
                   type="button"
                   disabled={selectedOption !== null}
-                  className={`p-4 sm:p-5 rounded-3xl border-3 text-xl sm:text-2xl font-black font-baloo transition-all cursor-pointer select-none tashkeel-text flex items-center justify-center gap-2 ${
+                  className={`p-5 sm:p-6 rounded-3xl border-3 text-2xl sm:text-3xl lg:text-4xl font-black font-baloo transition-all cursor-pointer select-none tashkeel-text flex items-center justify-center gap-2 shadow-sm ${
                     isSelected
                       ? isCorrect
                         ? 'bg-emerald-100 border-emerald-500 text-emerald-950 shadow-md ring-4 ring-emerald-300'
                         : 'bg-rose-100 border-rose-400 text-rose-950'
-                      : 'bg-white hover:bg-indigo-50 border-indigo-200 hover:border-indigo-400 text-slate-800 shadow-sm'
+                      : 'bg-white hover:bg-indigo-50 border-indigo-200 hover:border-indigo-400 text-slate-900 shadow-sm'
                   }`}
                 >
                   <span>{opt}</span>
                   {isSelected && (
-                    isCorrect ? <Check size={20} className="text-emerald-600" /> : <X size={20} className="text-rose-600" />
+                    isCorrect ? <Check size={24} className="text-emerald-600 stroke-[3]" /> : <X size={24} className="text-rose-600 stroke-[3]" />
                   )}
                 </motion.button>
               );
@@ -210,12 +210,12 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
                 <button
                   type="button"
                   onClick={() => ArabicSpeechEngine.speak(feedback.text, progress.speechRate)}
-                  className="p-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-indigo-700 cursor-pointer flex-shrink-0 shadow-xs mt-0.5"
+                  className="p-2.5 rounded-2xl bg-white border-2 border-slate-200 hover:bg-slate-50 text-indigo-700 cursor-pointer flex-shrink-0 shadow-xs mt-0.5"
                   title="إِعَادَةُ الِاسْتِمَاعِ لِلشَّرْحِ"
                 >
-                  <Volume2 size={20} />
+                  <Volume2 size={24} />
                 </button>
-                <p className="text-base sm:text-lg font-tajawal font-bold leading-relaxed tashkeel-text">
+                <p className="text-lg sm:text-2xl font-tajawal font-black leading-relaxed tashkeel-text">
                   {feedback.text}
                 </p>
               </div>
@@ -224,10 +224,10 @@ export const SentenceCompletionGame: React.FC<SentenceCompletionGameProps> = ({
               <button
                 type="button"
                 onClick={goToNextQuestion}
-                className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-tajawal font-bold text-base rounded-2xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
+                className="w-full sm:w-auto px-7 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-tajawal font-black text-lg rounded-2xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
               >
                 <span>{questionIndex + 1 < SENTENCE_COMPLETION_QUESTIONS.length ? 'الْجُمْلَةُ التَّالِيَةُ' : 'عَرْضُ النَّتِيجَةِ'}</span>
-                <ArrowLeft size={18} />
+                <ArrowLeft size={20} />
               </button>
             </motion.div>
           )}

@@ -89,27 +89,27 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         className="bg-white rounded-3xl border-3 border-amber-200 shadow-md p-4 sm:p-8 space-y-6 sm:space-y-8"
       >
         {/* Header of Active Lesson */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b-2 border-amber-100">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-5 border-b-2 border-amber-100">
           <div>
             {isLessonCompleted && (
-              <div className="flex items-center gap-2 mb-1">
-                <span className="bg-emerald-100 text-emerald-800 text-xs font-black px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                  <CheckCircle2 size={14} />
+              <div className="flex items-center gap-2 mb-2">
+                <span className="bg-emerald-100 text-emerald-900 text-sm sm:text-base font-black px-3.5 py-1 rounded-full flex items-center gap-1.5 border border-emerald-300 shadow-xs">
+                  <CheckCircle2 size={18} />
                   <span>دَرْسٌ مُكْتَمَلٌ</span>
                 </span>
               </div>
             )}
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-amber-950 font-baloo leading-tight tashkeel-text">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
               {activeLesson.title}
             </h2>
             {activeLesson.subtitle ? (
-              <p className="text-slate-600 font-tajawal font-medium text-sm sm:text-base mt-1">
+              <p className="text-slate-700 font-tajawal font-bold text-base sm:text-xl mt-2 leading-relaxed tashkeel-text">
                 {activeLesson.subtitle}
               </p>
             ) : null}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <SoundButton
               textToSpeak={`${activeLesson.title}. ${activeLesson.subtitle ? activeLesson.subtitle + '. ' : ''}${activeLesson.conceptSummary}`}
               size="lg"
@@ -121,23 +121,26 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         </div>
 
         {/* Golden Rule Box */}
-        <div className="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 rounded-3xl p-4 sm:p-6 border-2 border-amber-300 shadow-inner">
-          <div className="flex items-center gap-2 text-amber-900 font-bold mb-3">
-            <Sparkles size={20} className="text-amber-500" />
-            <span className="font-baloo text-lg sm:text-xl">قَاعِدَةٌ ذَهَبِيَّةٌ لِلْأَبْطَالِ</span>
+        <div className="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 rounded-3xl p-5 sm:p-7 border-3 border-amber-300 shadow-sm">
+          <div className="flex items-center gap-2.5 text-amber-950 font-black mb-3">
+            <Sparkles size={26} className="text-amber-500" />
+            <span className="font-baloo text-xl sm:text-2xl">قَاعِدَةٌ ذَهَبِيَّةٌ لِلْأَبْطَالِ</span>
           </div>
-          <p className="text-base sm:text-xl text-slate-800 font-bold font-baloo leading-relaxed tashkeel-text mb-4">
-            {activeLesson.conceptSummary}
-          </p>
+          
+          <div className="bg-white/90 p-4 sm:p-5 rounded-2xl border-2 border-amber-200 shadow-xs mb-4">
+            <p className="text-xl sm:text-2xl lg:text-3xl text-amber-950 font-black font-baloo leading-loose tashkeel-text">
+              {activeLesson.conceptSummary}
+            </p>
+          </div>
 
           {/* List of rules */}
-          <div className="grid sm:grid-cols-2 gap-2.5">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
             {activeLesson.ruleExplanation.map((rule, idx) => (
               <div
                 key={idx}
-                className="flex items-center gap-2.5 bg-white/90 p-3 rounded-2xl border border-amber-200 text-slate-700 font-tajawal font-bold text-sm sm:text-base shadow-xs"
+                className="flex items-start gap-3 bg-white/95 p-4 rounded-2xl border-2 border-amber-200 text-slate-900 font-tajawal font-extrabold text-base sm:text-xl shadow-xs leading-loose"
               >
-                <span className="w-6 h-6 rounded-full bg-amber-400 text-white flex items-center justify-center text-xs font-black flex-shrink-0">
+                <span className="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm sm:text-base font-black flex-shrink-0 mt-1 shadow-xs">
                   {idx + 1}
                 </span>
                 <span className="tashkeel-text">{rule}</span>
@@ -149,15 +152,15 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         {/* Interactive Verb Examples Cards */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <BookOpen size={22} className="text-amber-600" />
-              <h3 className="text-xl font-bold font-baloo text-slate-800">
+            <div className="flex items-center gap-2.5">
+              <BookOpen size={26} className="text-amber-600" />
+              <h3 className="text-xl sm:text-2xl font-black font-baloo text-slate-900">
                 أَمْثِلَةٌ تَفَاعُلِيَّةٌ مَعَ النُّطْقِ الْوَاضِحِ (اِضْغَطْ لِتَسْتَمِعَ):
               </h3>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {activeLesson.examples.map(example => {
               const isActive = activeVerbCard === example.id;
 
@@ -168,41 +171,41 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
                   onClick={() => handleVerbCardClick(example)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className={`p-4 rounded-3xl border-3 cursor-pointer transition-all flex flex-col justify-between ${
+                  className={`p-5 rounded-3xl border-3 cursor-pointer transition-all flex flex-col justify-between ${
                     isActive
-                      ? 'bg-amber-100/90 border-amber-500 shadow-lg ring-4 ring-amber-300'
-                      : 'bg-slate-50 hover:bg-amber-50/60 border-slate-200 hover:border-amber-300 shadow-sm'
+                      ? 'bg-amber-100/95 border-amber-500 shadow-xl ring-4 ring-amber-300'
+                      : 'bg-slate-50 hover:bg-amber-50/70 border-slate-200 hover:border-amber-400 shadow-sm'
                   }`}
                 >
                   <div>
                     {/* Header badge */}
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="w-8 h-8 rounded-full bg-amber-200/80 flex items-center justify-center">
-                        <Sparkles size={16} className="text-amber-800" />
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="w-9 h-9 rounded-2xl bg-amber-200 flex items-center justify-center text-amber-900">
+                        <Sparkles size={18} />
                       </div>
-                      <span className="text-xs bg-amber-200 text-amber-900 font-bold px-2.5 py-0.5 rounded-full font-tajawal">
+                      <span className="text-xs sm:text-sm bg-amber-200 text-amber-950 font-black px-3 py-1 rounded-full font-tajawal shadow-xs">
                         {example.tenseNameAr}
                       </span>
                     </div>
 
                     {/* Vocalized Word */}
-                    <h4 className="text-2xl font-black text-amber-950 font-baloo tashkeel-text">
+                    <h4 className="text-3xl sm:text-4xl lg:text-5xl font-black text-amber-950 font-baloo tashkeel-text my-1 leading-tight">
                       {example.tashkeel}
                     </h4>
-                    <p className="text-xs font-bold text-slate-500 font-tajawal mt-0.5">
+                    <p className="text-sm sm:text-base font-bold text-slate-600 font-tajawal mt-1">
                       {example.meaningAr}
                     </p>
                   </div>
 
                   {/* Example Sentence with Audio Icon */}
-                  <div className="mt-3 pt-3 border-t border-slate-200/80">
-                    <p className="text-sm font-bold text-slate-700 font-baloo leading-relaxed tashkeel-text">
+                  <div className="mt-4 pt-4 border-t-2 border-slate-200/90">
+                    <p className="text-base sm:text-xl font-black text-slate-800 font-baloo leading-loose tashkeel-text">
                       {example.exampleSentence}
                     </p>
-                    <div className="mt-2 flex items-center justify-end">
+                    <div className="mt-3 flex items-center justify-end">
                       <SoundButton
                         textToSpeak={`${example.tashkeel}. ${example.exampleSentence}`}
-                        size="sm"
+                        size="md"
                         variant="amber"
                         rate={progress.speechRate}
                       />
@@ -217,13 +220,13 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
         {/* Interactive Micro-Practice Box (Earn Stars) */}
         <div className="bg-gradient-to-br from-sky-50 to-indigo-50 border-3 border-sky-300 rounded-3xl p-5 sm:p-7 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-            <div className="flex items-center gap-2">
-              <Star size={24} className="text-sky-600 fill-sky-400" />
+            <div className="flex items-center gap-2.5">
+              <Star size={28} className="text-sky-600 fill-sky-400 flex-shrink-0" />
               <div>
-                <h3 className="text-xl font-bold font-baloo text-sky-950">
+                <h3 className="text-2xl sm:text-3xl font-black font-baloo text-sky-950">
                   تَدْرِيبُ الْبَطَلِ الصَّغِيرِ (اِرْبَحْ 15 نَجْمَةً!):
                 </h3>
-                <p className="text-sm font-tajawal font-bold text-sky-800">
+                <p className="text-base sm:text-lg font-tajawal font-extrabold text-sky-900 mt-1 leading-relaxed tashkeel-text">
                   {activeLesson.interactiveDemo.prompt}
                 </p>
               </div>
@@ -239,7 +242,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
           </div>
 
           {/* Clickable Word Pills */}
-          <div className="flex flex-wrap gap-2.5 sm:gap-3.5 my-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4 my-4">
             {activeLesson.interactiveDemo.items.map(item => {
               const isSelected = !!selectedDemoAnswers[item.id];
 
@@ -249,17 +252,17 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
                   id={`demo-btn-${item.id}`}
                   onClick={() => handleDemoItemClick(item)}
                   type="button"
-                  className={`text-lg sm:text-xl font-black font-baloo px-5 py-3 rounded-2xl border-2 transition-all cursor-pointer flex items-center gap-2 tashkeel-text ${
+                  className={`text-xl sm:text-3xl font-black font-baloo px-6 sm:px-8 py-3.5 sm:py-4 rounded-2xl sm:rounded-3xl border-3 transition-all cursor-pointer flex items-center gap-2.5 tashkeel-text shadow-sm ${
                     isSelected
                       ? item.isCorrect
                         ? 'bg-emerald-500 text-white border-emerald-600 shadow-md scale-105'
                         : 'bg-rose-500 text-white border-rose-600 shadow-md'
-                      : 'bg-white text-slate-800 border-sky-200 hover:border-sky-400 hover:bg-sky-100/50 shadow-sm'
+                      : 'bg-white text-slate-900 border-sky-300 hover:border-sky-500 hover:bg-sky-100/60'
                   }`}
                 >
                   <span>{item.text}</span>
                   {isSelected && (
-                    item.isCorrect ? <Check size={18} /> : <X size={18} />
+                    item.isCorrect ? <Check size={22} className="stroke-[3]" /> : <X size={22} className="stroke-[3]" />
                   )}
                 </button>
               );
@@ -271,10 +274,10 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
             <motion.div
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-white p-3.5 rounded-2xl border-2 border-sky-300 text-sky-950 font-bold font-tajawal text-base flex items-center justify-between gap-2 shadow-xs"
+              className="bg-white p-4 sm:p-5 rounded-2xl border-2 border-sky-300 text-sky-950 font-black font-tajawal text-lg sm:text-xl flex items-center justify-between gap-3 shadow-xs leading-relaxed"
             >
               <span>{demoFeedback}</span>
-              <SoundButton textToSpeak={demoFeedback} size="sm" variant="ghost" rate={progress.speechRate} />
+              <SoundButton textToSpeak={demoFeedback} size="md" variant="ghost" rate={progress.speechRate} />
             </motion.div>
           )}
         </div>
@@ -285,9 +288,9 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
             <button
               onClick={onBackToMenu}
               type="button"
-              className="bg-amber-100 hover:bg-amber-200 text-amber-950 font-tajawal font-bold px-5 py-2.5 rounded-2xl shadow-xs flex items-center gap-2 transition-all cursor-pointer"
+              className="bg-amber-100 hover:bg-amber-200 text-amber-950 font-tajawal font-black text-base sm:text-lg px-6 py-3 rounded-2xl shadow-xs flex items-center gap-2 transition-all cursor-pointer"
             >
-              <ArrowRight size={16} />
+              <ArrowRight size={18} />
               <span>الْعَوْدَةُ لِلْقَائِمَةِ الرَّئِيسِيَّةِ</span>
             </button>
           )}
@@ -295,10 +298,10 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
           <button
             onClick={onGoToGames}
             type="button"
-            className="bg-sky-500 hover:bg-sky-600 text-white font-tajawal font-bold px-6 py-2.5 rounded-2xl shadow-md flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer mr-auto"
+            className="bg-sky-500 hover:bg-sky-600 text-white font-tajawal font-black text-base sm:text-lg px-7 py-3 rounded-2xl shadow-md flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 cursor-pointer mr-auto btn-chunky"
           >
             <span>اِنْتَقِلْ إِلَى أَلْعَابِ الْأَفْعَالِ</span>
-            <ArrowLeft size={16} />
+            <ArrowLeft size={18} />
           </button>
         </div>
       </motion.div>

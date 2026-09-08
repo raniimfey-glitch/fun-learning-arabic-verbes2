@@ -107,41 +107,41 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
   return (
     <div className="space-y-3.5 pb-4 w-full max-w-[900px] mx-auto">
       {/* 🧭 Top Navigation Bar */}
-      <div className="bg-white rounded-2xl border-2 border-amber-300 shadow-sm p-2.5 sm:p-3 flex items-center justify-between gap-2">
+      <div className="bg-white rounded-3xl border-3 border-amber-300 shadow-sm p-3 sm:p-4 flex items-center justify-between gap-3">
         {/* Back to Home Hub Button */}
         <button
           id="btn-catalog-back-home"
           onClick={handleReturnHome}
           type="button"
-          className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-xs sm:text-sm px-3.5 sm:px-4 py-2 rounded-xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
+          className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-black text-sm sm:text-base px-4 sm:px-5 py-2.5 rounded-2xl shadow-xs flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
         >
-          <Home size={16} />
+          <Home size={18} />
           <span>الْوَاجِهَةُ الرَّئِيسِيَّةُ</span>
         </button>
 
         {/* Title */}
         <div className="text-center truncate px-2">
-          <div className="flex items-center justify-center gap-1.5">
-            <h1 className="text-base sm:text-xl font-black font-baloo text-amber-950 truncate">
+          <div className="flex items-center justify-center gap-2">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-black font-baloo text-amber-950 truncate">
               أَلْعَابُ الْأَفْعَالِ التَّفَاعُلِيَّةُ
             </h1>
           </div>
-          <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full font-tajawal inline-block">
+          <span className="text-xs sm:text-sm font-black text-amber-900 bg-amber-100 px-3 py-0.5 rounded-full font-tajawal inline-block mt-0.5">
             5 أَلْعَابٍ تَعْلِيمِيَّةٍ مُمْتِعَةٍ
           </span>
         </div>
 
         {/* Stars Counter & Audio */}
-        <div className="flex items-center gap-1.5 flex-shrink-0">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <SoundButton
             textToSpeak="قَائِمَةُ أَلْعَابِ الْأَفْعَالِ التَّفَاعُلِيَّةِ. اخْتَرِ اللَّعْبَةَ الَّتِي تُرِيدُهَا لِتَبْدَأَ التَّحَدِّيَ وَتَرْبَحَ النُّجُومَ!"
-            size="sm"
+            size="md"
             variant="amber"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
           />
-          <div className="bg-amber-50 border border-amber-300 px-2.5 py-1 rounded-xl flex items-center gap-1 text-amber-900 font-black font-tajawal text-xs sm:text-sm">
-            <Star className="text-amber-500 fill-amber-500" size={15} />
+          <div className="bg-amber-50 border-2 border-amber-300 px-3.5 py-1.5 rounded-2xl flex items-center gap-1.5 text-amber-950 font-black font-tajawal text-sm sm:text-base shadow-xs">
+            <Star className="text-amber-500 fill-amber-500" size={18} />
             <span>{progress.stars}</span>
           </div>
         </div>
@@ -154,7 +154,7 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
       />
 
       {/* The 5 Interactive Game Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
         {gamesList.map((game) => {
           const userScore = progress.gameScores[game.scoreKey] || 0;
           const isGrandQuiz = game.id === 'game-quiz';
@@ -166,33 +166,33 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
               id={`game-catalog-card-${game.id}`}
               whileHover={{ scale: 1.02, y: -4 }}
               whileTap={{ scale: 0.98 }}
-              className={`rounded-3xl border-3 ${game.borderCol} ${game.bgGradient} p-5 sm:p-7 shadow-md hover:shadow-xl transition-all flex flex-col justify-between relative group ${
+              className={`rounded-3xl border-3 ${game.borderCol} ${game.bgGradient} p-6 sm:p-8 shadow-md hover:shadow-xl transition-all flex flex-col justify-between relative group ${
                 isGrandQuiz ? 'md:col-span-2' : ''
               }`}
             >
               <div>
                 {/* Top Badge & Star Reward */}
                 <div className="flex items-center justify-between mb-3">
-                  <span className="bg-white/90 text-slate-800 text-xs font-black px-3 py-1 rounded-full font-tajawal border border-slate-200 shadow-xs">
+                  <span className="bg-white/95 text-slate-900 text-xs sm:text-sm font-black px-3.5 py-1 rounded-full font-tajawal border border-slate-300 shadow-xs">
                     {game.badge}
                   </span>
 
-                  <div className="flex items-center gap-1.5 bg-white/90 border border-amber-300 px-3 py-1 rounded-xl text-amber-900 font-black text-xs font-tajawal shadow-xs">
-                    <Star size={14} className="text-amber-500 fill-amber-500" />
+                  <div className="flex items-center gap-1.5 bg-white/95 border-2 border-amber-300 px-3.5 py-1 rounded-2xl text-amber-950 font-black text-xs sm:text-sm font-tajawal shadow-xs">
+                    <Star size={16} className="text-amber-500 fill-amber-500" />
                     <span>+{game.starsReward} نَجْمَةً</span>
                   </div>
                 </div>
 
                 {/* Card Icon & Titles */}
-                <div className="flex items-start gap-4 mb-3">
-                  <div className="p-3 bg-white rounded-3xl shadow-sm border border-slate-100 flex-shrink-0 group-hover:scale-110 transition-transform">
-                    <IconComp size={36} className="text-amber-700" />
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="p-3.5 bg-white rounded-3xl shadow-sm border border-slate-200 flex-shrink-0 group-hover:scale-110 transition-transform">
+                    <IconComp size={40} className="text-amber-700" />
                   </div>
                   <div>
-                    <h2 className={`text-2xl sm:text-3xl font-black font-baloo ${game.color} leading-tight tashkeel-text`}>
+                    <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-black font-baloo ${game.color} leading-tight tashkeel-text`}>
                       {game.title}
                     </h2>
-                    <p className="text-xs sm:text-sm font-bold font-tajawal text-slate-600 mt-1.5 leading-relaxed">
+                    <p className="text-sm sm:text-base font-bold font-tajawal text-slate-700 mt-2 leading-relaxed">
                       {game.subtitle}
                     </p>
                   </div>
@@ -201,8 +201,8 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
 
               {/* Progress & Launch Button */}
               <div className="mt-4 pt-4 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-1.5 text-xs font-bold font-tajawal text-slate-600">
-                  <Trophy size={16} className="text-amber-500" />
+                <div className="flex items-center gap-2 text-sm sm:text-base font-black font-tajawal text-slate-700">
+                  <Trophy size={18} className="text-amber-500" />
                   <span>
                     {userScore > 0 ? `أُنْجِزَتْ ${userScore} مَرَّاتٍ بِتَفَوُّقٍ` : 'لَمْ تُجَرَّبْ بَعْدُ'}
                   </span>
@@ -212,9 +212,9 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
                   id={`btn-launch-${game.id}`}
                   onClick={() => handleSelect(game.id, game.title)}
                   type="button"
-                  className={`${game.btnBg} text-white font-tajawal font-black text-sm sm:text-base px-6 py-3 rounded-2xl shadow-md hover:shadow-lg flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky`}
+                  className={`${game.btnBg} text-white font-tajawal font-black text-base sm:text-lg px-7 py-3.5 rounded-2xl shadow-md hover:shadow-lg flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky`}
                 >
-                  <Play size={18} className="fill-white" />
+                  <Play size={20} className="fill-white" />
                   <span>{game.btnLabel}</span>
                 </button>
               </div>
@@ -231,20 +231,20 @@ export const GamesCatalogView: React.FC<GamesCatalogViewProps> = ({
               soundEffects.playClick();
               onGoToRewards();
             }}
-            className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-3xl p-5 sm:p-6 shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-between hover:scale-[1.01]"
+            className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-lg transition-all cursor-pointer flex items-center justify-between hover:scale-[1.01]"
           >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
-                <Award size={26} className="text-white" />
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
+                <Award size={32} className="text-white" />
               </div>
               <div>
-                <h3 className="text-xl font-black font-baloo">شَاهِدْ شَهَادَةَ التَّفَوُّقِ وَأَلْبُومَ الْمُلْصَقَاتِ</h3>
-                <p className="text-xs font-bold font-tajawal text-emerald-100">
+                <h3 className="text-2xl sm:text-3xl font-black font-baloo">شَاهِدْ شَهَادَةَ التَّفَوُّقِ وَأَلْبُومَ الْمُلْصَقَاتِ</h3>
+                <p className="text-sm sm:text-base font-bold font-tajawal text-emerald-100 mt-1">
                   كُلَّمَا لَعِبْتَ أَلْعَابًا أَكْثَرَ، فَتَحْتَ شَارَاتٍ وَمُلْصَقَاتٍ جَدِيدَةً!
                 </p>
               </div>
             </div>
-            <ArrowLeft size={22} className="text-emerald-100" />
+            <ArrowLeft size={26} className="text-emerald-100" />
           </div>
         </div>
       )}

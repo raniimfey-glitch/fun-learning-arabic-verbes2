@@ -108,21 +108,21 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
       {/* Header */}
       <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-teal-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-1.5 mb-0.5">
-            <span className="bg-teal-100 text-teal-900 text-[10px] sm:text-xs font-black px-2.5 py-0.5 rounded-full font-tajawal">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="bg-teal-100 text-teal-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-teal-300 shadow-xs">
               لُعْبَةُ صُنْدُوقِ الْأَزْمِنَةِ
             </span>
             <span className="text-slate-400">•</span>
-            <span className="text-teal-700 text-[10px] sm:text-xs font-bold font-tajawal">
-              {currentIndex + 1} مِنْ {TIME_SORTING_ITEMS.length}
+            <span className="text-teal-800 text-xs sm:text-sm font-extrabold font-tajawal">
+              الْكَلِمَةُ {currentIndex + 1} مِنْ {TIME_SORTING_ITEMS.length}
             </span>
           </div>
-          <h2 className="text-base sm:text-xl font-black text-teal-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-teal-950 font-baloo leading-tight tashkeel-text">
             ضَعِ الْفِعْلَ فِي صُنْدُوقِ الزَّمَنِ الْمُنَاسِبِ:
           </h2>
         </div>
 
-        <div className="flex items-center gap-1.5 flex-shrink-0">
+        <div className="flex items-center gap-2 flex-shrink-0">
           <button
             onClick={() => {
               if (autoAdvanceTimerRef.current) clearTimeout(autoAdvanceTimerRef.current);
@@ -130,14 +130,14 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-2.5 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold font-tajawal flex items-center gap-1 cursor-pointer"
+            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
           >
-            <ArrowLeft size={14} />
+            <ArrowLeft size={16} />
             <span className="hidden xs:inline">الْأَلْعَابُ</span>
           </button>
           <SoundButton
             textToSpeak={`ضَعِ الْفِعْلَ: ${currentItem?.word || ''} فِي صُنْدُوقِهِ الصَّحِيحِ.`}
-            size="sm"
+            size="md"
             variant="emerald"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
@@ -152,21 +152,21 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
             key={currentItem.id}
             initial={{ scale: 0.8, opacity: 0, y: -10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="bg-gradient-to-tr from-amber-100 via-orange-50 to-yellow-100 border-3 border-amber-400 rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center shadow-xs max-w-md mx-auto w-full relative overflow-hidden flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
+            className="bg-gradient-to-tr from-amber-100 via-orange-50 to-yellow-100 border-3 border-amber-400 rounded-3xl p-5 sm:p-7 text-center shadow-xs max-w-lg mx-auto w-full relative overflow-hidden flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
           >
-            <h3 className="text-3xl sm:text-4xl font-black font-baloo text-amber-950 tashkeel-text mb-1">
+            <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black font-baloo text-amber-950 tashkeel-text mb-2">
               {currentItem.word}
             </h3>
-            <p className="text-xs sm:text-sm font-bold font-tajawal text-slate-600">
+            <p className="text-sm sm:text-base font-extrabold font-tajawal text-slate-700 bg-white/70 px-4 py-1 rounded-full border border-amber-200 shadow-2xs">
               تَلْمِيحٌ: {currentItem.hint}
             </p>
-            <div className="mt-2 flex justify-center">
-              <SoundButton textToSpeak={currentItem.word} size="sm" variant="amber" rate={progress.speechRate} />
+            <div className="mt-2.5 flex justify-center">
+              <SoundButton textToSpeak={currentItem.word} size="md" variant="amber" rate={progress.speechRate} />
             </div>
           </motion.div>
 
           {/* 3 Sorting Boxes (Buttons) */}
-          <div className="grid grid-cols-3 gap-2.5 sm:gap-4 pt-2 flex-shrink-0">
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 pt-3 flex-shrink-0">
             {/* Past Box */}
             <motion.button
               id="sort-box-past"
@@ -175,7 +175,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               onClick={() => handleChooseTense('past')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-3.5 sm:p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${
+              className={`p-4 sm:p-6 rounded-3xl border-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
                 selectedTense === 'past'
                   ? currentItem.tense === 'past'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
@@ -183,13 +183,13 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
                   : 'bg-gradient-to-b from-teal-50 to-teal-100/80 border-teal-400 hover:border-teal-600 shadow-sm hover:shadow-md'
               }`}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-teal-200/80 flex items-center justify-center text-teal-800">
-                <History size={28} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-teal-200/90 flex items-center justify-center text-teal-800 shadow-2xs">
+                <History size={32} />
               </div>
-              <h4 className="text-base sm:text-xl font-black font-baloo text-teal-950 leading-tight">
+              <h4 className="text-lg sm:text-2xl lg:text-3xl font-black font-baloo text-teal-950 leading-tight">
                 الْفِعْلُ الْمَاضِي
               </h4>
-              <span className="text-xs sm:text-sm font-bold font-tajawal text-teal-900 bg-teal-200 px-3 py-0.5 rounded-full shadow-xs">
+              <span className="text-xs sm:text-base font-black font-tajawal text-teal-950 bg-teal-200 px-3.5 py-1 rounded-full shadow-xs">
                 حَدَثَ وَانْتَهَى
               </span>
             </motion.button>
@@ -202,7 +202,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               onClick={() => handleChooseTense('present')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-3.5 sm:p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${
+              className={`p-4 sm:p-6 rounded-3xl border-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
                 selectedTense === 'present'
                   ? currentItem.tense === 'present'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
@@ -210,13 +210,13 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
                   : 'bg-gradient-to-b from-sky-50 to-sky-100/80 border-sky-400 hover:border-sky-600 shadow-sm hover:shadow-md'
               }`}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-sky-200/80 flex items-center justify-center text-sky-800">
-                <Clock size={28} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-sky-200/90 flex items-center justify-center text-sky-800 shadow-2xs">
+                <Clock size={32} />
               </div>
-              <h4 className="text-base sm:text-xl font-black font-baloo text-sky-950 leading-tight">
+              <h4 className="text-lg sm:text-2xl lg:text-3xl font-black font-baloo text-sky-950 leading-tight">
                 الْفِعْلُ الْمُضَارِعُ
               </h4>
-              <span className="text-xs sm:text-sm font-bold font-tajawal text-sky-900 bg-sky-200 px-3 py-0.5 rounded-full shadow-xs">
+              <span className="text-xs sm:text-base font-black font-tajawal text-sky-950 bg-sky-200 px-3.5 py-1 rounded-full shadow-xs">
                 يَحْدُثُ الْآنَ
               </span>
             </motion.button>
@@ -229,7 +229,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               onClick={() => handleChooseTense('imperative')}
               type="button"
               disabled={selectedTense !== null}
-              className={`p-3.5 sm:p-5 rounded-3xl border-3 flex flex-col items-center justify-center gap-1.5 cursor-pointer transition-all ${
+              className={`p-4 sm:p-6 rounded-3xl border-3 flex flex-col items-center justify-center gap-2 cursor-pointer transition-all ${
                 selectedTense === 'imperative'
                   ? currentItem.tense === 'imperative'
                     ? 'bg-emerald-100 border-emerald-500 ring-4 ring-emerald-300'
@@ -237,13 +237,13 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
                   : 'bg-gradient-to-b from-purple-50 to-purple-100/80 border-purple-400 hover:border-purple-600 shadow-sm hover:shadow-md'
               }`}
             >
-              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-purple-200/80 flex items-center justify-center text-purple-800">
-                <Megaphone size={28} />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-purple-200/90 flex items-center justify-center text-purple-800 shadow-2xs">
+                <Megaphone size={32} />
               </div>
-              <h4 className="text-base sm:text-xl font-black font-baloo text-purple-950 leading-tight">
+              <h4 className="text-lg sm:text-2xl lg:text-3xl font-black font-baloo text-purple-950 leading-tight">
                 فِعْلُ الْأَمْرِ
               </h4>
-              <span className="text-xs sm:text-sm font-bold font-tajawal text-purple-900 bg-purple-200 px-3 py-0.5 rounded-full shadow-xs">
+              <span className="text-xs sm:text-base font-black font-tajawal text-purple-950 bg-purple-200 px-3.5 py-1 rounded-full shadow-xs">
                 طَلَبُ الْعَمَلِ
               </span>
             </motion.button>
@@ -264,12 +264,12 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
                 <button
                   type="button"
                   onClick={() => ArabicSpeechEngine.speak(feedback.text, progress.speechRate)}
-                  className="p-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-teal-700 cursor-pointer flex-shrink-0 shadow-xs mt-0.5"
+                  className="p-2.5 rounded-2xl bg-white border-2 border-slate-200 hover:bg-slate-50 text-teal-800 cursor-pointer flex-shrink-0 shadow-xs mt-0.5"
                   title="إِعَادَةُ الِاسْتِمَاعِ لِلشَّرْحِ"
                 >
-                  <Volume2 size={20} />
+                  <Volume2 size={24} />
                 </button>
-                <p className="text-base sm:text-lg font-tajawal font-bold leading-relaxed tashkeel-text">
+                <p className="text-lg sm:text-2xl font-tajawal font-black leading-relaxed tashkeel-text">
                   {feedback.text}
                 </p>
               </div>
@@ -278,10 +278,10 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               <button
                 type="button"
                 onClick={goToNextItem}
-                className="w-full sm:w-auto px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-tajawal font-bold text-base rounded-2xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
+                className="w-full sm:w-auto px-7 py-3.5 bg-teal-600 hover:bg-teal-700 text-white font-tajawal font-black text-lg rounded-2xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
               >
-                <span>{currentIndex + 1 < TIME_SORTING_ITEMS.length ? 'الْكَلِمَةُ التَّالِيَةُ' : 'عَرْضُ النَّتِيجَةِ'}</span>
-                <ArrowLeft size={18} />
+                <span>{currentIndex + 1 < TIME_SORTING_ITEMS.length ? 'الْفِعْلُ التَّالِي' : 'عَرْضُ النَّتِيجَةِ'}</span>
+                <ArrowLeft size={20} />
               </button>
             </motion.div>
           )}

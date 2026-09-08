@@ -97,18 +97,18 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
   return (
     <div className="flex-1 flex flex-col min-h-0 space-y-3 pb-2 w-full">
       {/* Top Dedicated Navigation Bar with Dual Return Buttons */}
-      <div className="bg-white rounded-2xl border-2 border-amber-300 shadow-sm p-2 sm:p-2.5 flex flex-wrap items-center justify-between gap-2 flex-shrink-0 z-20">
+      <div className="bg-white rounded-3xl border-3 border-amber-300 shadow-sm p-2.5 sm:p-3 flex flex-wrap items-center justify-between gap-3 flex-shrink-0 z-20">
         {/* Navigation Return Buttons */}
-        <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           {/* Main Home Button */}
           <button
             id="btn-back-to-home"
             onClick={handleBackToHomeClick}
             type="button"
-            className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-bold text-xs sm:text-sm px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
+            className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-extrabold text-sm sm:text-base px-3.5 sm:px-4 py-2 rounded-2xl shadow-sm flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer btn-chunky flex-shrink-0"
             title="الرُّجُوعُ إِلَى الْوَاجِهَةِ الرَّئِيسِيَّةِ"
           >
-            <Home size={15} />
+            <Home size={18} />
             <span>الْوَاجِهَةُ الرَّئِيسِيَّةُ</span>
           </button>
 
@@ -118,10 +118,10 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
               id="btn-back-to-games-list"
               onClick={handleBackToGamesMenu}
               type="button"
-              className="bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-tajawal font-bold text-xs sm:text-sm px-3 py-1.5 rounded-xl shadow-xs flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer flex-shrink-0"
+              className="bg-slate-100 hover:bg-slate-200 text-slate-900 border-2 border-slate-300 font-tajawal font-extrabold text-sm sm:text-base px-3.5 sm:px-4 py-2 rounded-2xl shadow-xs flex items-center gap-2 transition-all hover:scale-105 active:scale-95 cursor-pointer flex-shrink-0"
               title="الرُّجُوعُ إِلَى قَائِمَةِ الْأَلْعَابِ"
             >
-              <Gamepad2 size={15} className="text-amber-600" />
+              <Gamepad2 size={18} className="text-amber-600" />
               <span>قَائِمَةُ الْأَلْعَابِ</span>
             </button>
           )}
@@ -129,20 +129,20 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
 
         {/* Activity Name & Badge in Middle */}
         <div className="text-center truncate px-2 mx-auto">
-          <div className="flex items-center justify-center gap-1.5">
-            <h2 className="text-sm sm:text-base font-black font-baloo text-amber-950 truncate">
+          <div className="flex items-center justify-center gap-2">
+            <h2 className="text-base sm:text-xl md:text-2xl font-black font-baloo text-amber-950 truncate tashkeel-text">
               {headerInfo.title}
             </h2>
+            <span className="text-xs sm:text-sm font-black text-amber-900 bg-amber-100 border border-amber-300 px-3 py-1 rounded-full font-tajawal shadow-xs">
+              {headerInfo.badge}
+            </span>
           </div>
-          <span className="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full font-tajawal inline-block">
-            {headerInfo.badge}
-          </span>
         </div>
 
         {/* Live Kid Stars */}
-        <div className="bg-amber-50 border border-amber-300 px-2.5 py-1 rounded-xl flex items-center gap-1 text-amber-900 font-black font-tajawal text-xs sm:text-sm flex-shrink-0">
-          <Star className="text-amber-500 fill-amber-500" size={15} />
-          <span>{progress.stars}</span>
+        <div className="bg-amber-50 border-2 border-amber-300 px-3.5 py-1.5 rounded-2xl flex items-center gap-1.5 text-amber-950 font-black font-tajawal text-sm sm:text-base shadow-xs flex-shrink-0">
+          <Star className="text-amber-500 fill-amber-500" size={18} />
+          <span>{progress.stars} نَجْمَةً</span>
         </div>
       </div>
 

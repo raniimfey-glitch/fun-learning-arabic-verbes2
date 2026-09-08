@@ -116,10 +116,14 @@
   animation: star-twinkle 2.5s ease-in-out infinite;
 }
 
-/* Tashkeel clarity styles */
+/* Tashkeel clarity styles optimized for children */
 .tashkeel-text {
-  line-height: 1.8;
-  letter-spacing: 0.02em;
+  line-height: 2.1;
+  letter-spacing: 0.03em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Kid-friendly chunky 3D buttons */
