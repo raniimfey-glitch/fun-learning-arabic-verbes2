@@ -95,9 +95,9 @@ export default function App() {
   };
 
   return (
-    <div className="app-viewport-wrapper h-[100dvh] max-h-[100dvh] w-full overflow-hidden flex flex-col justify-between bg-gradient-to-b from-amber-50 via-orange-50/40 to-yellow-50 text-slate-800 selection:bg-amber-300 selection:text-amber-950 font-baloo">
+    <div className="app-wrapper app-viewport-wrapper h-[100dvh] max-h-[100dvh] w-full overflow-hidden flex flex-col justify-between bg-gradient-to-b from-amber-50 via-orange-50/40 to-yellow-50 text-slate-800 selection:bg-amber-300 selection:text-amber-950 font-baloo">
       {/* App Header / PWA Install Banner */}
-      <header className="app-header-area flex-shrink-0 w-full z-20">
+      <header className="app-header header app-header-area flex-shrink-0 w-full z-20">
         {installPrompt && !isInstalled && (
           <div className="bg-gradient-to-r from-amber-600 to-orange-600 text-white px-3 py-1.5 text-center text-xs sm:text-sm font-bold font-tajawal flex items-center justify-center gap-3 shadow-md">
             <span>📲 أَضِفِ التَّطْبِيقَ إِلَى الشَّاشَةِ الرَّئِيسِيَّةِ لِيَعْمَلَ كَتَطْبِيقٍ كَامِلٍ بِدُونِ إِنْتَرْنِت!</span>
@@ -114,7 +114,7 @@ export default function App() {
       </header>
 
       {/* Main Content Area: Centered max-w-[900px] occupying remaining space */}
-      <main className="app-main-content flex-1 flex flex-col min-h-0 w-full max-w-[900px] mx-auto px-3 sm:px-4 py-2 sm:py-3 overflow-y-auto overflow-x-hidden">
+      <main className="main main-content content app-main-content flex-1 flex flex-col min-h-0 w-full max-w-[900px] mx-auto px-3 sm:px-4 py-2 sm:py-3 overflow-y-auto overflow-x-hidden">
         {viewMode === 'hub' ? (
           <HomeHub
             progress={progress}
@@ -133,7 +133,7 @@ export default function App() {
       </main>
 
       {/* Bottom Navigation Bar: Sticks to absolute bottom, flex-shrink: 0 */}
-      <footer id="app-bottom-navbar" className="app-bottom-navbar flex-shrink-0 w-full bg-white/95 backdrop-blur-md border-t-2 border-amber-200 select-none z-20 py-1.5 px-3">
+      <footer id="app-bottom-navbar" className="footer bottom-nav navbar buttons-container app-bottom-navbar flex-shrink-0 w-full bg-white/95 backdrop-blur-md border-t-2 border-amber-200 select-none z-20 py-1.5 px-3">
         <div className="max-w-[900px] mx-auto flex flex-row items-center justify-between gap-2">
           {/* Quick Navigation Controls */}
           <div className="flex items-center gap-1 sm:gap-2">
