@@ -43,66 +43,90 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <style>
-      /* Universal Single-Screen Layout Reset */
+      /* =========================================================
+         📱 Strict Single-Screen Responsive Layout (No Page Scroll)
+         ========================================================= */
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
       html, body {
         margin: 0 !important;
         padding: 0 !important;
         width: 100% !important;
         height: 100% !important;
         height: 100dvh !important;
+        max-height: 100dvh !important;
         overflow: hidden !important;
-        box-sizing: border-box !important;
         background-color: #fffbeb !important;
       }
-      *, *::before, *::after {
-        box-sizing: inherit !important;
-      }
-      body, body > div:first-child, .app-wrapper, #app, #root {
+      #root {
+        width: 100% !important;
+        height: 100% !important;
+        height: 100dvh !important;
+        max-height: 100dvh !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
+      }
+      .app-wrapper,
+      .app-viewport-wrapper {
         height: 100% !important;
         height: 100dvh !important;
         max-height: 100dvh !important;
         width: 100% !important;
-        max-width: 900px;
+        max-width: 900px !important;
         margin: 0 auto !important;
         overflow: hidden !important;
-      }
-      header, .header, .app-header, [class*="header"] {
-        flex-shrink: 0 !important;
-        width: 100% !important;
-        z-index: 10;
-      }
-      footer, nav, .navbar, .bottom-nav, .buttons-container, [class*="nav"], [class*="footer"], [class*="button"] {
-        flex-shrink: 0 !important;
-        width: 100% !important;
-        z-index: 10;
-      }
-      main, .main, .content, .main-content, [class*="content"], [class*="container"]:not(body) {
-        flex: 1 1 auto !important;
-        min-height: 0 !important;
-        overflow-y: auto !important;
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        justify-content: safe center !important;
+        justify-content: space-between !important;
+        position: relative !important;
       }
-      img, svg, canvas, .card, .board, [class*="card"], [class*="board"] {
+      header, .header, .app-header, .app-header-area {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        z-index: 20;
+      }
+      footer, .footer, nav, .navbar, .bottom-nav, .app-bottom-navbar {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        z-index: 20;
+      }
+      main, .main, .content, .main-content, .app-main-content {
+        flex: 1 1 0% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        max-width: 900px !important;
+        margin: 0 auto !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .fit-screen-card, .game-card, .interactive-card {
+        flex-shrink: 1 !important;
+        min-height: 0 !important;
+        max-height: 100% !important;
+      }
+      img, svg, canvas, .fit-screen-media {
         max-width: 100% !important;
         max-height: 100% !important;
         object-fit: contain !important;
         flex-shrink: 1 !important;
       }
-      button, .btn, input, select {
-        font-size: clamp(0.8rem, 2vh, 1.1rem) !important;
-        padding: clamp(0.3rem, 1vh, 0.75rem) clamp(0.6rem, 1.5vw, 1.25rem) !important;
+      .quiz-option-btn {
+        flex-shrink: 1 !important;
+        min-height: 0 !important;
+        font-size: clamp(0.9rem, 2.2vh, 1.35rem) !important;
+        padding: clamp(0.4rem, 1.4vh, 0.9rem) clamp(0.6rem, 1.8vw, 1.25rem) !important;
       }
     </style>
   </head>
   <body class="bg-amber-50 text-slate-800 antialiased selection:bg-amber-300 selection:text-amber-900 h-[100dvh] max-h-[100dvh] overflow-hidden m-0 p-0">
-    <div id="root" class="app-wrapper"></div>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

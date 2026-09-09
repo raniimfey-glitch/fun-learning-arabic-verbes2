@@ -121,7 +121,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
+    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
       {/* Header */}
       <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-pink-100 flex-shrink-0">
         <div>

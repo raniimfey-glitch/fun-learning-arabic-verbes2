@@ -95,9 +95,9 @@ export const ActivityView: React.FC<ActivityViewProps> = ({
   }
 
   return (
-    <div className="flex-1 flex flex-col min-h-0 space-y-3 pb-2 w-full">
+    <div className="activity-container flex-1 flex flex-col min-h-0 space-y-2 sm:space-y-3 pb-1 sm:pb-2 w-full max-w-[900px] mx-auto">
       {/* Top Dedicated Navigation Bar with Dual Return Buttons */}
-      <div className="bg-white rounded-3xl border-3 border-amber-300 shadow-sm p-2.5 sm:p-3 flex flex-wrap items-center justify-between gap-3 flex-shrink-0 z-20">
+      <div className="activity-top-nav bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-300 shadow-sm p-2 sm:p-2.5 flex flex-wrap items-center justify-between gap-2 flex-shrink-0 z-20">
         {/* Navigation Return Buttons */}
         <div className="flex items-center gap-2 flex-wrap">
           {/* Main Home Button */}
