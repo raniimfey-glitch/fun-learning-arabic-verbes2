@@ -142,7 +142,7 @@ export const HomeHub: React.FC<HomeHubProps> = ({
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-black font-baloo text-amber-950">
-                دُرُوسُ وَأَزْمِنَةُ الْفِعْلِ الثَّلَاثَةُ
+                دُرُوسُ وَأَزْمِنَةُ الْفِعْلِ
               </h2>
               <p className="text-xs font-bold font-tajawal text-slate-600">
                 اخْتَرِ الدَّرْسَ لِلتَّعَلُّمِ مَعَ الْأَمْثِلَةِ الصَّوْتِيَّةِ:
@@ -151,13 +151,56 @@ export const HomeHub: React.FC<HomeHubProps> = ({
           </div>
 
           <SoundButton
-            textToSpeak="دُرُوسُ وَأَزْمِنَةُ الْفِعْلِ الثَّلَاثَةُ. الْفِعْلُ الْمَاضِي، الْفِعْلُ الْمُضَارِعُ، وَفِعْلُ الْأَمْرِ."
+            textToSpeak="دُرُوسُ وَأَزْمِنَةُ الْفِعْلِ. ابْدَأْ بِالتَّمْهِيدِ: مَا هُوَ الْفِعْلُ؟ ثُمَّ تَعَلَّمِ الْفِعْلَ الْمَاضِيَ، وَالْمُضَارِعَ، وَفِعْلَ الْأَمْرِ."
             size="sm"
             variant="amber"
             label="اِسْتَمِعْ"
             rate={progress.speechRate}
           />
         </div>
+
+        {/* 🌟 بطاقة تمهيد للدرس: ما هو الفعل؟ (قبل بطاقات الأزمنة الثلاث) */}
+        <motion.div
+          whileHover={{ scale: 1.015, y: -2 }}
+          whileTap={{ scale: 0.985 }}
+          onClick={() => handleLaunchActivity('lesson-1', 'مَا هُوَ الْفِعْلُ؟')}
+          className="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-100/70 rounded-3xl border-3 border-amber-400 p-4 sm:p-5 shadow-md hover:shadow-xl transition-all cursor-pointer flex flex-col sm:flex-row items-center justify-between gap-4 relative overflow-hidden group"
+        >
+          {progress.completedLessons.includes('lesson-1') && (
+            <div className="absolute top-3 left-3 bg-emerald-500 text-white rounded-full p-1.5 shadow-sm">
+              <CheckCircle2 size={16} />
+            </div>
+          )}
+
+          <div className="flex items-center gap-3.5 sm:gap-4 text-center sm:text-right w-full sm:w-auto justify-center sm:justify-start">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-amber-500 text-white flex items-center justify-center shadow-md flex-shrink-0 group-hover:scale-105 transition-transform">
+              <Sparkles size={32} />
+            </div>
+            <div>
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                <span className="bg-amber-300 text-amber-950 font-black text-xs px-3 py-0.5 rounded-full font-tajawal shadow-xs">
+                  ✨ تَمْهِيدُ الدَّرْسِ
+                </span>
+                <span className="text-amber-800 text-xs font-bold font-tajawal">
+                  الْفَرْقُ بَيْنَ الْفِعْلِ وَالِاسْمِ
+                </span>
+              </div>
+              <h3 className="text-xl sm:text-2xl lg:text-3xl font-black font-baloo text-amber-950 tashkeel-text leading-tight">
+                مَا هُوَ الْفِعْلُ؟
+              </h3>
+              <p className="text-xs sm:text-sm font-bold font-tajawal text-slate-700 mt-0.5 leading-relaxed">
+                تَعَلَّمْ كَيْفَ تُمَيِّزُ الْفِعْلَ بِسُهُولَةٍ: هُوَ كُلُّ كَلِمَةٍ تَدُلُّ عَلَى عَمَلٍ أَوْ حَرَكَةٍ فِي زَمَنٍ مُعَيَّنٍ!
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-center sm:justify-end">
+            <span className="bg-amber-500 hover:bg-amber-600 text-white font-tajawal font-black text-sm sm:text-base px-5 py-2.5 rounded-2xl shadow-sm flex items-center gap-2 transition-all btn-chunky">
+              <span>{progress.completedLessons.includes('lesson-1') ? 'مُكْتَمَلٌ - مَرَاجَعَةٌ' : 'اِبْدَأِ التَّمْهِيدَ'}</span>
+              <ArrowLeft size={18} />
+            </span>
+          </div>
+        </motion.div>
 
         {/* The 3 Core Tense Highlight Cards (Past, Present, Imperative) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
@@ -324,42 +367,34 @@ export const HomeHub: React.FC<HomeHubProps> = ({
           </motion.div>
         </div>
 
-        {/* Secondary Supporting Lessons */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-          {/* ما هو الفعل */}
-          <div
-            onClick={() => handleLaunchActivity('lesson-1', 'مَا هُوَ الْفِعْلُ؟')}
-            className="p-3 bg-white rounded-xl border border-amber-200 hover:border-amber-400 shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center justify-between fit-screen-card"
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-amber-100 text-amber-700 rounded-xl">
-                <Sparkles size={18} />
-              </div>
-              <div>
-                <span className="text-[10px] font-bold text-amber-700 font-tajawal">دَرْسُ التَّمْهِيدِ</span>
-                <h4 className="text-base font-black font-baloo text-amber-950">مَا هُوَ الْفِعْلُ؟ (الْفَرْقُ بَيْنَ الْفِعْلِ وَالِاسْمِ)</h4>
-              </div>
+        {/* بطاقة التطبيق الختامية: مسرح تحويل الأفعال */}
+        <motion.div
+          whileHover={{ scale: 1.015, y: -2 }}
+          whileTap={{ scale: 0.985 }}
+          onClick={() => handleLaunchActivity('lesson-5', 'مَسْرَحُ تَحْوِيلِ الْأَفْعَالِ')}
+          className="p-3.5 sm:p-4 bg-gradient-to-r from-pink-50 via-rose-50 to-purple-50 rounded-2xl border-2 border-pink-300 hover:border-pink-400 shadow-xs hover:shadow-md transition-all cursor-pointer flex flex-col sm:flex-row items-center justify-between gap-3 group"
+        >
+          <div className="flex items-center gap-3 text-center sm:text-right w-full sm:w-auto justify-center sm:justify-start">
+            <div className="p-2.5 bg-pink-100 text-pink-700 rounded-xl group-hover:scale-110 transition-transform flex-shrink-0 shadow-xs">
+              <Wand2 size={24} />
             </div>
-            <ArrowLeft size={16} className="text-amber-500" />
+            <div>
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-0.5">
+                <span className="text-[11px] font-black text-pink-700 bg-pink-100 px-2.5 py-0.5 rounded-full font-tajawal">
+                  🎭 دَرْسُ التَّطْبِيقِ الشَّامِلِ
+                </span>
+              </div>
+              <h4 className="text-base sm:text-lg font-black font-baloo text-pink-950">
+                مَسْرَحُ تَحْوِيلِ الْأَفْعَالِ (بَيْنَ الْمَاضِي وَالْمُضَارِعِ وَالْأَمْرِ)
+              </h4>
+            </div>
           </div>
 
-          {/* مسرح التحويل */}
-          <div
-            onClick={() => handleLaunchActivity('lesson-5', 'مَسْرَحُ تَحْوِيلِ الْأَفْعَالِ')}
-            className="p-3 bg-white rounded-xl border border-pink-200 hover:border-pink-400 shadow-xs hover:shadow-sm transition-all cursor-pointer flex items-center justify-between fit-screen-card"
-          >
-            <div className="flex items-center gap-2.5">
-              <div className="p-2 bg-pink-100 text-pink-700 rounded-xl">
-                <Wand2 size={18} />
-              </div>
-              <div>
-                <span className="text-[10px] font-bold text-pink-700 font-tajawal">دَرْسُ التَّطْبِيقِ</span>
-                <h4 className="text-base font-black font-baloo text-pink-950">مَسْرَحُ تَحْوِيلِ الْأَفْعَالِ (بَيْنَ الْأَزْمِنَةِ)</h4>
-              </div>
-            </div>
-            <ArrowLeft size={16} className="text-pink-500" />
+          <div className="flex items-center gap-2 text-pink-700 font-tajawal font-black text-xs sm:text-sm flex-shrink-0 bg-white/80 px-3.5 py-1.5 rounded-xl border border-pink-200 shadow-xs">
+            <span>تَدَرَّبْ عَلَى التَّحْوِيلِ</span>
+            <ArrowLeft size={16} />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* SECTION 2: بطاقة ألعاب الأفعال التفاعلية الموحدة */}

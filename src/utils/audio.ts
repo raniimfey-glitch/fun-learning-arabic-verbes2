@@ -244,6 +244,12 @@ export function cleanTextForSpeech(text: string): string {
     .replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '')
     .replace(/[•★☆✦✧✓✗💡⏳⏰📢🎯🧩🪄🏆🎨📖✍️⚽🍎📝🏃‍♂️🏃‍♀️🛌👂🐦🏠🔗📏📍🧠🏫🦅🦁🐕☀️🐟🌸🥣🥪🍽️💧🧃🥛🤹🌙😴🪥🧹🏊‍♂️🚫🌱🎭👑]/gu, '')
     .replace(/[•*#~_]/g, '')
+    // Convert numbered markers 1:, 2:, 3:, 4:, 5: into clear Arabic spoken words so all TTS engines pronounce them in pure Arabic
+    .replace(/(^|[\s.؟!:،؛])1\s*[:.-]\s*/g, '$1 وَاحِد: ')
+    .replace(/(^|[\s.؟!:،؛])2\s*[:.-]\s*/g, '$1 اِثْنَان: ')
+    .replace(/(^|[\s.؟!:،؛])3\s*[:.-]\s*/g, '$1 ثَلَاثَة: ')
+    .replace(/(^|[\s.؟!:،؛])4\s*[:.-]\s*/g, '$1 أَرْبَعَة: ')
+    .replace(/(^|[\s.؟!:،؛])5\s*[:.-]\s*/g, '$1 خَمْسَة: ')
     .replace(/\s{2,}/g, ' ')
     .trim();
 }

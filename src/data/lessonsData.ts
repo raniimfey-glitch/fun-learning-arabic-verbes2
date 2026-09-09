@@ -37,28 +37,6 @@ export const LESSONS_DATA: LessonSection[] = [
         exampleSentence: 'يَأْكُلُ عُمَرُ تُفَّاحَةً لَذِيذَةً.',
         emoji: '🍎',
         animationType: 'eat'
-      },
-      {
-        id: 'ex-1-3',
-        word: 'يَرْسُمُ',
-        tashkeel: 'يَرْسُمُ',
-        tense: 'present',
-        tenseNameAr: 'مُضَارِعٌ',
-        meaningAr: 'يُلَوِّنُ وَيَصْنَعُ لَوْحَةً',
-        exampleSentence: 'يَرْسُمُ سَامِي فَرَاشَةً جَمِيلَةً.',
-        emoji: '🎨',
-        animationType: 'draw'
-      },
-      {
-        id: 'ex-1-4',
-        word: 'يَقْرَأُ',
-        tashkeel: 'يَقْرَأُ',
-        tense: 'present',
-        tenseNameAr: 'مُضَارِعٌ',
-        meaningAr: 'يُطَالِعُ فِي كِتَابٍ مُفِيدٍ',
-        exampleSentence: 'تَقْرَأُ فَاطِمَةُ قِصَّةً مُشَوِّقَةً.',
-        emoji: '📖',
-        animationType: 'read'
       }
     ],
     interactiveDemo: {
@@ -108,28 +86,6 @@ export const LESSONS_DATA: LessonSection[] = [
         exampleSentence: 'لَعِبَ أَحْمَدُ بِالْكُرَةِ أَمْسِ.',
         emoji: '⚽',
         animationType: 'run'
-      },
-      {
-        id: 'ex-2-3',
-        word: 'شَرِبَ',
-        tashkeel: 'شَرِبَ',
-        tense: 'past',
-        tenseNameAr: 'مَاضٍ',
-        meaningAr: 'تَنَاوَلَ الْمَاءَ أَوِ الْحَلِيبَ',
-        exampleSentence: 'شَرِبَتْ سَارَةُ كَأْسَ الْحَلِيبِ.',
-        emoji: '🥛',
-        animationType: 'eat'
-      },
-      {
-        id: 'ex-2-4',
-        word: 'زَرَعَ',
-        tashkeel: 'زَرَعَ',
-        tense: 'past',
-        tenseNameAr: 'مَاضٍ',
-        meaningAr: 'وَضَعَ الْبُذُورَ فِي التُّرْبَةِ',
-        exampleSentence: 'زَرَعَ الْفَلَّاحُ شَتْلَةَ وَرْدٍ.',
-        emoji: '🌱',
-        animationType: 'draw'
       }
     ],
     interactiveDemo: {
@@ -179,28 +135,6 @@ export const LESSONS_DATA: LessonSection[] = [
         exampleSentence: 'تَلْعَبُ مَرْيَمُ بِالدُّمْيَةِ.',
         emoji: '🧸',
         animationType: 'jump'
-      },
-      {
-        id: 'ex-3-3',
-        word: 'نَسْبَحُ',
-        tashkeel: 'نَسْبَحُ',
-        tense: 'present',
-        tenseNameAr: 'مُضَارِعٌ',
-        meaningAr: 'نَعُومُ جَمِيعًا فِي الْمَاءِ',
-        exampleSentence: 'نَسْبَحُ فِي الْمَسْبَحِ الْكَبِيرِ.',
-        emoji: '🏊‍♀️',
-        animationType: 'swim'
-      },
-      {
-        id: 'ex-3-4',
-        word: 'أَشْرَبُ',
-        tashkeel: 'أَشْرَبُ',
-        tense: 'present',
-        tenseNameAr: 'مُضَارِعٌ',
-        meaningAr: 'أَتَنَاوَلُ شَرَابًا مُفِيدًا',
-        exampleSentence: 'أَنَا أَشْرَبُ عَصِيرَ الْبُرْتُقَالِ.',
-        emoji: '🧃',
-        animationType: 'eat'
       }
     ],
     interactiveDemo: {
@@ -250,28 +184,6 @@ export const LESSONS_DATA: LessonSection[] = [
         exampleSentence: 'اِلْعَبْ مَعَ أَصْدِقَائِكَ بِمَوَدَّةٍ.',
         emoji: '🤹',
         animationType: 'jump'
-      },
-      {
-        id: 'ex-4-3',
-        word: 'اِسْمَعْ',
-        tashkeel: 'اِسْمَعْ',
-        tense: 'imperative',
-        tenseNameAr: 'أَمْرٌ',
-        meaningAr: 'طَلَبُ الْإِنْصَاتِ لِلْكَلَامِ',
-        exampleSentence: 'اِسْمَعْ نَصِيحَةَ الْمُعَلِّمِ.',
-        emoji: '👂',
-        animationType: 'read'
-      },
-      {
-        id: 'ex-4-4',
-        word: 'سَاعِدْ',
-        tashkeel: 'سَاعِدْ',
-        tense: 'imperative',
-        tenseNameAr: 'أَمْرٌ',
-        meaningAr: 'طَلَبُ مَدِّ يَدِ الْعَوْنِ',
-        exampleSentence: 'سَاعِدْ أُمَّكَ فِي تَرْتِيبِ الْبَيْتِ.',
-        emoji: '🤝',
-        animationType: 'draw'
       }
     ],
     interactiveDemo: {
@@ -327,20 +239,6 @@ export const LESSONS_DATA: LessonSection[] = [
         pastForm: 'حَفِظَ',
         presentForm: 'يَحْفَظُ',
         imperativeForm: 'اِحْفَظْ'
-      },
-      {
-        id: 'ex-5-3',
-        word: 'زَرَعَ - يَزْرَعُ - اِزْرَعْ',
-        tashkeel: 'زَرَعَ - يَزْرَعُ - اِزْرَعْ',
-        tense: 'past',
-        tenseNameAr: 'تَحْوِيلٌ شَامِلٌ',
-        meaningAr: 'تَحْوِيلُ فِعْلِ الزِّرَاعَةِ',
-        exampleSentence: 'زَرَعَ الْفَلَّاحُ أَمْسِ، وَالْآنَ يَزْرَعُ، وَنَقُولُ لَهُ: اِزْرَعْ شَجَرَةً.',
-        emoji: '🌱',
-        animationType: 'draw',
-        pastForm: 'زَرَعَ',
-        presentForm: 'يَزْرَعُ',
-        imperativeForm: 'اِزْرَعْ'
       }
     ],
     interactiveDemo: {

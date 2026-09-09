@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { LESSONS_DATA } from '../data/lessonsData';
 import { LessonSection, UserProgress, VerbItem } from '../types';
 import { SoundButton } from './SoundButton';
-import { Sparkles, CheckCircle2, Star, ArrowRight, ArrowLeft, BookOpen, Play, HelpCircle, Check, X } from 'lucide-react';
+import { Sparkles, CheckCircle2, Star, ArrowRight, ArrowLeft, BookOpen, Play, HelpCircle, Check, X, Volume2 } from 'lucide-react';
 import { soundEffects, ArabicSpeechEngine } from '../utils/audio';
 import confetti from 'canvas-confetti';
 
@@ -28,6 +28,25 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
 
   const activeLesson = LESSONS_DATA.find(l => l.id === lessonId) || LESSONS_DATA[1];
   const isLessonCompleted = progress.completedLessons.includes(activeLesson.id);
+
+  /**
+   * Spoken explanation according to pedagogical instruction:
+   * 1. Only the written definition (activeLesson.conceptSummary).
+   * 2. Sentence: "كَيْفَ نُمَيِّزُ هَذَا الْفِعْلَ عَنْ غَيْرِهِ؟"
+   * 3. Numbered signs 1, 2, 3, etc. until the example.
+   */
+  const buildExplanationSpeech = (lesson: LessonSection): string => {
+    const definition = lesson.conceptSummary.trim();
+    const question = lesson.id === 'lesson-1'
+      ? 'كَيْفَ نُمَيِّزُ الْفِعْلَ عَنْ غَيْرِهِ؟'
+      : lesson.id === 'lesson-5'
+      ? 'كَيْفَ نُمَيِّزُ هَذَا التَّحْوِيلَ؟'
+      : 'كَيْفَ نُمَيِّزُ هَذَا الْفِعْلَ عَنْ غَيْرِهِ؟';
+
+    const numberedRules = lesson.ruleExplanation.map((rule, idx) => `${idx + 1}: ${rule}`).join(' ');
+
+    return `${definition} ${question} ${numberedRules}`;
+  };
 
   // Reset state when lessonId changes
   useEffect(() => {
@@ -111,7 +130,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
 
           <div className="flex items-center gap-2 flex-shrink-0">
             <SoundButton
-              textToSpeak={`${activeLesson.title}. ${activeLesson.subtitle ? activeLesson.subtitle + '. ' : ''}${activeLesson.conceptSummary}`}
+              textToSpeak={buildExplanationSpeech(activeLesson)}
               size="lg"
               variant="primary"
               label="اِسْتَمِعْ لِلشَّرْحِ"
@@ -122,9 +141,18 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
 
         {/* Golden Rule Box */}
         <div className="bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 rounded-3xl p-5 sm:p-7 border-3 border-amber-300 shadow-sm">
-          <div className="flex items-center gap-2.5 text-amber-950 font-black mb-3">
-            <Sparkles size={26} className="text-amber-500" />
-            <span className="font-baloo text-xl sm:text-2xl">قَاعِدَةٌ ذَهَبِيَّةٌ لِلْأَبْطَالِ</span>
+          <div className="flex flex-row items-center justify-between gap-2 mb-3">
+            <div className="flex items-center gap-2.5 text-amber-950 font-black">
+              <Sparkles size={26} className="text-amber-500" />
+              <span className="font-baloo text-xl sm:text-2xl">تَعْرِيفُ الْفِعْلِ:</span>
+            </div>
+            <SoundButton
+              textToSpeak={activeLesson.conceptSummary}
+              size="sm"
+              variant="amber"
+              label="نُطْقُ التَّعْرِيفِ"
+              rate={progress.speechRate}
+            />
           </div>
           
           <div className="bg-white/90 p-4 sm:p-5 rounded-2xl border-2 border-amber-200 shadow-xs mb-4">
@@ -133,17 +161,46 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
             </p>
           </div>
 
-          {/* List of rules */}
+          {/* Question Sentence: كيف نميز هذا الفعل عن غيره؟ */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-5 mb-3 pt-4 border-t-2 border-amber-200/80">
+            <div className="flex items-center gap-2">
+              <span className="w-3.5 h-3.5 rounded-full bg-amber-500 shadow-xs flex-shrink-0"></span>
+              <h3 className="font-baloo text-lg sm:text-2xl font-black text-amber-950 tashkeel-text">
+                {activeLesson.id === 'lesson-1'
+                  ? 'كَيْفَ نُمَيِّزُ الْفِعْلَ عَنْ غَيْرِهِ؟ (عَلَامَاتُ الْفِعْلِ):'
+                  : activeLesson.id === 'lesson-5'
+                  ? 'كَيْفَ نُمَيِّزُ هَذَا التَّحْوِيلَ؟:'
+                  : 'كَيْفَ نُمَيِّزُ هَذَا الْفِعْلَ عَنْ غَيْرِهِ؟ (عَلَامَاتُ الْفِعْلِ):'}
+              </h3>
+            </div>
+            <SoundButton
+              textToSpeak={`${activeLesson.id === 'lesson-1' ? 'كَيْفَ نُمَيِّزُ الْفِعْلَ عَنْ غَيْرِهِ؟' : activeLesson.id === 'lesson-5' ? 'كَيْفَ نُمَيِّزُ هَذَا التَّحْوِيلَ؟' : 'كَيْفَ نُمَيِّزُ هَذَا الْفِعْلَ عَنْ غَيْرِهِ؟'} ${activeLesson.ruleExplanation.map((r, i) => `${i + 1}: ${r}`).join(' ')}`}
+              size="sm"
+              variant="amber"
+              label="نُطْقُ الْعَلَامَاتِ"
+              rate={progress.speechRate}
+            />
+          </div>
+
+          {/* List of numbered signs until example */}
           <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
             {activeLesson.ruleExplanation.map((rule, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 bg-white/95 p-4 rounded-2xl border-2 border-amber-200 text-slate-900 font-tajawal font-extrabold text-base sm:text-xl shadow-xs leading-loose"
+                onClick={() => {
+                  soundEffects.playClick();
+                  ArabicSpeechEngine.speak(`${idx + 1}: ${rule}`, progress.speechRate);
+                }}
+                className="flex items-start gap-3 bg-white/95 hover:bg-amber-50/70 p-4 rounded-2xl border-2 border-amber-200 hover:border-amber-400 text-slate-900 font-tajawal font-extrabold text-base sm:text-xl shadow-xs leading-loose cursor-pointer transition-all hover:scale-[1.01] select-none"
+                title="اِضْغَطْ لِلِاسْتِمَاعِ لِهَذِهِ الْعَلَامَةِ"
               >
                 <span className="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm sm:text-base font-black flex-shrink-0 mt-1 shadow-xs">
                   {idx + 1}
                 </span>
-                <span className="tashkeel-text">{rule}</span>
+                <span className="tashkeel-text flex-1">{rule}</span>
+                <div className="text-amber-600 p-1 flex-shrink-0 opacity-70 hover:opacity-100 mt-0.5">
+                  <Volume2 size={20} />
+                </div>
               </div>
             ))}
           </div>
@@ -160,7 +217,7 @@ export const LessonsView: React.FC<LessonsViewProps> = ({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {activeLesson.examples.map(example => {
               const isActive = activeVerbCard === example.id;
 

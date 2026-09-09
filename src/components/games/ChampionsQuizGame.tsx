@@ -104,9 +104,9 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-400 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-400 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
       {/* Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-3 border-b-2 border-amber-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-amber-100 flex-shrink-0">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="bg-amber-100 text-amber-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-amber-300 shadow-xs">
@@ -146,23 +146,21 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
       </div>
 
       {!isQuizFinished ? (
-        <div className="flex-1 flex flex-col justify-between min-h-0 py-2">
+        <div className="flex-1 flex flex-col justify-center min-h-0 py-2 sm:py-3 w-full max-w-[650px] mx-auto gap-3 sm:gap-4">
           {/* Question Card */}
           <motion.div
             key={currentQ.id}
-            initial={{ opacity: 0, scale: 0.96 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 border-3 border-amber-300 rounded-3xl p-6 sm:p-8 shadow-inner relative overflow-hidden flex-shrink-1 min-h-0 flex items-center fit-screen-card"
+            className="bg-gradient-to-br from-amber-50 via-orange-50/60 to-yellow-50 border-2 sm:border-3 border-amber-300 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-xs relative overflow-hidden flex items-center justify-center text-center flex-shrink-0"
           >
-            <div className="w-full text-center">
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-amber-950 leading-relaxed tashkeel-text">
-                {currentQ.question}
-              </h3>
-            </div>
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-black font-baloo text-amber-950 leading-snug tashkeel-text">
+              {currentQ.question}
+            </h3>
           </motion.div>
 
           {/* Answer Options */}
-          <div className="space-y-3 pt-3 flex-shrink-0">
+          <div className="flex flex-col gap-2.5 sm:gap-3 flex-shrink-0 w-full">
             {currentQ.options.map((option, idx) => {
               const isSelected = selectedOptionIndex === idx;
               const isCorrect = idx === currentQ.correctIndex;
@@ -176,16 +174,16 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
                   onClick={() => handleSelectOption(idx)}
                   type="button"
                   disabled={selectedOptionIndex !== null}
-                  className={`w-full p-5 sm:p-6 rounded-3xl border-3 text-right text-xl sm:text-2xl lg:text-3xl font-black font-baloo transition-all cursor-pointer flex items-center justify-between gap-4 tashkeel-text shadow-sm ${
+                  className={`quiz-option-btn w-full py-3 sm:py-3.5 px-4 sm:px-5 rounded-2xl sm:rounded-3xl border-2 sm:border-3 text-right text-lg sm:text-xl md:text-2xl font-black font-baloo transition-all cursor-pointer flex items-center justify-between gap-3 tashkeel-text shadow-xs ${
                     isSelected
                       ? isCorrect
-                        ? 'bg-emerald-100 border-emerald-500 text-emerald-950 ring-4 ring-emerald-300 shadow-md'
+                        ? 'bg-emerald-100 border-emerald-500 text-emerald-950 ring-3 ring-emerald-300 shadow-md'
                         : 'bg-rose-100 border-rose-400 text-rose-950 shadow-md'
                       : 'bg-white hover:bg-amber-50/80 border-slate-200 hover:border-amber-400 text-slate-900 shadow-xs'
                   }`}
                 >
-                  <div className="flex items-center gap-3.5">
-                    <span className="w-10 h-10 rounded-2xl bg-amber-100 text-amber-950 border-2 border-amber-300 flex items-center justify-center text-lg font-black flex-shrink-0 shadow-xs">
+                  <div className="flex items-center gap-3 sm:gap-3.5">
+                    <span className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-amber-100 text-amber-950 border-2 border-amber-300 flex items-center justify-center text-base sm:text-lg font-black flex-shrink-0 shadow-2xs">
                       {idx === 0 ? 'أ' : idx === 1 ? 'ب' : 'ج'}
                     </span>
                     <span>{option}</span>
@@ -194,9 +192,9 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
                   {isSelected && (
                     <div className="flex-shrink-0">
                       {isCorrect ? (
-                        <Check size={28} className="text-emerald-600 stroke-[3]" />
+                        <Check size={26} className="text-emerald-600 stroke-[3]" />
                       ) : (
-                        <X size={28} className="text-rose-600 stroke-[3]" />
+                        <X size={26} className="text-rose-600 stroke-[3]" />
                       )}
                     </div>
                   )}
@@ -208,24 +206,24 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
           {/* Feedback & Next Button */}
           {feedback && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`p-5 rounded-3xl border-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md ${
+              className={`p-3.5 sm:p-4 rounded-2xl border-2 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm ${
                 feedback.isCorrect
                   ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
                   : 'bg-rose-50 border-rose-300 text-rose-950'
               }`}
             >
-              <div className="flex items-start gap-3 flex-1">
+              <div className="flex items-center gap-2.5 flex-1">
                 <button
                   type="button"
                   onClick={() => ArabicSpeechEngine.speak(feedback.text, progress.speechRate)}
-                  className="p-2.5 rounded-2xl bg-white border-2 border-slate-200 hover:bg-slate-50 text-amber-800 cursor-pointer flex-shrink-0 shadow-xs mt-0.5"
+                  className="p-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-amber-800 cursor-pointer flex-shrink-0 shadow-2xs"
                   title="إِعَادَةُ الِاسْتِمَاعِ لِلشَّرْحِ"
                 >
-                  <Volume2 size={24} />
+                  <Volume2 size={20} />
                 </button>
-                <p className="text-lg sm:text-2xl font-tajawal font-black leading-relaxed tashkeel-text">
+                <p className="text-base sm:text-lg font-tajawal font-black leading-snug tashkeel-text">
                   {feedback.text}
                 </p>
               </div>
@@ -234,10 +232,10 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
               <button
                 type="button"
                 onClick={goToNextQuestion}
-                className="w-full sm:w-auto px-7 py-3.5 bg-amber-500 hover:bg-amber-600 text-amber-950 font-tajawal font-black text-lg rounded-2xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
+                className="w-full sm:w-auto px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-amber-950 font-tajawal font-black text-sm sm:text-base rounded-xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
               >
                 <span>{questionIndex + 1 < QUIZ_QUESTIONS.length ? 'السُّؤَالُ التَّالِي' : 'عَرْضُ النَّتِيجَةِ'}</span>
-                <ArrowLeft size={20} />
+                <ArrowLeft size={18} />
               </button>
             </motion.div>
           )}

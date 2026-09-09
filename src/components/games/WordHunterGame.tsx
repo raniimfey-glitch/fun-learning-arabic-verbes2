@@ -88,9 +88,9 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-300 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
       {/* Game Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-3 border-b-2 border-amber-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-amber-100 flex-shrink-0">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="bg-amber-100 text-amber-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-amber-300 shadow-xs">
@@ -126,21 +126,21 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
       </div>
 
       {/* Progress Bar for Current Level Verbs */}
-      <div className="bg-amber-50 rounded-2xl p-3 border-2 border-amber-200 flex items-center justify-between flex-shrink-0 my-2">
-        <div className="flex items-center gap-2 font-bold font-tajawal text-amber-950 text-sm sm:text-base">
+      <div className="bg-amber-50 rounded-2xl p-2.5 sm:p-3 border-2 border-amber-200 flex items-center justify-between flex-shrink-0 my-1.5 sm:my-2">
+        <div className="flex items-center gap-2 font-bold font-tajawal text-amber-950 text-xs sm:text-base">
           <span>الْأَفْعَالُ الَّتِي صِدْتَهَا:</span>
-          <span className="text-base sm:text-xl font-black text-amber-900 bg-white px-3 py-0.5 rounded-xl border border-amber-300 shadow-xs">
+          <span className="text-sm sm:text-lg font-black text-amber-900 bg-white px-2.5 py-0.5 rounded-xl border border-amber-300 shadow-xs">
             {caughtVerbsCount} / {targetVerbs.length}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1">
           {targetVerbs.map((_, i) => (
             <Star
               key={i}
-              size={22}
+              size={20}
               className={`transition-transform ${
-                i < caughtVerbsCount ? 'text-amber-500 fill-amber-400 scale-115' : 'text-slate-300 fill-slate-100'
+                i < caughtVerbsCount ? 'text-amber-500 fill-amber-400 scale-110' : 'text-slate-300 fill-slate-100'
               }`}
             />
           ))}
@@ -148,7 +148,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
       </div>
 
       {/* Floating Word Bubbles / Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 py-2 flex-1 min-h-0">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5 py-1.5 sm:py-2 flex-1 min-h-0 items-stretch">
         {currentLevel.words.map((word) => {
           const isSelected = selectedWordIds.includes(word.id);
 
@@ -157,15 +157,15 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
               key={word.id}
               id={`hunt-word-${word.id}`}
               onClick={() => handleWordClick(word)}
-              whileHover={{ scale: isSelected ? 1 : 1.04 }}
+              whileHover={{ scale: isSelected ? 1 : 1.03 }}
               whileTap={{ scale: 0.96 }}
               type="button"
-              className={`relative p-4 sm:p-6 rounded-3xl border-3 transition-all flex flex-col items-center justify-center gap-2 cursor-pointer select-none min-h-0 flex-shrink-1 fit-screen-card ${
+              className={`quiz-option-btn relative p-3 sm:p-5 rounded-2xl sm:rounded-3xl border-2 sm:border-3 transition-all flex flex-col items-center justify-center gap-1.5 sm:gap-2 cursor-pointer select-none min-h-0 ${
                 isSelected
                   ? word.isVerb
-                    ? 'bg-emerald-100 border-emerald-500 shadow-md ring-4 ring-emerald-300'
-                    : 'bg-rose-100 border-rose-400 opacity-75 ring-3 ring-rose-300'
-                  : 'bg-gradient-to-b from-white to-amber-50/70 hover:to-amber-100/80 border-amber-300 hover:border-amber-500 shadow-sm hover:shadow-md'
+                    ? 'bg-emerald-100 border-emerald-500 shadow-md ring-3 ring-emerald-300'
+                    : 'bg-rose-100 border-rose-400 opacity-80 ring-2 ring-rose-300'
+                  : 'bg-gradient-to-b from-white to-amber-50/70 hover:to-amber-100/80 border-amber-300 hover:border-amber-500 shadow-xs hover:shadow-sm'
               }`}
             >
               {/* Status Badge */}

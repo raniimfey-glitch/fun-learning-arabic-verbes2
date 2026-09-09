@@ -121,9 +121,9 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 flex-1 flex flex-col justify-between min-h-0 w-full max-w-[900px] mx-auto fit-screen-card">
+    <div className="bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
       {/* Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-3 border-b-2 border-pink-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-pink-100 flex-shrink-0">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="bg-pink-100 text-pink-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-pink-300 shadow-xs">
@@ -163,21 +163,21 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
       </div>
 
       {!isGameOver ? (
-        <div className="flex-1 flex flex-col justify-between min-h-0 py-2">
+        <div className="flex-1 flex flex-col justify-center min-h-0 py-2 sm:py-3 w-full max-w-[750px] mx-auto gap-3 sm:gap-4">
           {/* Magic Cauldron / Stage */}
           <motion.div
             key={currentQ.id}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-gradient-to-tr from-purple-100 via-pink-50 to-rose-100 border-3 border-pink-300 rounded-3xl p-5 sm:p-7 text-center relative overflow-hidden shadow-inner flex-shrink-1 min-h-0 flex flex-col items-center justify-center fit-screen-card"
+            className="bg-gradient-to-tr from-purple-100 via-pink-50 to-rose-100 border-2 sm:border-3 border-pink-300 rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center relative overflow-hidden shadow-xs flex-shrink-0 flex flex-col items-center justify-center"
           >
-            <div className="flex items-center justify-center gap-3 sm:gap-8 mb-3">
+            <div className="flex items-center justify-center gap-2.5 sm:gap-6 mb-2 sm:mb-3">
               {/* Base Word */}
-              <div className="bg-white/95 border-2 border-purple-300 px-5 sm:px-8 py-3 sm:py-4 rounded-3xl shadow-sm">
-                <span className="text-sm sm:text-base font-extrabold font-tajawal text-purple-800 block mb-1">
+              <div className="bg-white/95 border-2 border-purple-300 px-4 sm:px-7 py-2 sm:py-3 rounded-2xl shadow-xs">
+                <span className="text-xs sm:text-sm font-extrabold font-tajawal text-purple-800 block mb-0.5">
                   {currentQ.fromTense}
                 </span>
-                <span className="text-4xl sm:text-5xl lg:text-6xl font-black font-baloo text-purple-950 tashkeel-text">
+                <span className="text-3xl sm:text-4xl lg:text-5xl font-black font-baloo text-purple-950 tashkeel-text">
                   {currentQ.baseWord}
                 </span>
               </div>
@@ -190,29 +190,29 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
                     : { rotate: [0, -10, 10, 0] }
                 }
                 transition={{ repeat: isWandWaving ? 0 : Infinity, duration: isWandWaving ? 0.6 : 3 }}
-                className="p-3.5 bg-white/90 rounded-2xl shadow-xs border border-pink-200"
+                className="p-2 sm:p-3 bg-white/90 rounded-2xl shadow-2xs border border-pink-200"
               >
-                <Wand2 size={42} className="text-pink-600" />
+                <Wand2 size={32} className="text-pink-600" />
               </motion.div>
 
               {/* Target Transformation Goal */}
-              <div className="bg-white/95 border-2 border-rose-300 px-5 sm:px-8 py-3 sm:py-4 rounded-3xl shadow-sm">
-                <span className="text-sm sm:text-base font-extrabold font-tajawal text-rose-800 block mb-1">
+              <div className="bg-white/95 border-2 border-rose-300 px-4 sm:px-7 py-2 sm:py-3 rounded-2xl shadow-xs">
+                <span className="text-xs sm:text-sm font-extrabold font-tajawal text-rose-800 block mb-0.5">
                   الْمَطْلُوبُ تَحْوِيلُهُ إِلَى:
                 </span>
-                <span className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-rose-950 tashkeel-text">
+                <span className="text-xl sm:text-2xl lg:text-3xl font-black font-baloo text-rose-950 tashkeel-text">
                   {currentQ.toTense}
                 </span>
               </div>
             </div>
 
-            <p className="text-lg sm:text-xl font-black font-tajawal text-purple-950 leading-relaxed tashkeel-text">
+            <p className="text-sm sm:text-base font-black font-tajawal text-purple-950 leading-relaxed tashkeel-text">
               اِضْغَطْ عَلَى الْفِعْلِ الصَّحِيحِ لِتُطْلِقَ التَّحْوِيلَ السِّحْرِيَّ!
             </p>
           </motion.div>
 
           {/* Options Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 sm:gap-5 pt-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 flex-shrink-0 w-full">
             {currentQ.options.map(opt => {
               const isSelected = selectedOption === opt;
               const isCorrect = opt === currentQ.correctWord;
@@ -221,22 +221,22 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
                 <motion.button
                   key={opt}
                   id={`magic-opt-${opt}`}
-                  whileHover={{ scale: selectedOption ? 1 : 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: selectedOption ? 1 : 1.03 }}
+                  whileTap={{ scale: 0.96 }}
                   onClick={() => handleSelectOption(opt)}
                   type="button"
                   disabled={selectedOption !== null}
-                  className={`p-5 sm:p-6 rounded-3xl border-3 text-2xl sm:text-3xl lg:text-4xl font-black font-baloo transition-all cursor-pointer select-none tashkeel-text flex items-center justify-center gap-2 shadow-sm ${
+                  className={`quiz-option-btn py-3 sm:py-3.5 px-2 sm:px-3 rounded-2xl border-2 sm:border-3 text-xl sm:text-2xl lg:text-3xl font-black font-baloo transition-all cursor-pointer select-none tashkeel-text flex items-center justify-center gap-2 shadow-xs min-h-[54px] sm:min-h-[60px] ${
                     isSelected
                       ? isCorrect
-                        ? 'bg-emerald-100 border-emerald-500 text-emerald-950 shadow-md ring-4 ring-emerald-300'
+                        ? 'bg-emerald-100 border-emerald-500 text-emerald-950 shadow-md ring-3 ring-emerald-300'
                         : 'bg-rose-100 border-rose-400 text-rose-950'
-                      : 'bg-white hover:bg-pink-50 border-pink-200 hover:border-pink-400 text-slate-900 shadow-sm'
+                      : 'bg-white hover:bg-pink-50 border-pink-200 hover:border-pink-400 text-slate-900 shadow-xs'
                   }`}
                 >
                   <span>{opt}</span>
                   {isSelected && (
-                    isCorrect ? <Check size={24} className="text-emerald-600 stroke-[3]" /> : <X size={24} className="text-rose-600 stroke-[3]" />
+                    isCorrect ? <Check size={22} className="text-emerald-600 stroke-[3]" /> : <X size={22} className="text-rose-600 stroke-[3]" />
                   )}
                 </motion.button>
               );
@@ -246,24 +246,24 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
           {/* Feedback & Next Button */}
           {feedback && (
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              className={`p-5 rounded-3xl border-3 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-md ${
+              className={`p-3.5 sm:p-4 rounded-2xl border-2 flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm ${
                 feedback.isCorrect
                   ? 'bg-emerald-50 border-emerald-300 text-emerald-950'
                   : 'bg-rose-50 border-rose-300 text-rose-950'
               }`}
             >
-              <div className="flex items-start gap-3 flex-1">
+              <div className="flex items-center gap-2.5 flex-1">
                 <button
                   type="button"
                   onClick={() => ArabicSpeechEngine.speak(feedback.text, progress.speechRate)}
-                  className="p-2.5 rounded-2xl bg-white border-2 border-slate-200 hover:bg-slate-50 text-pink-700 cursor-pointer flex-shrink-0 shadow-xs mt-0.5"
+                  className="p-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-pink-700 cursor-pointer flex-shrink-0 shadow-2xs"
                   title="إِعَادَةُ الِاسْتِمَاعِ لِلشَّرْحِ"
                 >
-                  <Volume2 size={24} />
+                  <Volume2 size={20} />
                 </button>
-                <p className="text-lg sm:text-2xl font-tajawal font-black leading-relaxed tashkeel-text">
+                <p className="text-base sm:text-lg font-tajawal font-black leading-snug tashkeel-text">
                   {feedback.text}
                 </p>
               </div>
@@ -272,10 +272,10 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
               <button
                 type="button"
                 onClick={goToNextQuestion}
-                className="w-full sm:w-auto px-7 py-3.5 bg-pink-600 hover:bg-pink-700 text-white font-tajawal font-black text-lg rounded-2xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
+                className="w-full sm:w-auto px-5 py-2.5 bg-pink-600 hover:bg-pink-700 text-white font-tajawal font-black text-sm sm:text-base rounded-xl shadow-md hover:scale-105 transition-all flex items-center justify-center gap-2 cursor-pointer flex-shrink-0 btn-chunky"
               >
                 <span>{questionIndex + 1 < MAGIC_TRANSFORM_QUESTIONS.length ? 'التَّحْوِيلُ التَّالِي' : 'عَرْضُ النَّتِيجَةِ'}</span>
-                <ArrowLeft size={20} />
+                <ArrowLeft size={18} />
               </button>
             </motion.div>
           )}
