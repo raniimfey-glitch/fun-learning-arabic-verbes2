@@ -121,12 +121,12 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
   };
 
   return (
-    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
+    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-pink-300 shadow-md p-3 sm:p-5 w-full flex flex-col justify-start min-h-0 max-w-[850px] mx-auto gap-3 sm:gap-4 my-auto">
       {/* Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-pink-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-2.5 border-b-2 border-pink-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-pink-100 text-pink-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-pink-300 shadow-xs">
+          <div className="flex items-center gap-2 mb-0.5 sm:mb-1">
+            <span className="bg-pink-100 text-pink-950 text-xs sm:text-sm font-black px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full font-tajawal border border-pink-300 shadow-xs">
               عَصَا التَّحْوِيلِ السِّحْرِيَّةِ
             </span>
             <span className="text-slate-400">•</span>
@@ -134,7 +134,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
               السُّؤَالُ {questionIndex + 1} مِنْ {MAGIC_TRANSFORM_QUESTIONS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-pink-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-black text-pink-950 font-baloo leading-tight tashkeel-text">
             حَوِّلِ الْفِعْلَ بِعَصَاكَ السِّحْرِيَّةِ:
           </h2>
         </div>
@@ -147,7 +147,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
+            className="px-2.5 sm:px-3 py-1.5 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
           >
             <ArrowLeft size={16} />
             <span className="hidden xs:inline">الْأَلْعَابُ</span>
@@ -163,21 +163,21 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
       </div>
 
       {!isGameOver ? (
-        <div className="flex-1 flex flex-col justify-center min-h-0 py-2 sm:py-3 w-full max-w-[750px] mx-auto gap-3 sm:gap-4">
+        <div className="flex flex-col justify-start min-h-0 w-full max-w-[750px] mx-auto gap-3 sm:gap-4 flex-shrink-0">
           {/* Magic Cauldron / Stage */}
           <motion.div
             key={currentQ.id}
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            className="bg-gradient-to-tr from-purple-100 via-pink-50 to-rose-100 border-2 sm:border-3 border-pink-300 rounded-2xl sm:rounded-3xl p-4 sm:p-6 text-center relative overflow-hidden shadow-xs flex-shrink-0 flex flex-col items-center justify-center"
+            className="bg-gradient-to-tr from-purple-100 via-pink-50 to-rose-100 border-2 sm:border-3 border-pink-300 rounded-2xl sm:rounded-3xl p-3 sm:p-5 text-center relative overflow-hidden shadow-xs flex-shrink-0 flex flex-col items-center justify-center"
           >
-            <div className="flex items-center justify-center gap-2.5 sm:gap-6 mb-2 sm:mb-3">
+            <div className="flex items-center justify-center gap-2.5 sm:gap-6 mb-1.5 sm:mb-2">
               {/* Base Word */}
-              <div className="bg-white/95 border-2 border-purple-300 px-4 sm:px-7 py-2 sm:py-3 rounded-2xl shadow-xs">
+              <div className="bg-white/95 border-2 border-purple-300 px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-2xl shadow-xs">
                 <span className="text-xs sm:text-sm font-extrabold font-tajawal text-purple-800 block mb-0.5">
                   {currentQ.fromTense}
                 </span>
-                <span className="text-3xl sm:text-4xl lg:text-5xl font-black font-baloo text-purple-950 tashkeel-text">
+                <span className="text-2xl sm:text-3xl lg:text-4xl font-black font-baloo text-purple-950 tashkeel-text">
                   {currentQ.baseWord}
                 </span>
               </div>
@@ -190,29 +190,29 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
                     : { rotate: [0, -10, 10, 0] }
                 }
                 transition={{ repeat: isWandWaving ? 0 : Infinity, duration: isWandWaving ? 0.6 : 3 }}
-                className="p-2 sm:p-3 bg-white/90 rounded-2xl shadow-2xs border border-pink-200"
+                className="p-1.5 sm:p-2.5 bg-white/90 rounded-2xl shadow-2xs border border-pink-200"
               >
-                <Wand2 size={32} className="text-pink-600" />
+                <Wand2 size={26} className="text-pink-600 sm:w-8 sm:h-8" />
               </motion.div>
 
               {/* Target Transformation Goal */}
-              <div className="bg-white/95 border-2 border-rose-300 px-4 sm:px-7 py-2 sm:py-3 rounded-2xl shadow-xs">
+              <div className="bg-white/95 border-2 border-rose-300 px-3.5 sm:px-6 py-1.5 sm:py-2.5 rounded-2xl shadow-xs">
                 <span className="text-xs sm:text-sm font-extrabold font-tajawal text-rose-800 block mb-0.5">
                   الْمَطْلُوبُ تَحْوِيلُهُ إِلَى:
                 </span>
-                <span className="text-xl sm:text-2xl lg:text-3xl font-black font-baloo text-rose-950 tashkeel-text">
+                <span className="text-lg sm:text-2xl lg:text-3xl font-black font-baloo text-rose-950 tashkeel-text">
                   {currentQ.toTense}
                 </span>
               </div>
             </div>
 
-            <p className="text-sm sm:text-base font-black font-tajawal text-purple-950 leading-relaxed tashkeel-text">
+            <p className="text-xs sm:text-sm md:text-base font-black font-tajawal text-purple-950 leading-relaxed tashkeel-text">
               اِضْغَطْ عَلَى الْفِعْلِ الصَّحِيحِ لِتُطْلِقَ التَّحْوِيلَ السِّحْرِيَّ!
             </p>
           </motion.div>
 
           {/* Options Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 flex-shrink-0 w-full">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 flex-shrink-0 w-full">
             {currentQ.options.map(opt => {
               const isSelected = selectedOption === opt;
               const isCorrect = opt === currentQ.correctWord;
@@ -226,7 +226,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
                   onClick={() => handleSelectOption(opt)}
                   type="button"
                   disabled={selectedOption !== null}
-                  className={`quiz-option-btn py-3 sm:py-3.5 px-2 sm:px-3 rounded-2xl border-2 sm:border-3 text-xl sm:text-2xl lg:text-3xl font-black font-baloo transition-all cursor-pointer select-none tashkeel-text flex items-center justify-center gap-2 shadow-xs min-h-[54px] sm:min-h-[60px] ${
+                  className={`quiz-option-btn py-2.5 sm:py-3 px-2 sm:px-3 rounded-2xl border-2 sm:border-3 text-lg sm:text-2xl lg:text-3xl font-black font-baloo transition-all cursor-pointer select-none tashkeel-text flex items-center justify-center gap-1.5 shadow-xs ${
                     isSelected
                       ? isCorrect
                         ? 'bg-emerald-100 border-emerald-500 text-emerald-950 shadow-md ring-3 ring-emerald-300'
@@ -236,7 +236,7 @@ export const MagicTransformerGame: React.FC<MagicTransformerGameProps> = ({
                 >
                   <span>{opt}</span>
                   {isSelected && (
-                    isCorrect ? <Check size={22} className="text-emerald-600 stroke-[3]" /> : <X size={22} className="text-rose-600 stroke-[3]" />
+                    isCorrect ? <Check size={20} className="text-emerald-600 stroke-[3]" /> : <X size={20} className="text-rose-600 stroke-[3]" />
                   )}
                 </motion.button>
               );

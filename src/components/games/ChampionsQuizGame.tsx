@@ -104,12 +104,12 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
   };
 
   return (
-    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-400 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
+    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-400 shadow-md p-3 sm:p-5 w-full flex flex-col justify-start min-h-0 max-w-[800px] mx-auto gap-3 sm:gap-4 my-auto">
       {/* Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-amber-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-2.5 border-b-2 border-amber-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-amber-100 text-amber-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-amber-300 shadow-xs">
+          <div className="flex items-center gap-2 mb-0.5 sm:mb-1">
+            <span className="bg-amber-100 text-amber-950 text-xs sm:text-sm font-black px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full font-tajawal border border-amber-300 shadow-xs">
               تَحَدِّي أَبْطَالِ الْأَفْعَالِ الْكَبِيرِ
             </span>
             <span className="text-slate-400">•</span>
@@ -117,7 +117,7 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
               السُّؤَالُ {questionIndex + 1} مِنْ {QUIZ_QUESTIONS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
             اخْتَبِرْ مَعْلُومَاتِكَ وَارْبَحْ شَهَادَةَ التَّفَوُّقِ:
           </h2>
         </div>
@@ -130,7 +130,7 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
+            className="px-2.5 sm:px-3 py-1.5 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
           >
             <ArrowLeft size={16} />
             <span className="hidden xs:inline">الْأَلْعَابُ</span>
@@ -146,21 +146,21 @@ export const ChampionsQuizGame: React.FC<ChampionsQuizGameProps> = ({
       </div>
 
       {!isQuizFinished ? (
-        <div className="flex-1 flex flex-col justify-center min-h-0 py-2 sm:py-3 w-full max-w-[650px] mx-auto gap-3 sm:gap-4">
+        <div className="flex flex-col justify-start min-h-0 w-full max-w-[650px] mx-auto gap-3 sm:gap-4 flex-shrink-0">
           {/* Question Card */}
           <motion.div
             key={currentQ.id}
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-gradient-to-br from-amber-50 via-orange-50/60 to-yellow-50 border-2 sm:border-3 border-amber-300 rounded-2xl sm:rounded-3xl p-4 sm:p-5 shadow-xs relative overflow-hidden flex items-center justify-center text-center flex-shrink-0"
+            className="bg-gradient-to-br from-amber-50 via-orange-50/60 to-yellow-50 border-2 sm:border-3 border-amber-300 rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 shadow-xs relative overflow-hidden flex items-center justify-center text-center flex-shrink-0"
           >
-            <h3 className="text-xl sm:text-2xl lg:text-3xl font-black font-baloo text-amber-950 leading-snug tashkeel-text">
+            <h3 className="text-lg sm:text-2xl lg:text-3xl font-black font-baloo text-amber-950 leading-snug tashkeel-text">
               {currentQ.question}
             </h3>
           </motion.div>
 
           {/* Answer Options */}
-          <div className="flex flex-col gap-2.5 sm:gap-3 flex-shrink-0 w-full">
+          <div className="flex flex-col gap-2 sm:gap-2.5 flex-shrink-0 w-full">
             {currentQ.options.map((option, idx) => {
               const isSelected = selectedOptionIndex === idx;
               const isCorrect = idx === currentQ.correctIndex;

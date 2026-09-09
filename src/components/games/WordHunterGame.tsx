@@ -88,12 +88,12 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
   };
 
   return (
-    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
+    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-amber-300 shadow-md p-3 sm:p-5 w-full flex flex-col justify-start min-h-0 max-w-[850px] mx-auto gap-2.5 sm:gap-3.5 my-auto">
       {/* Game Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b-2 border-amber-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-2.5 border-b-2 border-amber-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-amber-100 text-amber-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-amber-300 shadow-xs">
+          <div className="flex items-center gap-2 mb-0.5 sm:mb-1">
+            <span className="bg-amber-100 text-amber-950 text-xs sm:text-sm font-black px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full font-tajawal border border-amber-300 shadow-xs">
               لُعْبَةُ صَائِدِ الْأَفْعَالِ
             </span>
             <span className="text-slate-400">•</span>
@@ -101,7 +101,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
               الْمَرْحَلَةُ {levelIndex + 1} مِنْ {WORD_HUNTER_LEVELS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-black text-amber-950 font-baloo leading-tight tashkeel-text">
             {currentLevel.questionText}
           </h2>
         </div>
@@ -110,7 +110,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
           <button
             onClick={onBackToMenu}
             type="button"
-            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
+            className="px-2.5 sm:px-3 py-1.5 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
           >
             <ArrowLeft size={16} />
             <span className="hidden xs:inline">الْأَلْعَابُ</span>
@@ -126,10 +126,10 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
       </div>
 
       {/* Progress Bar for Current Level Verbs */}
-      <div className="bg-amber-50 rounded-2xl p-2.5 sm:p-3 border-2 border-amber-200 flex items-center justify-between flex-shrink-0 my-1.5 sm:my-2">
-        <div className="flex items-center gap-2 font-bold font-tajawal text-amber-950 text-xs sm:text-base">
+      <div className="bg-amber-50 rounded-2xl p-2 sm:p-2.5 border-2 border-amber-200 flex items-center justify-between flex-shrink-0">
+        <div className="flex items-center gap-2 font-bold font-tajawal text-amber-950 text-xs sm:text-sm">
           <span>الْأَفْعَالُ الَّتِي صِدْتَهَا:</span>
-          <span className="text-sm sm:text-lg font-black text-amber-900 bg-white px-2.5 py-0.5 rounded-xl border border-amber-300 shadow-xs">
+          <span className="text-xs sm:text-base font-black text-amber-900 bg-white px-2.5 py-0.5 rounded-xl border border-amber-300 shadow-xs">
             {caughtVerbsCount} / {targetVerbs.length}
           </span>
         </div>
@@ -138,7 +138,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
           {targetVerbs.map((_, i) => (
             <Star
               key={i}
-              size={20}
+              size={18}
               className={`transition-transform ${
                 i < caughtVerbsCount ? 'text-amber-500 fill-amber-400 scale-110' : 'text-slate-300 fill-slate-100'
               }`}
@@ -148,7 +148,7 @@ export const WordHunterGame: React.FC<WordHunterGameProps> = ({
       </div>
 
       {/* Floating Word Bubbles / Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5 py-1.5 sm:py-2 flex-1 min-h-0 items-stretch">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 py-1 flex-shrink-0 w-full">
         {currentLevel.words.map((word) => {
           const isSelected = selectedWordIds.includes(word.id);
 

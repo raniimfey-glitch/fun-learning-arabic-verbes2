@@ -104,12 +104,12 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
   };
 
   return (
-    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-teal-300 shadow-md p-3 sm:p-5 h-full w-full flex-1 flex flex-col justify-between min-h-0 max-w-[900px] mx-auto">
+    <div className="game-card fit-screen-card bg-white rounded-2xl sm:rounded-3xl border-2 sm:border-3 border-teal-300 shadow-md p-3 sm:p-5 w-full flex flex-col justify-start min-h-0 max-w-[850px] mx-auto gap-3 sm:gap-4 my-auto">
       {/* Header */}
-      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-3 border-b-2 border-teal-100 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between gap-2 pb-2 sm:pb-2.5 border-b-2 border-teal-100 flex-shrink-0">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="bg-teal-100 text-teal-950 text-xs sm:text-sm font-black px-3 py-1 rounded-full font-tajawal border border-teal-300 shadow-xs">
+          <div className="flex items-center gap-2 mb-0.5 sm:mb-1">
+            <span className="bg-teal-100 text-teal-950 text-xs sm:text-sm font-black px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full font-tajawal border border-teal-300 shadow-xs">
               لُعْبَةُ صُنْدُوقِ الْأَزْمِنَةِ
             </span>
             <span className="text-slate-400">•</span>
@@ -117,7 +117,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               الْكَلِمَةُ {currentIndex + 1} مِنْ {TIME_SORTING_ITEMS.length}
             </span>
           </div>
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-teal-950 font-baloo leading-tight tashkeel-text">
+          <h2 className="text-lg sm:text-2xl lg:text-3xl font-black text-teal-950 font-baloo leading-tight tashkeel-text">
             ضَعِ الْفِعْلَ فِي صُنْدُوقِ الزَّمَنِ الْمُنَاسِبِ:
           </h2>
         </div>
@@ -130,7 +130,7 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
               onBackToMenu();
             }}
             type="button"
-            className="px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
+            className="px-2.5 sm:px-3 py-1.5 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 rounded-xl text-xs sm:text-sm font-bold font-tajawal flex items-center gap-1.5 cursor-pointer border border-slate-300 shadow-xs"
           >
             <ArrowLeft size={16} />
             <span className="hidden xs:inline">الْأَلْعَابُ</span>
@@ -146,27 +146,27 @@ export const TimeSortingGame: React.FC<TimeSortingGameProps> = ({
       </div>
 
       {!isGameOver ? (
-        <div className="flex-1 flex flex-col justify-center min-h-0 py-2 sm:py-3 w-full max-w-[750px] mx-auto gap-3 sm:gap-4">
+        <div className="flex flex-col justify-start min-h-0 w-full max-w-[750px] mx-auto gap-3 sm:gap-4 flex-shrink-0">
           {/* Active Verb Presentation Card */}
           <motion.div
             key={currentItem.id}
             initial={{ scale: 0.8, opacity: 0, y: -10 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            className="bg-gradient-to-tr from-amber-100 via-orange-50 to-yellow-100 border-2 sm:border-3 border-amber-400 rounded-2xl sm:rounded-3xl p-4 sm:p-5 text-center shadow-xs max-w-lg mx-auto w-full relative overflow-hidden flex-shrink-0 flex flex-col items-center justify-center"
+            className="bg-gradient-to-tr from-amber-100 via-orange-50 to-yellow-100 border-2 sm:border-3 border-amber-400 rounded-2xl sm:rounded-3xl p-3 sm:p-4 text-center shadow-xs max-w-lg mx-auto w-full relative overflow-hidden flex-shrink-0 flex flex-col items-center justify-center"
           >
-            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black font-baloo text-amber-950 tashkeel-text mb-1">
+            <h3 className="text-2xl sm:text-4xl lg:text-5xl font-black font-baloo text-amber-950 tashkeel-text mb-1">
               {currentItem.word}
             </h3>
             <p className="text-xs sm:text-sm font-extrabold font-tajawal text-slate-700 bg-white/80 px-3.5 py-0.5 rounded-full border border-amber-200 shadow-2xs">
               تَلْمِيحٌ: {currentItem.hint}
             </p>
-            <div className="mt-2 flex justify-center">
+            <div className="mt-1.5 flex justify-center">
               <SoundButton textToSpeak={currentItem.word} size="sm" variant="amber" rate={progress.speechRate} />
             </div>
           </motion.div>
 
           {/* 3 Sorting Boxes (Buttons) */}
-          <div className="grid grid-cols-3 gap-2.5 sm:gap-4 flex-shrink-0 w-full">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 flex-shrink-0 w-full">
             {/* Past Box */}
             <motion.button
               id="sort-box-past"
